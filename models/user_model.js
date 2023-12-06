@@ -1,12 +1,12 @@
 // & Import packages
-import mongoose from "mongoose";
-import bcrypt from "bcrypt"
+import mongoose from 'mongoose'
+import bcrypt from 'bcrypt'
 
 // & Schema
 const userSchema = new mongoose.Schema({
-  username: {type: String, required: true, unique: true, maxlength: 30},
-  email: {type: String, required: true, unique: true},
-  password: {type: String, required: true}
+  username: { type: String, required: true, unique: true, maxlength: 30 },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
 })
 
 // Remove password from response
@@ -14,7 +14,7 @@ userSchema.set('toJSON',{
   virtuals: true,
   transform(doc, json){
     delete json.password
-  }
+  },
 })
 
 // & Virtual Field for password confirmation
