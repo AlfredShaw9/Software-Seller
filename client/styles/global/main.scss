@@ -1,0 +1,21 @@
+#root {
+  text-align: center;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+}
+
+main{
+  padding: calc(6 * $standard-padding);
+  width: 100vw;
+  height: 80vh;
+  img{
+    width: 150px;
+  }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}

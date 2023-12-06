@@ -1,15 +1,28 @@
-import { Outlet } from 'react-router-dom'
+// * Packages
+import { Outlet, useNavigation } from 'react-router-dom'
 
+// * Components
 import Header from './components/Header'
 import Footer from './components/Footer'
 
+// * Styling
+import Spinner from 'react-bootstrap/Spinner'
+
 function App() {
+
+  const navigation = useNavigation()
 
   return (
     <>
       <Header />
       <main>
-        <Outlet />
+        {
+          navigation.state === 'idle'
+          ?
+          <Outlet />
+          :
+          <Spinner animation='border' />
+        }
       </main>
       <Footer />
     </>

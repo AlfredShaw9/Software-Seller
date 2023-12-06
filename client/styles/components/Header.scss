@@ -1,0 +1,22 @@
+header, footer {
+  background-color: $dark-blue;
+  color: $off-white;
+  position: fixed;
+  width: 98vw;
+  display: flex;
+  justify-content: space-between;
+  padding: $standard-padding (2 * $standard-padding);
+  margin: 0;
+
+  a{
+    color: $yellow
+  }
+
+  img{
+    width: 50px;
+  }
+}
+
+footer {
+  bottom: 0;
+}
