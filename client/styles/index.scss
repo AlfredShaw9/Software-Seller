@@ -1,0 +1,13 @@
+// & Global
+@import './global/variables.scss';
+@import './global/main.scss';
+
+
+//  & Components
+@import './components/Footer.scss';
+@import './components/Header.scss';
+
+
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
