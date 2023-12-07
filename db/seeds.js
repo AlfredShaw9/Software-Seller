@@ -33,7 +33,7 @@ async function seed(){
 
     const ownedBundles = bundleData.map(bundle => {
       const rdmUserIdx = Math.floor(Math.random() * createdUsers.length)
-      return { ...bundle, owner: createdUsers[rdmUserIdx]._id}
+      return { ...bundle, owner: createdUsers[rdmUserIdx]._id }
     })
     console.log(`💾 Created ${ownedBundles.length} bundles in db`)
 

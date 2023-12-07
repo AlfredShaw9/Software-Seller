@@ -45,7 +45,7 @@ export default [
     version: 'Leopard',
     operatingSystem: 'macOS',
     releaseYear: 2007,
-    description: "Apple's sixth major release of macOS with significant features and improvements.",
+    description: 'Apple\'s sixth major release of macOS with significant features and improvements.',
     image: 'https://example.com/macos_leopard.jpg',
     startPrice: 129.99,
     auctionEnd: '2023-12-02T22:30:00Z'

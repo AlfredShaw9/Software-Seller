@@ -2,7 +2,7 @@
 export default [
   {
     username: 'stevejobs',
-    email: 'steve@apple.co',
+    email: 'steve@apple.com',
     password: 'pass',
     passwordConfirmation: 'pass'
   },
@@ -20,7 +20,7 @@ export default [
   },
   {
     username: 'timcook',
-    email: 'tim@apple.co',
+    email: 'tim@apple.com',
     password: 'pass',
     passwordConfirmation: 'pass'
   },
