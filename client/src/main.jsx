@@ -8,6 +8,8 @@ import Login from './components/Login.jsx'
 
 import { loginUser, registerUser } from './utils/actions/auth.js'
 
+import '../styles/index.scss'
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -15,7 +17,7 @@ const router = createBrowserRouter([
     errorElement: <App />,
     children: [
       {
-        path: '/',
+        index: true,
         element: <Home />
       },
       {
