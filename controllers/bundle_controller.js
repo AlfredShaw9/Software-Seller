@@ -1,17 +1,17 @@
 import Bundle from '../models/bundle_model.js'
 
-// ! Index
-// Method: GET
-//  Path: /bundles
+// & Index
+// ? GET
+// * /bundles
 
 export const getAllBundles = async (req, res) => {
   const bundles = await Bundle.find()
   return res.json(bundles)
 }
 
-// ! Create
-// Method: POST
-//  Path: /bundles
+// & Create
+// ? POST
+// * /bundles
 
 export const createBundles = async (req, res) => {
   try {
@@ -24,9 +24,9 @@ export const createBundles = async (req, res) => {
   }
 }
 
-// ! Show
-// Method: GET
-// Path: /bundles/:bundleId
+// & Get One
+// ? GET
+// * /bundles/:bundleId
 
 export const getSingleBundle = async (req, res) => {
   try {
@@ -43,9 +43,9 @@ export const getSingleBundle = async (req, res) => {
   }
 }
 
-// ! Update
-// Method: PUT
-// Path: /bundles/: bundleId
+// & Update
+// ? PUT
+// * /bundles/:bundleId
 
 export const updateBundle = async (req, res) => {
   try {
@@ -54,15 +54,12 @@ export const updateBundle = async (req, res) => {
     if (!bundle) {
       return res.status(404).json({ message: 'Bundle not found ' })
     }
-    // * Check to see that the user making the request (req.currentUser) matches the user referenced on the bundle owner field
-    console.log(req.currentUser._id) // User making request 
-    console.log(bundle.owner) // User that owns the bundle
-    console.log(bundle.owner.equals(req.currentUser._id)) // Does user match owner
-    // * If the user does not match throw an error
+    console.log('User making request: ', req.currentUser._id)
+    console.log('User that owns bundle: ', bundle.owner)
+    console.log('Does user match owner: ', bundle.owner.equals(req.currentUser._id))
     if (!bundle.owner.equals(req.currentUser._id)){
       return res.status(401).json({ message: 'Unauthorized' })
     }
-    // * If the user matches, update and save
     Object.assign(bundle, req.body)
     await bundle.save()
     return res.json(bundle) 
@@ -72,9 +69,9 @@ export const updateBundle = async (req, res) => {
   }
 }
 
-// * Delete
-// Method: DELETE
-//  Path: /bundles/: bundleId
+// & Delete
+// ? DELETE
+// * /bundles/:bundleId
 
 export const deleteBundle = async (req, res) => {
   try {
@@ -83,7 +80,7 @@ export const deleteBundle = async (req, res) => {
     if (!bundle) {
       return res.status(404).json({ message: 'Bundle not found : unauthorized' })
     }
-    return res.sendStaus(204)
+    return res.sendStatus(204)
   } catch (error) {
     console.log(error)
     return res.status(400).json(error)
