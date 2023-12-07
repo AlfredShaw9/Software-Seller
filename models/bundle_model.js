@@ -16,7 +16,7 @@ const bundleSchema = new mongoose.Schema({
 // * Allow virtuals
 bundleSchema
   .set('toJSON',{
-    virtuals: true
+    virtuals: true,
 })
 
 // * Virtual field for maxBid
@@ -26,20 +26,20 @@ bundleSchema
     localField: '_id',
     foreignField: 'bundle',
   })
-  .get(function(bids){
-    console.log(`Hopefully bids: ${bids}`)
-    return bids.sort((a, b) => a.value - b.value)[bids.length - 1].value
-    // return (Math.max(bids.value))
-  })
+  // .get(function(bids){
+  //   console.log(`Hopefully bids: ${bids}`)
+  //   return bids.sort((a, b) => a.value - b.value)[bids.length - 1].value
+  //   // return (Math.max(bids.value))
+  // })
 
 
-  // * Virtual field for bids
+// * Virtual field for bids
 bundleSchema
-.virtual('bids', {
-  ref: 'Bid',
-  localField: '_id',
-  foreignField: 'bundle',
-})
+  .virtual('bids', {
+    ref: 'Bid',
+    localField: '_id',
+    foreignField: 'bundle',
+  })
 
 // * Get max bid from bundleSchema's bids array
 // There is a function that allows mutation of bids object as it comes in
