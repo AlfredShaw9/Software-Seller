@@ -2,6 +2,7 @@
 // import secureRoute from './secureRoute.js'
 import express from 'express'
 import { register, login } from '../controllers/user_controller.js'
+import secureRoute from './secure_route.js'
 import {
   getAllBundles,
   createBundles,
@@ -17,12 +18,12 @@ const router = express.Router()
 // * Bundles
 router.route('/bundles')
   .get(getAllBundles)
-  .post(createBundles)
+  .post(secureRoute, createBundles)
 
-router.route('/bundles/bundleId')
+router.route('/bundles/:bundleId')
   .get(getSingleBundle)
-  .put(updateBundle)
-  .delete(deleteBundle)
+  .put(secureRoute, updateBundle)
+  .delete(secureRoute, deleteBundle)
 
 
 // * Authentication
