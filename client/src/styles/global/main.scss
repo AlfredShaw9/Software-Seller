@@ -9,7 +9,6 @@ body{
 }
 
 main{
-  padding: calc(6 * $standard-padding);
   width: 100vw;
   height: 80vh;
   img{
@@ -18,4 +17,8 @@ main{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+}
+
+.mainHero{
+  background: linear-gradient(rgba(255,255,255,0.3),rgba(255,255,255,0.8)),url('../assets/xp_bg.jpg');
 }
