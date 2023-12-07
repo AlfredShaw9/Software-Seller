@@ -5,8 +5,10 @@ import App from './App.jsx'
 import Home from './components/Home.jsx'
 import Register from './components/Register.jsx'
 import Login from './components/Login.jsx'
+import BundleSingle from './components/BundleSingle.jsx'
 
 import { loginUser, registerUser } from './utils/actions/auth.js'
+import { getSingleBundle } from './utils/loaders/bundles.js'
 
 import './styles/index.scss'
 
@@ -29,6 +31,11 @@ const router = createBrowserRouter([
         path: '/login',
         element: <Login />,
         action: async ({ request }) => loginUser(request)
+      },
+      {
+        path: '/bundles/:bundleId',
+        element: <BundleSingle />,
+        loader: async ({ params }) => getSingleBundle(params.bundleId)
       }
     ]
   }

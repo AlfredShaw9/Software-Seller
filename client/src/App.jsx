@@ -6,7 +6,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 
 // * Styling
-import Spinner from 'react-bootstrap/Spinner'
+import { Spinner } from '@chakra-ui/react'
 
 function App() {
 
@@ -16,14 +16,20 @@ function App() {
     <>
       <Header />
       <main>
-        {/* {
+        {
           navigation.state === 'idle'
           ?
           <Outlet />
           :
-          <Spinner animation='border' />
-        } */}
-        <Outlet />
+          <Spinner
+            thickness='4px'
+            speed='0.65s'
+            emptyColor='gray.200'
+            color='blue.500'
+            size='xl'
+          />
+        }
+        {/* <Outlet /> */}
       </main>
       <Footer />
     </>
