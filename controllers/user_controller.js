@@ -25,7 +25,7 @@ export const login = async (req, res) => {
     }
     const token = jwt.sign({ sub: userToLogin._id, username: userToLogin.username }, process.env.SECRET)
     console.log(token)
-    return res.json({ message: `Welcome back ${userToLogin.username}`, token: token })
+    return res.status(202).json({ message: `Welcome back ${userToLogin.username}`, token: token })
   } catch (error) {
     console.log(error)
     return res.status(401).json({ message: 'Unauthorized' })

@@ -21,7 +21,7 @@ export default function Header(){
         <Link to ='/'>Sell</Link>
         <Link to ='/'>Reviews</Link>
         <Link to ='/'>Placeholder</Link>
-        <Link to ='/' className='loggedOut'>Register/Login</Link>
+        <Link to ='/login' className='loggedOut'>Register/Login</Link>
         </nav>
       </header>
     </>
