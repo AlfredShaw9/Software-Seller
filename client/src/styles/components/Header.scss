@@ -2,7 +2,8 @@ header, footer {
   background-color: $dark-blue;
   color: $off-white;
   position: fixed;
-  width: 98vw;
+  height: calc(6 * $standard-padding);
+  width: calc(100vw - 4 * $standard-padding);
   display: flex;
   justify-content: space-between;
   padding: $standard-padding (2 * $standard-padding);
@@ -13,12 +14,17 @@ header, footer {
   }
 
   img{
-    width: 50px;
+    height: 6 * $standard-padding;
+    padding: 0;
   }
 
   nav * {
     padding: $standard-padding;
   }
+}
+
+header {
+  top: 0;
 }
 
 footer {

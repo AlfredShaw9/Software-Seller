@@ -16,13 +16,14 @@ function App() {
     <>
       <Header />
       <main>
-        {
+        {/* {
           navigation.state === 'idle'
           ?
           <Outlet />
           :
           <Spinner animation='border' />
-        }
+        } */}
+        <Outlet />
       </main>
       <Footer />
     </>
