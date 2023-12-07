@@ -8,6 +8,7 @@ import Login from './components/Login.jsx'
 import BundleSingle from './components/BundleSingle.jsx'
 
 import { loginUser, registerUser } from './utils/actions/auth.js'
+import { createBid } from './utils/actions/bundle.js'
 import { getSingleBundle } from './utils/loaders/bundles.js'
 
 import './styles/index.scss'
@@ -35,7 +36,8 @@ const router = createBrowserRouter([
       {
         path: '/bundles/:bundleId',
         element: <BundleSingle />,
-        loader: async ({ params }) => getSingleBundle(params.bundleId)
+        loader: async ({ params }) => getSingleBundle(params.bundleId),
+        action: async ({ request, params }) => createBid(request, params.bundleId)
       }
     ]
   }
