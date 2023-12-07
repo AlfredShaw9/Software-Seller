@@ -9,11 +9,13 @@ import {
   updateBundle,
   deleteBundle
 } from '../controllers/bundle_controller.js'
+import { createReview, getAllReviews } from '../controllers/bundle_reviews.js'
 
 // & Variables
 const router = express.Router()
 
 // & Routes
+
 // * Bundles
 router.route('/bundles')
   .get(getAllBundles)
@@ -24,7 +26,14 @@ router.route('/bundles/bundleId')
   .put(updateBundle)
   .delete(deleteBundle)
 
+// * Reviews
+router.route('/reviews')
+  .post(createReview)
 
+router.route('/reviews')
+  .get(getAllReviews)
+
+  
 // * Authentication
 router.route('/register')
   .post(register)
