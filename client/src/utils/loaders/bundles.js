@@ -11,6 +11,6 @@ export async function getAllBundles() {
 
 
 export async function getSingleBundle(id){
-  const res = await fetch(`/api/${id}`)
+  const res = await fetch(`/api/bundles/${id}`)
   return res.json()
 }

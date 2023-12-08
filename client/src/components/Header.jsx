@@ -17,10 +17,10 @@ export default function Header(){
           <Link to ='/'><img className='logo-icon' src={logoSq} alt='ss logo' /></Link>
         </div>
         <nav>
-        <Link to ='/'>Buy</Link>
-        <Link to ='/'>Sell</Link>
-        <Link to ='/'>Reviews</Link>
-        <Link to ='/'>Placeholder</Link>
+        <Link to ='/bundles'>Buy</Link>
+        <Link to ='/sell'>Sell</Link>
+        <Link to ='/reviews'>Reviews</Link>
+        <Link to ='/bundles/6571e38f5829508e4a021b26'>Photoshop</Link>
         <Link to ='/login' className='loggedOut'>Register/Login</Link>
         </nav>
       </header>

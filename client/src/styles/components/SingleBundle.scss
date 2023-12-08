@@ -1,0 +1,8 @@
+.bundle-container{
+  @include flex(row, space-around);
+  padding: calc(5 * $standard-padding);
+
+  .lhs{
+    @include flex(column, space-around)
+  }
+}

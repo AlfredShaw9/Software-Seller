@@ -10,6 +10,7 @@ import BundleIndex from './components/BundleIndex.jsx'
 
 import { loginUser, registerUser } from './utils/actions/auth.js'
 import { getAllBundles, getSingleBundle } from './utils/loaders/bundles.js'
+import { createBid } from './utils/actions/bundle.js'
 
 import './styles/index.scss'
 
@@ -34,14 +35,15 @@ const router = createBrowserRouter([
         action: async ({ request }) => loginUser(request)
       },
       {
-        path: '/bundles/:bundleId',
-        element: <BundleSingle />,
-        loader: async ({ params }) => getSingleBundle(params.bundleId)
-      },
-      {
         path: '/bundles',
         element: <BundleIndex />,
         loader: getAllBundles
+      },
+      {
+        path: '/bundles/:bundleId',
+        element: <BundleSingle />,
+        loader: async ({ params }) => getSingleBundle(params.bundleId),
+        action: async ({ request, params }) => createBid(request, params.bundleId)
       }
     ]
   }

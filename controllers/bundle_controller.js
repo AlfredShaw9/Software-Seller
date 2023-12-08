@@ -31,7 +31,7 @@ export const createBundle = async (req, res) => {
 export const getSingleBundle = async (req, res) => {
   try {
     const { bundleId } = req.params
-    const bundle = await Bundle.findById(bundleId).populate('owner').populate('bids')
+    const bundle = await Bundle.findById(bundleId).populate('owner').populate('maxBid').populate('bids')
     if (!bundle){
       return res.status(404).json({ message: 'Bundle not found' })
     }

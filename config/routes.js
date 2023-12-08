@@ -35,11 +35,12 @@ router.route('/bundles/:bundleId')
   .get(getSingleBundle)
   .put(secureRoute, updateBundle)
   .delete(secureRoute, deleteBundle)
+  .post(secureRoute, createBid)
 
 // * Bids
 router.route('/bundles/:bundleId/bids')
   .get(getAllBids)
-  .post(secureRoute, createBid)
+  // .post(secureRoute, createBid)
 
 router.route('/bundles/:bundleId/bids/:bidId')
   .get(getSingleBid)

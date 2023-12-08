@@ -19,6 +19,7 @@ bundleSchema
     virtuals: true,
 })
 
+// ! This needs fixing
 // * Virtual field for maxBid
 bundleSchema
   .virtual('maxBid', {
@@ -26,11 +27,11 @@ bundleSchema
     localField: '_id',
     foreignField: 'bundle',
   })
-  // .get(function(bids){
-  //   console.log(`Hopefully bids: ${bids}`)
-  //   return bids.sort((a, b) => a.value - b.value)[bids.length - 1].value
-  //   // return (Math.max(bids.value))
-  // })
+  .get(function(bids){
+    console.log(`Hopefully bids: ${bids}`)
+    return bids?.sort((a, b) => a.value - b.value)[bids.length - 1].value
+    // return (Math.max(bids.value))
+  })
 
 
 // * Virtual field for bids
