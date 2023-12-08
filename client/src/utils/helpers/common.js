@@ -16,3 +16,20 @@ export function getToken(){
 export function removeToken(){
   localStorage.removeItem(tokenName)
 }
+
+//& Return id of active user
+export function activeUser(){
+  const token = getToken()
+  if(!token) return null
+
+  // Retrieve middle part
+  const b64 = token.split('.')[1]
+  // Convert to JSON
+  const payload = JSON.parse(atob(b64))
+  // * The below is only required if the logins have expiries
+  // const exp = payload.exp
+  // // Check expiry date not passed
+  // if ( exp > (Date.now()/1000)){
+    return payload.sub
+  // }
+}

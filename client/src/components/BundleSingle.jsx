@@ -3,9 +3,10 @@
 import { Link, Form, useLoaderData, useActionData, useNavigate } from 'react-router-dom'
 import React from 'react'
 import { useEffect } from 'react'
+import { activeUser } from '../utils/helpers/common'
 
 // * Styling
-import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Button, ButtonGroup, Link as ChakraLink } from '@chakra-ui/react'
 
 // * Images
 import windows2000 from '../assets/windows2000.png'
@@ -15,31 +16,20 @@ export default function BundleSingle(){
   const res = useActionData()
   const navigate = useNavigate()
 
-  // ! Unsure about this - how can we prevent the submit button's default?
-  // useEffect(() => {
-  //   if (res?.status === 201) {
-  //     // navigate(`/bundles/${req.params}`)
-  //     navigate(`/#`)
-  //   }
-  // }, [res, navigate])
-
   // Retrieve bundle data and save to const
   const bundle = useLoaderData()
   
   // Destructure
-  const { software, version, operatingSystem, releaseYear, description, image, startPrice, auctionEnd, owner, maxBid } = bundle
+  const { _id, software, version, operatingSystem, releaseYear, description, image, startPrice, auctionEnd, owner, maxBid } = bundle
 
   // * Time remaining
-  // const dateTimeNow = parseInt((new Date().getTime() / (1000)))
   const auctionEndDT = parseInt((new Date(auctionEnd).getTime() / (1000)))
   const auctionEndDate = new Date(auctionEnd).toDateString()
   const auctionEndHour = new Date(auctionEnd).getHours()
   const auctionEndMinute = new Date(auctionEnd).getMinutes()
-  // const timeRemaining = parseInt(auctionEndDT) - parseInt(dateTimeNow)
 
   // * React timer
   // Credit: https://codepen.io/saas/pen/RwWNEGJ
-  
   const [remaining, setRemaining] = React.useState(0);
 
   React.useEffect(() => {
@@ -67,8 +57,15 @@ export default function BundleSingle(){
         <div className='lhs'>
           <img className='bundle-pic' src={ windows2000 } alt='live reaction'/>
           <div className='buttons'> 
-            <Button>Back</Button>
-            <Button>Save</Button>
+            <ChakraLink as={Link} to='/buy'>Back</ ChakraLink>
+            {activeUser() === owner._id &&
+            <div>
+              <ChakraLink as={Link} to={`/bundles/${_id}/edit`}>Edit</ ChakraLink>
+              <Form method="DELETE">
+                <button>Delete bundle</button>
+              </Form>
+            </div>
+            }
           </div>
         </div>
         <div className='rhs'>

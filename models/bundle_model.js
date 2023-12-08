@@ -29,7 +29,11 @@ bundleSchema
   })
   .get(function(bids){
     console.log(`Hopefully bids: ${bids}`)
-    return bids?.sort((a, b) => a.value - b.value)[bids.length - 1].value
+    if (bids == '') {
+      return 
+    } else {
+      return bids?.sort((a, b) => a.value - b.value)[bids.length - 1].value
+    }
     // return (Math.max(bids.value))
   })
 

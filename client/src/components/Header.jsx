@@ -17,7 +17,7 @@ export default function Header(){
           <Link to ='/'><img className='logo-icon' src={logoSq} alt='ss logo' /></Link>
         </div>
         <nav>
-        <Link to ='/bundles'>Buy</Link>
+        <Link to ='/buy'>Buy</Link>
         <Link to ='/sell'>Sell</Link>
         <Link to ='/reviews'>Reviews</Link>
         <Link to ='/bundles/6571e38f5829508e4a021b26'>Photoshop</Link>
