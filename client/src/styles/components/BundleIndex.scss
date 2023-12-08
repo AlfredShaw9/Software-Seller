@@ -2,6 +2,8 @@
 .bundleDisplayCont {
   width: 80vw;
   max-width: 1720px;
+  // height: calc(100vh - 16 * $standard-padding);
+  overflow: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
