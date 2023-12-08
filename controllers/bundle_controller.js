@@ -5,7 +5,7 @@ import Bundle from '../models/bundle_model.js'
 // * /bundles
 
 export const getAllBundles = async (req, res) => {
-  const bundles = await Bundle.find()
+  const bundles = await Bundle.find().populate('maxBid')
   return res.json(bundles)
 }
 
@@ -16,7 +16,7 @@ export const getAllBundles = async (req, res) => {
 export const createBundle = async (req, res) => {
   try {
     req.body.owner = req.currentUser._id
-    const bundleToCreate = await Bundle.create(req.body)
+    const bundleToCreate = (await Bundle.create(req.body))
     return res.status(201).json(bundleToCreate)
   } catch (error) {
     console.log(error)

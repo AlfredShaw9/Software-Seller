@@ -28,8 +28,12 @@ bundleSchema
     foreignField: 'bundle',
   })
   .get(function(bids){
-    console.log(`Hopefully bids: ${bids}`)
-    return bids?.sort((a, b) => a.value - b.value)[bids.length - 1].value
+    // console.log(`Hopefully bids: ${bids}`)
+    if (bids == '') {
+      return 
+    } else {
+      return bids?.sort((a, b) => a.value - b.value)[bids.length - 1].value
+    }
     // return (Math.max(bids.value))
   })
 

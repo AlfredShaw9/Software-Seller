@@ -10,12 +10,16 @@
   justify-content: center;
   align-items: center;
 
+  a {
+    width: fit-content;
+    margin: 3%;
+  }
+
   .indivBundleCont{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10%;
 
     .bundleImg{
       // width: 10vw;
