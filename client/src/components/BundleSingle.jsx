@@ -16,31 +16,31 @@ export default function BundleSingle(){
   const navigate = useNavigate()
 
   // ! Unsure about this - how can we prevent the submit button's default?
-  useEffect(() => {
-    if (res?.status === 201) {
-      // navigate(`/bundles/${req.params}`)
-      navigate(`/`)
-    }
-  }, [res, navigate])
+  // useEffect(() => {
+  //   if (res?.status === 201) {
+  //     // navigate(`/bundles/${req.params}`)
+  //     navigate(`/#`)
+  //   }
+  // }, [res, navigate])
 
   // Retrieve bundle data and save to const
   const bundle = useLoaderData()
   
   // Destructure
-  const { software, version, operatingSystem, releaseYear, description, image, startPrice, auctionEnd, owner } = bundle
+  const { software, version, operatingSystem, releaseYear, description, image, startPrice, auctionEnd, owner, maxBid } = bundle
 
-  // Time remaining
-  const dateTimeNow = parseInt((new Date().getTime() / (1000)))
+  // * Time remaining
+  // const dateTimeNow = parseInt((new Date().getTime() / (1000)))
   const auctionEndDT = parseInt((new Date(auctionEnd).getTime() / (1000)))
   const auctionEndDate = new Date(auctionEnd).toDateString()
   const auctionEndHour = new Date(auctionEnd).getHours()
   const auctionEndMinute = new Date(auctionEnd).getMinutes()
-  const timeRemaining = parseInt(auctionEndDT) - parseInt(dateTimeNow)
+  // const timeRemaining = parseInt(auctionEndDT) - parseInt(dateTimeNow)
 
   // * React timer
   // Credit: https://codepen.io/saas/pen/RwWNEGJ
   
-  const [remaining, setRemaining] = React.useState(timeRemaining);
+  const [remaining, setRemaining] = React.useState(0);
 
   React.useEffect(() => {
     const timerId = setInterval( () => tock(), 1000);
@@ -53,6 +53,12 @@ export default function BundleSingle(){
     setRemaining(parseInt(auctionEndDT) - parseInt(parseInt((new Date().getTime() / (1000)))))
   }
 
+  // Convert timer format to HH:MM:SS
+  const DaysRemaining = Math.floor(remaining/(3600*24))
+  const HoursRemaining = (Math.floor(remaining/3600) % 24)
+  const MinutesRemaining = (Math.floor(remaining/60) % 60)
+  const SecondsRemaining = remaining % 60
+  // SecondsRemaining < 10 ? 0 : ''
 
   // * JSX
   return(
@@ -75,11 +81,11 @@ export default function BundleSingle(){
           </section>
           <div className='bid-section'>
             <p className='auction-end'>Auction ends: {auctionEndHour}:{auctionEndMinute} on {auctionEndDate}</p>
-            <p className='timer'>Time Remaining: {timeRemaining} seconds</p>
             <p className='timer'>Time Remaining: {remaining} seconds</p>
+            <p className='timer'>Time Remaining: {remaining < 0 ? 'Expired' : `${DaysRemaining}:${HoursRemaining < 10 ? 0 : ''}${HoursRemaining}:${MinutesRemaining < 10 ? 0 : ''}${MinutesRemaining}:${SecondsRemaining < 10 ? 0 : ''}${SecondsRemaining}`}</p>
             <div>
               <Button className='bid'>Place Bid</Button>
-              <p>Current Bid: <span>£0.10</span></p>
+              <p>Current Bid: <span>{maxBid}</span></p>
             </div>
           </div>
         </div>

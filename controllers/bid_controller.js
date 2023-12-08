@@ -16,7 +16,7 @@ export const getAllBids = async (req, res) => {
 export const createBid = async (req, res) => {
   try {
     req.body.owner = req.currentUser._id
-    req.body.bundle = req.params
+    req.body.bundle = Object.values(req.params)[0]
     const bidToCreate = await Bid.create(req.body)
     return res.status(201).json(bidToCreate)
   } catch (error) {
