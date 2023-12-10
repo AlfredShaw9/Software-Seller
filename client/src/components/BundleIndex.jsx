@@ -2,12 +2,14 @@
 import { useLoaderData, Link as ReactRouterLink } from 'react-router-dom'
 import { Link as ChakraLink } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
+import "xp.css/dist/XP.css"
 
 
 export default function AllBundles() {
 
   const bundlesAll = useLoaderData()
 
+  
   // & State
   const [ filters, setFilters ] = useState({
     OS: 'All',
@@ -37,15 +39,23 @@ export default function AllBundles() {
 
 
   return (
-    <>
-      <div id="filters">
-        <select name="OS" value={filters.region} onChange={handleChange}>
-          <option value="All">All</option>
-          <option value="Windows">Windows</option>
-          <option value="macOS">MacOS</option>
-          <option value="Other">Other</option>
+    <div className='window buyWindow'>
+      <div className="title-bar">
+        <div className="title-bar-text">Buy</div>
+        <div className="title-bar-controls">
+          <button aria-label="Minimize" />
+          <button aria-label="Maximize" />
+          <button aria-label="Close" />
+        </div>
+      </div>
+      <div id='filters'>
+        <select name='OS' value={filters.OS} onChange={handleChange}>
+          <option value='All'>All</option>
+          <option value='Windows'>Windows</option>
+          <option value='macOS'>MacOS</option>
+          <option value='Other'>Other</option>
         </select>
-        <input name="search" placeholder='Search...' value={filters.search} onChange={handleChange} />
+        <input name='search' placeholder='Search...' value={filters.search} onChange={handleChange} />
       </div>
       <section className='bundleDisplayCont'>
         { filteredBundles.length > 0 && filteredBundles.map(bundle => {
@@ -56,17 +66,19 @@ export default function AllBundles() {
             as = {ReactRouterLink}
             to = {`/bundles/${_id}`}
             >
-              <div className='indivBundleCont'>
-                <div className='bundleImg' style={ { backgroundImage: `url(${image})` } }>
-                  {operatingSystem}
+              <div className='outerBorder'>
+                <div className='indivBundleCont'>
+                  <div className='bundleImg' style={ { backgroundImage: `url(${image})` } }>
+                    {operatingSystem}
+                  </div>
+                  {software}, {version}
+                  <button>Current Bid: £{maxBid} </button>
                 </div>
-                <p>{software}, {version}</p>
-                <p>Current Bid: £{maxBid} </p>
               </div>
             </ChakraLink>
           )
         }) }
       </section>
-    </>
+    </div>
   )
 }

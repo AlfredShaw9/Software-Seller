@@ -1,18 +1,26 @@
 
+.buyWindow {
+  height: calc(100vh - 30 * $standard-padding);
+}
+
 .bundleDisplayCont {
   width: 80vw;
-  max-width: 1720px;
-  // height: calc(100vh - 16 * $standard-padding);
-  overflow: auto;
+  max-width: 1500px;
+  margin: 20px;
+  height: calc(100vh - 40 * $standard-padding);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-
+  overflow: auto;
   a {
     width: fit-content;
     margin: 3%;
+  }
+
+  .outerBorder {
+    border: 1px solid $dark-off-white;
   }
 
   .indivBundleCont{
@@ -20,6 +28,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border: 1px solid $white;
+    padding: 5px;
 
     .bundleImg{
       // width: 10vw;

@@ -19,7 +19,9 @@ import {
 } from '../controllers/bid_controller.js'
 import {
   getAllReviews,
-  createReview
+  createReview,
+  getSingleReview,
+  deleteReview
 } from '../controllers/review_controller.js'
 
 // & Variables
@@ -49,13 +51,13 @@ router.route('/bundles/:bundleId/bids/:bidId')
 
   // * Reviews
 router.route('/reviews')
-.get(getAllReviews)
-.post(secureRoute, createReview)
+  .get(getAllReviews)
+  .post(secureRoute, createReview)
 
 // router.route('/reviews/:reviewId')
-// .get(getSingleReview)
-// .put(secureRoute, updateReview)
-// .delete(secureRoute, deleteReview)
+//   .get(getSingleReview)
+//   .put(secureRoute, updateReview)
+//   .delete(secureRoute, deleteReview)
 
 // * Authentication
 router.route('/register')
