@@ -33,10 +33,10 @@ export async function createBundle(data) {
 
 //  & Edit Bundle
 
-export async function editBundle(request, id) {
+export async function editBundle(data, id) {
   console.log('editBundle action reached')
-  const data = await formToObj(request)
-  console.log(data)
+  // const data = await formToObj(request)
+  // console.log(data)
   return await axios.put(`/api/bundles/${id}`, data, {
     validateStatus: () => true,
     headers: {

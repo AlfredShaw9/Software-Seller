@@ -37,6 +37,23 @@ bundleSchema
     // return (Math.max(bids.value))
   })
 
+// * Virtual field for maxBid
+bundleSchema
+  .virtual('winner', {
+    ref: 'Bid',
+    localField: '_id',
+    foreignField: 'bundle',
+  })
+  .get(function(bids){
+    // console.log(`Hopefully bids: ${bids}`)
+    if (bids == '') {
+      return 
+    } else {
+      return bids?.sort((a, b) => a.value - b.value)[bids.length - 1].owner
+    }
+    // return (Math.max(bids.value))
+  })
+
 
 // * Virtual field for bids
 bundleSchema

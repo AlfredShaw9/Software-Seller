@@ -64,6 +64,7 @@ export default function CreateBundle(){
         <input type="datetime-local" name="auctionEnd" onChange={handleChange}  value={formData.auctionEnd}/>
         <input type="number" name="startPrice" placeholder='Starting Price'  onChange={handleChange}  value={formData.startPrice}/>
         <ImageUploadField setFormData={setFormData} formData={formData} />
+        {/* <input type="text" hidden='true' name="status" defaultValue="active"></input> */}
         <button type="submit">Start auction</button>
         {/* {res && <p>{res.data.message}</p>} */}
       </form>
