@@ -16,15 +16,38 @@ export default function Login() {
   }, [res, navigate])
 
   return (
-    <>
-      <h1>Login</h1>
-      <Form method='POST'>
-        <input type='email' name='email' placeholder='Email'/>
-        <input type='password' name='password' placeholder='Password'/>
-        <button type='submit'>Login</button>
-        <Link to ='/register' className='loggedOut'>Register</Link>
-        {res && <p>{res.data.message}</p>}
-      </Form>
-    </>
+    <div className='logRegBg'>
+      <div className='window formWindow'>
+        <div className="title-bar">
+          <div className="title-bar-text">Log in to Software Seller</div>
+          <div className="title-bar-controls">
+            <button aria-label="Minimize" />
+            <button aria-label="Maximize" />
+            <button aria-label="Close" />
+          </div>
+        </div>
+        <h1>Login</h1>
+        <Form method='POST' className='dataCont'>
+          <div className='dataFormFields'>
+            <div>
+              <label form='email'>Email:</label>
+              <input type='email' id='email' name='email'/>
+            </div>
+
+            <div>
+              <label form='password'>Password:</label>
+              <input type='password' id='password' name='password'/>
+            </div>
+          </div>
+
+          <div className='buttonsCont'>
+            <button type='submit'>Login</button>
+            <Link to ='/register' className='loggedOut'>Register</Link>
+          </div>
+
+          {res && <p>{res.data.message}</p>}
+        </Form>
+      </div>
+    </div>
   )
 }

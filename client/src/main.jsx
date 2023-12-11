@@ -9,10 +9,13 @@ import BundleSingle from './components/BundleSingle.jsx'
 import BundleIndex from './components/BundleIndex.jsx'
 import CreateBundle from './components/CreateBundle.jsx'
 import EditBundle from './components/EditBundle.jsx'
+import ReviewIndex from './components/ReviewIndex.jsx'
+import CreateReview from './components/CreateReview.jsx'
 
 import { loginUser, registerUser } from './utils/actions/auth.js'
-import { getAllBundles, getSingleBundle } from './utils/loaders/bundles.js'
+import { getAllBundles, getAllReviews, getSingleBundle } from './utils/loaders/bundles.js'
 import { createBid, createBundle, editBundle, deleteBundle } from './utils/actions/bundle.js'
+import { createReview } from './utils/actions/review.js'
 
 import './styles/index.scss'
 
@@ -58,7 +61,24 @@ const router = createBrowserRouter([
         path: '/sell',
         element: <CreateBundle />,
         action: async ({ request }) => createBundle(request)
-      }
+      },
+      {
+        path: '/reviews',
+        element: <ReviewIndex />,
+        loader: getAllReviews
+      },
+      {
+        path: '/reviews/yourOpinion',
+        element: <CreateReview />,
+        action: async ({ request }) => createReview(request)
+      },
+      // {
+      //   path: '/reviews/:reviewId',
+      //   element: <ReviewSingle />,
+      //   loader: async ({ params }) => getSingleReview(params.reviewId),
+      //   action: async ({ params }) => deleteReview(params.reviewId)
+      // },
+      
     ]
   }
 ])
