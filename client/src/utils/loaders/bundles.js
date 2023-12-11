@@ -4,8 +4,8 @@
 
 // & Functions
 
-export async function getAllBundles() {
-  const res = await fetch('/api/bundles')
+export async function getActiveBundles() {
+  const res = await fetch('/api/bundles/active')
   return res.json()
 }
 

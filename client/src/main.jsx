@@ -13,7 +13,7 @@ import ReviewIndex from './components/ReviewIndex.jsx'
 import CreateReview from './components/CreateReview.jsx'
 
 import { loginUser, registerUser } from './utils/actions/auth.js'
-import { getAllBundles, getAllReviews, getSingleBundle } from './utils/loaders/bundles.js'
+import { getActiveBundles, getAllReviews, getSingleBundle } from './utils/loaders/bundles.js'
 import { createBid, createBundle, editBundle, deleteBundle } from './utils/actions/bundle.js'
 import { createReview } from './utils/actions/review.js'
 
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
       {
         path: '/buy',
         element: <BundleIndex />,
-        loader: getAllBundles
+        loader: getActiveBundles
       },
       {
         path: '/bundles/:bundleId',

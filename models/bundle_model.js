@@ -10,6 +10,7 @@ const bundleSchema = new mongoose.Schema({
   image: String,
   startPrice: Number,
   auctionEnd: Date,
+  status: String,
   owner: { type: mongoose.ObjectId, ref: 'User', required: true }
 })
 

@@ -18,7 +18,8 @@ export default [
     description: 'Powerful image editing software with advanced features.',
     image: 'https://example.com/adobe_photoshop_cs2.jpg',
     startPrice: 199.99,
-    auctionEnd: '2023-12-02T15:30:00Z'
+    auctionEnd: '2023-12-02T15:30:00Z',
+    status: 'active'
   },
   {
     software: 'Windows XP',
@@ -28,7 +29,8 @@ export default [
     description: 'A widely used operating system known for its stability and user interface.',
     image: 'https://example.com/windows_xp_professional.jpg',
     startPrice: 129.99,
-    auctionEnd: '2023-12-02T18:45:00Z'
+    auctionEnd: '2023-12-02T18:45:00Z',
+    status: 'active'
   },
   {
     software: 'AutoCAD',

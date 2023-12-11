@@ -12,7 +12,6 @@ export const getAllBundles = async (req, res) => {
 // & Index active
 // ? GET
 // * /bundles/active
-// ! in progress
 export const getActiveBundles = async (req, res) => {
   const bundles = await Bundle.find( { status: 'active' } ).populate('maxBid')
   return res.json(bundles)

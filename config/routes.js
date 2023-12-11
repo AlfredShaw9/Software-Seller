@@ -5,6 +5,7 @@ import { register, login } from '../controllers/user_controller.js'
 import secureRoute from './secure_route.js'
 import {
   getAllBundles,
+  getActiveBundles,
   createBundle,
   getSingleBundle,
   updateBundle,
@@ -32,6 +33,9 @@ const router = express.Router()
 router.route('/bundles')
   .get(getAllBundles)
   .post(secureRoute, createBundle)
+
+router.route('/bundles/active')
+  .get(getActiveBundles)
 
 router.route('/bundles/:bundleId')
   .get(getSingleBundle)
