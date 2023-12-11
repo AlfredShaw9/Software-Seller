@@ -13,7 +13,7 @@ export const getAllBundles = async (req, res) => {
 // ? GET
 // * /bundles/active
 export const getActiveBundles = async (req, res) => {
-  const bundles = await Bundle.find( { status: 'active' } ).populate('maxBid')
+  const bundles = await Bundle.find( { auctionEnd: { $gte: new Date() } } ).populate('maxBid')
   return res.json(bundles)
 }
 
@@ -39,7 +39,7 @@ export const createBundle = async (req, res) => {
 export const getSingleBundle = async (req, res) => {
   try {
     const { bundleId } = req.params
-    const bundle = await Bundle.findById(bundleId).populate('owner').populate('maxBid').populate('bids')
+    const bundle = await Bundle.findById(bundleId).populate('owner').populate('maxBid').populate('bids').populate('winner')
     if (!bundle){
       return res.status(404).json({ message: 'Bundle not found' })
     }

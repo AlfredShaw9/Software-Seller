@@ -19,7 +19,6 @@ export default [
     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Adobe_Photoshop_Express_icon.svg/1200px-Adobe_Photoshop_Express_icon.svg.png',
     startPrice: 45.99,
     auctionEnd: '2023-12-02T15:30:00Z',
-    status: 'active'
   },
   {
     software: 'Windows XP',
@@ -27,10 +26,9 @@ export default [
     operatingSystem: 'Windows',
     releaseYear: 2001,
     description: 'A widely used operating system known for its stability and user interface.',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Windows_XP_logo.svg/1200px-Windows_XP_logo.svg.png',
+    image: 'https://res.cloudinary.com/dokuzznvp/image/upload/v1702294429/mongoose_movies/yflgvu2ic3ujaqcxhs14.png',
     startPrice: 19.99,
     auctionEnd: '2023-12-02T18:45:00Z',
-    status: 'active'
   },
   {
     software: 'AutoCAD',

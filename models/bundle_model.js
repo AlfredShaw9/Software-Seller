@@ -10,7 +10,6 @@ const bundleSchema = new mongoose.Schema({
   image: String,
   startPrice: Number,
   auctionEnd: Date,
-  status: String,
   owner: { type: mongoose.ObjectId, ref: 'User', required: true }
 })
 
@@ -60,6 +59,21 @@ bundleSchema
 //     if(!bids?.length) return 'No bids yet'
 //     return (Math.max(bids))
 //   })
+
+// * Virtual field for winningBid
+bundleSchema
+  .virtual('winner', {
+    ref: 'Bid',
+    localField: '_id',
+    foreignField: 'bundle',
+  })
+  .get(function(bids){
+    if (bids == '') {
+      return 
+    } else {
+      return bids?.sort((a, b) => a.value - b.value)[bids.length - 1].owner
+    }
+  })
 
 
 export default mongoose.model('Bundle', bundleSchema)
