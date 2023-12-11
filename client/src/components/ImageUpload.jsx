@@ -15,7 +15,7 @@ export default function ImageUploadField({ formData, setFormData }){
     // formData to Cloudinary endpoint
     const { data: { secure_url } } = await axios.post(endpoint, data)
     // ! Below formData is not being set correctly
-    setFormData({ ...FormData, image: secure_url})
+    setFormData({ ...formData, image: secure_url})
     console.log('Form data: ',formData)
   }
 

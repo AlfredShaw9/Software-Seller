@@ -43,8 +43,14 @@ async function seed(){
 
     const ownedBundles = bundleData.map(bundle => {
       const rdmUserIdx = Math.floor(Math.random() * createdUsers.length)
-      return { ...bundle, owner: createdUsers[rdmUserIdx]._id }
+      const nowDate = Date.now()
+      // const nowTime = nowDate.getTime()
+      const rdmDuration = Math.floor(Math.random() * 1000 * 60 * 60 * 24)
+      const rdmTime = new Date(nowDate + rdmDuration)
+      return { ...bundle, owner: createdUsers[rdmUserIdx]._id, auctionEnd: rdmTime }
     })
+
+
     const bundlesCreated = await Bundle.create(ownedBundles)
     console.log(`💾 Created ${ownedBundles.length} bundles in db`)
     
@@ -55,6 +61,21 @@ async function seed(){
     const reviewsCreated = await Review.create(ownedReviews)
     console.log(`📝 Created ${ownedReviews.length} reviews in db`)
     
+    // * Create bidData array using loop instead of from manual seed file
+    let bidArray = []
+    function bidArrayBuilder() {
+      for (let i = 0; i <= 200; i++){
+        const rdmBid = Math.floor(Math.random() * 51)
+        const obj = {
+          value: rdmBid
+        }
+        return bidArray.push(obj)
+      }
+    }
+    bidArrayBuilder()
+    console.log('Bid array: ', bidArray)
+
+    // * Attempting to use bidArray from above rather than bidData seed file
     const ownedBids = bidData.map(bid => {
       const rdmUserIdx = Math.floor(Math.random() * createdUsers.length)
       const rdmBundleIdx = Math.floor(Math.random() * ownedBundles.length)
