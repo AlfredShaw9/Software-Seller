@@ -1,6 +1,7 @@
 // & Import data
 import userData from './data/user_data.js'
 import bundleData from './data/bundle_data.js'
+import bundleDataHist from './data/bundle_data_historic.js'
 import reviewData from './data/review_data.js'
 import bidData from './data/bid_data.js'
 
@@ -44,16 +45,23 @@ async function seed(){
     const ownedBundles = bundleData.map(bundle => {
       const rdmUserIdx = Math.floor(Math.random() * createdUsers.length)
       const nowDate = Date.now()
-      // const nowTime = nowDate.getTime()
       const rdmDuration = Math.floor(Math.random() * 1000 * 60 * 60 * 24)
       const rdmTime = new Date(nowDate + rdmDuration)
       return { ...bundle, owner: createdUsers[rdmUserIdx]._id, auctionEnd: rdmTime }
     })
 
+    // Historic bundles will always be owned by the 3rd user
+    const ownedHistBundles = bundleDataHist.map(bundle => {
+      const nowDate = Date.now()
+      return { ...bundle, owner: createdUsers[2]._id }
+    })
+
+    const histBundlesCreated = await Bundle.create(ownedHistBundles)
+    console.log(`💾 Created ${ownedHistBundles.length} historic bundles in db`)
 
     const bundlesCreated = await Bundle.create(ownedBundles)
     console.log(`💾 Created ${ownedBundles.length} bundles in db`)
-    
+
     const ownedReviews = reviewData.map(review => {
       const rdmUserIdx = Math.floor(Math.random() * createdUsers.length)
       return { ...review, author: createdUsers[rdmUserIdx]._id}
@@ -78,7 +86,8 @@ async function seed(){
     // * Attempting to use bidArray from above rather than bidData seed file
     const ownedBids = bidData.map(bid => {
       const rdmUserIdx = Math.floor(Math.random() * createdUsers.length)
-      const rdmBundleIdx = Math.floor(Math.random() * ownedBundles.length)
+      // First bundle won't have any votes
+      const rdmBundleIdx = 1 + Math.floor(Math.random() * ownedBundles.length - 1)
       return { ...bid, owner: createdUsers[rdmUserIdx]._id, bundle: bundlesCreated[rdmBundleIdx]._id}
     })
     const bidsCreated = await Bid.create(ownedBids)

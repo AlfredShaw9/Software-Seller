@@ -22,13 +22,15 @@ export default function BundleSingle(){
   const bundle = useLoaderData()
   
   // Destructure
-  const { _id, software, version, operatingSystem, releaseYear, description, image, startPrice, auctionEnd, owner, maxBid } = bundle
+  const { _id, software, version, operatingSystem, releaseYear, description, image, startPrice, auctionEnd, owner, maxBid, winner } = bundle
 
   // * Time remaining
   const auctionEndDT = parseInt((new Date(auctionEnd).getTime() / (1000)))
   const auctionEndDate = new Date(auctionEnd).toDateString()
   const auctionEndHour = new Date(auctionEnd).getHours()
   const auctionEndMinute = new Date(auctionEnd).getMinutes()
+  // Boolean that changes from true to false when auctionEnd datetime is passed
+  const active = parseInt(auctionEndDT) > parseInt(parseInt((new Date().getTime() / (1000))))
 
   // * React timer
   // Credit: https://codepen.io/saas/pen/RwWNEGJ
@@ -45,41 +47,45 @@ export default function BundleSingle(){
     setRemaining(parseInt(auctionEndDT) - parseInt(parseInt((new Date().getTime() / (1000)))))
   }
 
+
   // Convert timer format to HH:MM:SS
   const DaysRemaining = Math.floor(remaining/(3600*24))
   const HoursRemaining = (Math.floor(remaining/3600) % 24)
   const MinutesRemaining = (Math.floor(remaining/60) % 60)
   const SecondsRemaining = remaining % 60
-  // SecondsRemaining < 10 ? 0 : ''
 
   // * JSX
   return(
     <>
       <div className='bundle-container'>
         <div className='lhs'>
-          <img className='bundle-pic' src={ windows2000 } alt='live reaction'/>
+          <img className='bundle-pic' src={ image } alt='live reaction'/>
           <div className='buttons'> 
             <ChakraLink as={Link} to='/buy'>Back</ ChakraLink>
-            {activeUser() === owner._id &&
-            <div>
-              {/* ! This can be changed to a form with action: edit */}
-              <ChakraLink as={Link} to={`/buy/${_id}/edit`}>Edit</ ChakraLink>
-              <Form
-                method='post'
-                action='delete'
-                onSubmit={(e) => {
-                  if (
-                    !confirm(
-                      'Are you sure you want to delete this bundle?'
-                    )
-                  ) {
-                    e.preventDefault()
-                  }
-                }}
-              >
-                <button type='submit'>Delete</button>
-              </Form>
-            </div>
+            {activeUser() === owner._id && active &&
+              <div>
+                <ChakraLink as={Link} to={`/buy/${_id}/edit`}>Edit</ ChakraLink>
+                <Form
+                  method='post'
+                  action='delete'
+                  onSubmit={(e) => {
+                    if (
+                      !confirm(
+                        'Are you sure you want to delete this bundle?'
+                      )
+                    ) {
+                      e.preventDefault()
+                    }
+                  }}
+                >
+                  <button type='submit'>Delete</button>
+                </Form>
+              </div>
+            }
+            {activeUser() === winner && !active &&
+              <div>
+                <ChakraLink as={Link} to={`/buy/${_id}/pay`}>Pay</ ChakraLink>
+              </div>
             }
           </div>
         </div>
@@ -94,21 +100,29 @@ export default function BundleSingle(){
           <div className='bid-section'>
             <p className='auction-end'>Auction ends: {auctionEndHour}:{auctionEndMinute} on {auctionEndDate}</p>
             <p className='timer'>Time Remaining: {remaining} seconds</p>
-            <p className='timer'>Time Remaining: {remaining < 0 ? 'Expired' : `${DaysRemaining}:${HoursRemaining < 10 ? 0 : ''}${HoursRemaining}:${MinutesRemaining < 10 ? 0 : ''}${MinutesRemaining}:${SecondsRemaining < 10 ? 0 : ''}${SecondsRemaining}`}</p>
-            <div>
-              <Button className='bid'>Place Bid</Button>
-              <p>Current Bid: <span>{maxBid}</span></p>
-            </div>
+            { active
+              ?
+              <div>
+                <p className='timer'>Time Remaining: {remaining < 0 ? 'Expired' : `${DaysRemaining} days ${HoursRemaining < 10 ? 0 : ''}${HoursRemaining} hours ${MinutesRemaining < 10 ? 0 : ''}${MinutesRemaining} minutes ${SecondsRemaining < 10 ? 0 : ''}${SecondsRemaining} seconds`}</p>
+                <div className='active-actions'>
+                  <Button className='bid'>Place Bid</Button>
+                  <p>Current Bid: <span>£{!maxBid ? startPrice : maxBid}</span></p>
+                  <div>
+                    <Form method="post">
+                      <label hidden htmlFor='value'>Value (£)</label>
+                      <input type='number' name='value' placeholder={maxBid} />
+                      <button className='btn' type='submit'>Submit bid</button>
+                      {res && <p>{res.data.message}</p>}
+                    </Form>
+                  </div>
+                </div>
+              </div>
+              :
+              <div className='inactive-actions'>
+              <p className='timer'>Auction has ended</p>
+              </div>
+            }
           </div>
-        </div>
-        
-        <div>
-          <Form method="post">
-            <label hidden htmlFor='value'>Value (£)</label>
-            <input type='number' name='value' placeholder={maxBid} />
-            <button className='btn' type='submit'>Submit bid</button>
-            {res && <p>{res.data.message}</p>}
-          </Form>
         </div>
       </div>
     </>
