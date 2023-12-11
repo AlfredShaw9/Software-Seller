@@ -19,10 +19,10 @@ export async function createBid(request, id) {
 
 //  & Create Bundle
 
-export async function createBundle(request) {
+export async function createBundle(data) {
   console.log('createBundle action reached')
-  const data = await formToObj(request)
-  console.log(data)
+  // const data = await formToObj(request)
+  // console.log(data)
   return await axios.post('/api/bundles/', data, {
     validateStatus: () => true,
     headers: {
@@ -54,5 +54,5 @@ export async function deleteBundle(id){
       Authorization: `Bearer ${getToken()}`
     }
   })
-  return redirect('/bundles')
+  return redirect('/buy')
 }

@@ -64,7 +64,7 @@ export default function AllBundles() {
             <ChakraLink
             key = {_id}
             as = {ReactRouterLink}
-            to = {`/bundles/${_id}`}
+            to = {`/buy/${_id}`}
             >
               <div className='outerBorder'>
                 <div className='indivBundleCont'>

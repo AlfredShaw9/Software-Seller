@@ -1,9 +1,10 @@
 // & Imports
 // * Packages
-import { Link, Form, useLoaderData, useActionData, useNavigate } from 'react-router-dom'
+import { Link, Form, useLoaderData, useActionData, useNavigate,  } from 'react-router-dom'
 import React from 'react'
 import { useEffect } from 'react'
 import { activeUser } from '../utils/helpers/common'
+import { useFetcher } from 'react-router-dom'
 
 // * Styling
 import { Button, ButtonGroup, Link as ChakraLink } from '@chakra-ui/react'
@@ -15,6 +16,7 @@ import windows2000 from '../assets/windows2000.png'
 export default function BundleSingle(){
   const res = useActionData()
   const navigate = useNavigate()
+  const fetcher = useFetcher()
 
   // Retrieve bundle data and save to const
   const bundle = useLoaderData()
@@ -60,9 +62,22 @@ export default function BundleSingle(){
             <ChakraLink as={Link} to='/buy'>Back</ ChakraLink>
             {activeUser() === owner._id &&
             <div>
-              <ChakraLink as={Link} to={`/bundles/${_id}/edit`}>Edit</ ChakraLink>
-              <Form method="DELETE">
-                <button>Delete bundle</button>
+              {/* ! This can be changed to a form with action: edit */}
+              <ChakraLink as={Link} to={`/buy/${_id}/edit`}>Edit</ ChakraLink>
+              <Form
+                method='post'
+                action='delete'
+                onSubmit={(e) => {
+                  if (
+                    !confirm(
+                      'Are you sure you want to delete this bundle?'
+                    )
+                  ) {
+                    e.preventDefault()
+                  }
+                }}
+              >
+                <button type='submit'>Delete</button>
               </Form>
             </div>
             }
@@ -86,10 +101,11 @@ export default function BundleSingle(){
             </div>
           </div>
         </div>
+        
         <div>
-          <Form method="POST">
+          <Form method="post">
             <label hidden htmlFor='value'>Value (£)</label>
-            <input type='number' name='value' placeholder={software} />
+            <input type='number' name='value' placeholder={maxBid} />
             <button className='btn' type='submit'>Submit bid</button>
             {res && <p>{res.data.message}</p>}
           </Form>

@@ -11,6 +11,7 @@ import CreateBundle from './components/CreateBundle.jsx'
 import EditBundle from './components/EditBundle.jsx'
 import ReviewIndex from './components/ReviewIndex.jsx'
 import CreateReview from './components/CreateReview.jsx'
+import DeleteBundle from './components/DeleteBundle.jsx'
 
 import { loginUser, registerUser } from './utils/actions/auth.js'
 import { getActiveBundles, getAllReviews, getSingleBundle } from './utils/loaders/bundles.js'
@@ -45,17 +46,24 @@ const router = createBrowserRouter([
         loader: getActiveBundles
       },
       {
-        path: '/bundles/:bundleId',
+        path: '/buy/:bundleId',
         element: <BundleSingle />,
         loader: async ({ params }) => getSingleBundle(params.bundleId),
-        action: async ({ request, params }) => createBid(request, params.bundleId),
-        action: async ({ params }) => deleteBundle(params.bundleId)
+        action: async ({ request, params }) => createBid(request, params.bundleId)
       },
       {
-        path: '/bundles/:bundleId/edit',
+        path: '/buy/:bundleId/createbid',
+        action: async ({ request, params }) => createBid(request, params.bundleId)
+      },
+      {
+        path: '/buy/:bundleId/edit',
         element: <EditBundle />,
         loader: async ({ params }) => getSingleBundle(params.bundleId),
         action: async ({ request, params }) => editBundle(request, params.bundleId)
+      },
+      {
+        path: '/buy/:bundleId/delete',
+        action: async ({ params }) => deleteBundle(params.bundleId)
       },
       {
         path: '/sell',
