@@ -22,37 +22,37 @@ bundleSchema
 // ! This needs fixing
 // * Virtual field for maxBid
 bundleSchema
-  .virtual('maxBid', {
+  .virtual('winDetails', {
     ref: 'Bid',
     localField: '_id',
     foreignField: 'bundle',
   })
   .get(function(bids){
-    // console.log(`Hopefully bids: ${bids}`)
+    console.log(`Hopefully bids: ${bids}`)
     if (bids == '') {
       return 
     } else {
-      return bids?.sort((a, b) => a.value - b.value)[bids.length - 1].value
+      return { maxbid: bids?.sort((a, b) => a.value - b.value)[bids.length - 1].value, winner: bids?.sort((a, b) => a.value - b.value)[bids.length - 1].owner }
     }
     // return (Math.max(bids.value))
   })
 
-// * Virtual field for maxBid
-bundleSchema
-  .virtual('winner', {
-    ref: 'Bid',
-    localField: '_id',
-    foreignField: 'bundle',
-  })
-  .get(function(bids){
-    // console.log(`Hopefully bids: ${bids}`)
-    if (bids == '') {
-      return 
-    } else {
-      return bids?.sort((a, b) => a.value - b.value)[bids.length - 1].owner
-    }
+// * Virtual field for winner ( no longer needed )
+// bundleSchema
+//   .virtual('winner', {
+//     ref: 'Bid',
+//     localField: '_id',
+//     foreignField: 'bundle',
+//   })
+//   .get(function(bids){
+//     console.log(`Hopefully bids: ${bids}`)
+//     if (bids == '') {
+//       return console.log('Message')
+//     } else {
+//       return bids?.sort((a, b) => a.value - b.value)[bids.length - 1].owner.email
+//     }
     // return (Math.max(bids.value))
-  })
+  // })
 
 
 // * Virtual field for bids

@@ -11,10 +11,15 @@ import CreateBundle from './components/CreateBundle.jsx'
 import EditBundle from './components/EditBundle.jsx'
 import ReviewIndex from './components/ReviewIndex.jsx'
 import CreateReview from './components/CreateReview.jsx'
+<<<<<<< HEAD
 import DeleteBundle from './components/DeleteBundle.jsx'
 import AllBought from './components/Bought.jsx'
 import AllSold from './components/Sold.jsx'
 import OwnBids from './components/OwnBids.jsx'
+=======
+// import DeleteBundle from './components/DeleteBundle.jsx'
+import Profile from './components/Profile.jsx'
+>>>>>>> development
 
 import { loginUser, registerUser } from './utils/actions/auth.js'
 import { getActiveBundles, getAllReviews, getSingleBundle, getBoughtBundles, getSoldBundles } from './utils/loaders/bundles.js'
@@ -85,6 +90,10 @@ const router = createBrowserRouter([
         action: async ({ request }) => createReview(request)
       },
       {
+        path: '/profile',
+        element: <Profile />
+      },
+      {
         path: '/profile/bought',
         element: <AllBought />,
         loader: async ({ request }) => getBoughtBundles(request)
@@ -98,14 +107,7 @@ const router = createBrowserRouter([
         path: '/profile/bids',
         element: <OwnBids />,
         loader: async ({ request }) => getOwnBids(request)
-      }
-      // {
-      //   path: '/reviews/:reviewId',
-      //   element: <ReviewSingle />,
-      //   loader: async ({ params }) => getSingleReview(params.reviewId),
-      //   action: async ({ params }) => deleteReview(params.reviewId)
-      // },
-      
+      }      
     ]
   }
 ])

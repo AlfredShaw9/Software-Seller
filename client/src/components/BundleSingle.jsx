@@ -22,7 +22,10 @@ export default function BundleSingle(){
   const bundle = useLoaderData()
   
   // Destructure
-  const { _id, software, version, operatingSystem, releaseYear, description, image, startPrice, auctionEnd, owner, maxBid, winner } = bundle
+  const { _id, software, version, operatingSystem, releaseYear, description, image, startPrice, auctionEnd, owner, winDetails } = bundle
+  const { maxBid, winner } = winDetails
+  console.log(typeof(winner))
+  // const { email } = winner
 
   // * Time remaining
   const auctionEndDT = parseInt((new Date(auctionEnd).getTime() / (1000)))
@@ -100,6 +103,7 @@ export default function BundleSingle(){
           <div className='bid-section'>
             <p className='auction-end'>Auction ends: {auctionEndHour}:{auctionEndMinute} on {auctionEndDate}</p>
             <p className='timer'>Time Remaining: {remaining} seconds</p>
+            <p>Winner: {winner}</p>
             { active
               ?
               <div>
