@@ -6,6 +6,8 @@ import "xp.css/dist/XP.css"
 export default function AllSold() {
 
   const soldAll = useLoaderData()
+
+
   // & State
   const [ filters, setFilters ] = useState({
     status: 'Sold',
@@ -57,7 +59,8 @@ export default function AllSold() {
       </div>
       <section className='bundleDisplayCont'>
         { filteredBundles.length > 0 && filteredBundles.map(bundle => {
-          const { _id, software, version, operatingSystem, image, auctionEnd, maxBid, startPrice } = bundle
+          const { _id, software, version, operatingSystem, image, auctionEnd, winDetails, startPrice } = bundle
+          const { maxBid } = winDetails
           return (
             <ChakraLink
             key = {_id}
@@ -70,7 +73,7 @@ export default function AllSold() {
                     {operatingSystem}
                   </div>
                   {software}, {version}
-                  <button>Current Bid: £{maxBid} </button>
+                  <button>Current Bid: £{!maxBid ? startPrice : maxBid}  </button>
                 </div>
               </div>
             </ChakraLink>
