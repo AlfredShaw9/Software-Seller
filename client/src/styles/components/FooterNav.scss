@@ -1,0 +1,140 @@
+header, footer {
+  background-color: $dark-blue;
+  color: $off-white;
+  position: fixed;
+  height: calc(6 * $standard-padding);
+  
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+
+  a{
+    color: $yellow
+  }
+
+  img{
+    height: 6 * $standard-padding;
+    padding: 0;
+  }
+
+  nav * {
+    padding: $standard-padding;
+  }
+}
+
+header {
+  top: 0;
+  padding: $standard-padding (2 * $standard-padding);
+  width: calc(100vw - 4 * $standard-padding);
+}
+
+footer {
+  // bottom: 0;
+  width: 100vw;
+  height: calc(5 * $standard-padding);
+  background: linear-gradient(rgb(31, 47, 134) 0px, rgb(49, 101, 196) 3%, rgb(54, 130, 229) 6%, rgb(68, 144, 230) 10%, rgb(56, 131, 229) 12%, rgb(43, 113, 224) 15%, rgb(38, 99, 218) 18%, rgb(35, 91, 214) 20%, rgb(34, 88, 213) 23%, rgb(33, 87, 214) 38%, rgb(36, 93, 219) 54%, rgb(37, 98, 223) 86%, rgb(36, 95, 220) 89%, rgb(33, 88, 212) 92%, rgb(29, 78, 192) 95%, rgb(25, 65, 165) 98%);
+  // position: absolute;
+  bottom: 0px;
+  // right: 0px;
+  // left: 0px;
+  display: flex;
+
+  img {
+    height: 100%;
+  }
+}
+
+// .startMenu{
+//   transition: none !important;
+// }
+
+.startHeader{
+  width: 400px;
+  padding: 0;
+  height: 8 * $standard-padding;
+  border-radius: 10px 10px 0 0;
+  border-top-style: solid;
+  border-top: 2px;
+  border-top-color: orange;
+  padding: $standard-padding
+}
+
+.startBody{
+  background-color: $white;
+  position:absolute;
+  top: calc(10 * $standard-padding);
+  bottom: 6 * $standard-padding;
+  // height: calc(100% - 2 * $standard-padding);
+  width: 400px;
+  padding: $standard-padding
+}
+
+.startFooter{
+  width: 400px;
+  padding: 0 $standard-padding;
+  height: 6 * $standard-padding;
+
+  .iconButton{
+    width: 30px;
+    padding: 0;
+  }
+  .iconImage{
+    width: 30px;
+  }
+
+}
+
+.footerLeft{
+  @include flex(row, space-between);
+  align-items: center;
+
+  .startButton{
+    padding: 0;
+    border: none;
+    height: 100%;
+
+    img{
+      background-color: rgb(60, 129, 243);
+      border: none
+    }
+  }
+
+  .citationsGroup{
+    @include flex(row, left);
+    height: 80%
+  }
+
+  .citationsWindow{
+    max-width: 150px;
+    color: rgb(255, 255, 255);
+    border-radius: 2px;
+    margin-top: 2px;
+    margin-left: 2px;
+    padding: 0px calc(2*$standard-padding);
+    height: 95%;
+    font-size: calc(2* $standard-padding);
+    background-color: rgb(60, 129, 243);
+    
+    position: relative;
+    display: flex;
+    box-align: center;
+    align-items: center;
+    text-decoration: none;
+  }
+}
+
+
+.clockGroup {
+  @include flex(row, space-between);
+  flex-shrink: 0;
+  background: linear-gradient(rgb(12, 89, 185) 1%, rgb(19, 158, 233) 6%, rgb(24, 181, 242) 10%, rgb(19, 155, 235) 14%, rgb(18, 144, 232) 19%, rgb(13, 141, 234) 63%, rgb(13, 159, 241) 81%, rgb(15, 158, 237) 88%, rgb(17, 155, 233) 91%, rgb(19, 146, 226) 94%, rgb(19, 126, 215) 97%, rgb(9, 91, 201) 100%);
+  border-left: 1px solid rgb(16, 66, 175);
+  box-shadow: rgb(24, 187, 255) 1px 0px 1px inset;
+  padding: 0px 10px;
+  margin-left: 10px;
+
+  *{
+    padding: 0 calc(0.5 * $standard-padding);
+    text-decoration: none
+  }
+}

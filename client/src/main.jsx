@@ -11,7 +11,8 @@ import CreateBundle from './components/CreateBundle.jsx'
 import EditBundle from './components/EditBundle.jsx'
 import ReviewIndex from './components/ReviewIndex.jsx'
 import CreateReview from './components/CreateReview.jsx'
-import DeleteBundle from './components/DeleteBundle.jsx'
+// import DeleteBundle from './components/DeleteBundle.jsx'
+import Profile from './components/Profile.jsx'
 
 import { loginUser, registerUser } from './utils/actions/auth.js'
 import { getActiveBundles, getAllReviews, getSingleBundle } from './utils/loaders/bundles.js'
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
         path: '/reviews/yourOpinion',
         element: <CreateReview />,
         action: async ({ request }) => createReview(request)
+      },
+      {
+        path: '/profile',
+        element: <Profile />
       },
       // {
       //   path: '/reviews/:reviewId',
