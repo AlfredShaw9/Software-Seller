@@ -48,16 +48,12 @@ export default function AllReviews() {
         { filteredReviews.length > 0 && filteredReviews.map(review => {
           const { _id, rating, description } = review
           return (
-            <ChakraLink
-            key = {_id}
-            as = {ReactRouterLink}
-            to = {`/reviews/${_id}`}
-            >
+            <div key = {_id}>
               <div className='indivReviewCont'>
                 <p>{description}</p>
                 <p>Rating: {rating}/5 </p>
               </div>
-            </ChakraLink>
+            </div>
           )
         }) }
       </section>

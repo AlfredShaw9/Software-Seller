@@ -12,11 +12,15 @@ import EditBundle from './components/EditBundle.jsx'
 import ReviewIndex from './components/ReviewIndex.jsx'
 import CreateReview from './components/CreateReview.jsx'
 import DeleteBundle from './components/DeleteBundle.jsx'
+import AllBought from './components/Bought.jsx'
+import AllSold from './components/Sold.jsx'
+import OwnBids from './components/OwnBids.jsx'
 
 import { loginUser, registerUser } from './utils/actions/auth.js'
-import { getActiveBundles, getAllReviews, getSingleBundle } from './utils/loaders/bundles.js'
+import { getActiveBundles, getAllReviews, getSingleBundle, getBoughtBundles, getSoldBundles } from './utils/loaders/bundles.js'
 import { createBid, createBundle, editBundle, deleteBundle } from './utils/actions/bundle.js'
 import { createReview } from './utils/actions/review.js'
+import { getOwnBids } from './utils/loaders/bids.js'
 
 import './styles/index.scss'
 
@@ -80,6 +84,21 @@ const router = createBrowserRouter([
         element: <CreateReview />,
         action: async ({ request }) => createReview(request)
       },
+      {
+        path: '/profile/bought',
+        element: <AllBought />,
+        loader: async ({ request }) => getBoughtBundles(request)
+      },
+      {
+        path: '/profile/sold',
+        element: <AllSold />,
+        loader: async ({ request }) => getSoldBundles(request)
+      },
+      {
+        path: '/profile/bids',
+        element: <OwnBids />,
+        loader: async ({ request }) => getOwnBids(request)
+      }
       // {
       //   path: '/reviews/:reviewId',
       //   element: <ReviewSingle />,
