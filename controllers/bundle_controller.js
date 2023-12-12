@@ -17,6 +17,24 @@ export const getActiveBundles = async (req, res) => {
   return res.json(bundles)
 }
 
+// ! WIP
+// & Index - user specific (winner)
+// ? GET
+// * /bought
+// export const getBoughtBundles = async (req, res) => {
+//   const bundles = await Bundle.find( { auctionEnd: { $lte: new Date() }  } ).populate('maxBid').populate('winner')
+//   return res.json(bundles)
+// }
+
+// & Index - user specific (owner)
+// ? GET
+// * /sold
+export const getSoldBundles = async (req, res) => {
+  const bundles = await Bundle.find( { owner: req.currentUser._id  } ).populate('maxBid').populate('winner')
+  return res.json(bundles)
+}
+// ! Down to here
+
 // & Create
 // ? POST
 // * /bundles

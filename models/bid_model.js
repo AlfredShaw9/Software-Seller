@@ -7,4 +7,13 @@ const bidSchema = new mongoose.Schema({
   owner: { type: mongoose.ObjectId, ref: 'User', required: true },
 })
 
+
+// * Allow virtuals
+bidSchema
+  .set('toJSON',{
+    virtuals: true,
+})
+
+
+
 export default mongoose.model('Bid', bidSchema)

@@ -9,6 +9,16 @@ export const getAllBids = async (req, res) => {
   return res.json(bids)
 }
 
+// & Index (owner specific)
+// ? GET
+// * /bids
+
+export const getOwnBids = async (req, res) => {
+  const bids = await Bid.find( { owner: req.currentUser._id  } )
+    .populate({path: 'bundle', populate: 'maxBid', select: 'maxBid software' })
+  return res.json(bids)
+}
+
 // & Create
 // ? POST
 // * /bids

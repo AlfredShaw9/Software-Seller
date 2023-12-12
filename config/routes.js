@@ -9,14 +9,16 @@ import {
   createBundle,
   getSingleBundle,
   updateBundle,
-  deleteBundle
+  deleteBundle,
+  getSoldBundles
 } from '../controllers/bundle_controller.js'
 import {
   getAllBids,
   createBid,
   getSingleBid,
   updateBid,
-  deleteBid
+  deleteBid,
+  getOwnBids
 } from '../controllers/bid_controller.js'
 import {
   getAllReviews,
@@ -43,6 +45,15 @@ router.route('/bundles/:bundleId')
   .delete(secureRoute, deleteBundle)
   .post(secureRoute, createBid)
 
+// ! WIP
+// * User specific bundles
+router.route('/bought')
+  .get(secureRoute, getAllBundles)
+
+router.route('/sold')
+  .get(secureRoute, getSoldBundles)
+// ! Down to here
+
 // * Bids
 router.route('/bundles/:bundleId/bids')
   .get(getAllBids)
@@ -52,6 +63,10 @@ router.route('/bundles/:bundleId/bids/:bidId')
   .get(getSingleBid)
   .put(secureRoute, updateBid)
   .delete(secureRoute, deleteBid)
+
+// * User specific bids
+router.route('/ownbids')
+  .get(secureRoute, getOwnBids)
 
   // * Reviews
 router.route('/reviews')
