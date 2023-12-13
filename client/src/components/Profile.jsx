@@ -44,7 +44,7 @@ export default function Profile(){
               <div className='boughtContainer'>
                 <ChakraLink as = {ReactRouterLink} to={'/profile/bought'}>
                   <img src={hardDrive}/>
-                  <p>My Bids</p>
+                  <p>Purchases</p>
                 </ChakraLink>
               </div>
             </div>
@@ -57,7 +57,7 @@ export default function Profile(){
               <div className='soldContainer'>
                 <ChakraLink as = {ReactRouterLink} to={'/profile/sold'}>
                   <img src={diskDrive}/>
-                  <p>My Bids</p>
+                  <p>Sales</p>
                 </ChakraLink>
               </div>
             </div>

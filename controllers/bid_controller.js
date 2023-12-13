@@ -16,7 +16,7 @@ export const getAllBids = async (req, res) => {
 export const getOwnBids = async (req, res) => {
   const bids = await Bid.find( { owner: req.currentUser._id  } )
     // .populate({path: 'bundle', populate: 'maxBid', select: 'maxBid software'})
-    .populate({path: 'bundle', populate: 'winDetails', select: 'winDetails'})
+    .populate({path: 'bundle', populate: 'winDetails', select: 'winDetails software' })
   return res.json(bids)
 }
 

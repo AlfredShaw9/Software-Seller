@@ -11,17 +11,18 @@ export default function OwnBids() {
   const sortedBundles = []
 
   bidsOwn.map(bid => {
-    sort.push([bid.bundle._id, bid.value])
+    sort.push([bid.bundle.software, bid.value, bid.bundle.winDetails.maxbid])
     return
   })
 
-  console.log(bidsOwn)
+  console.log('Sort array: ',sort)
   // ! FIX THIS THING or not idk
   // & i fixed it
   sort.map(bundle => {
     // console.log(bundle)
     const bundleSoftware = bundle[0]
     const bundleBid = bundle[1]
+    const bundleMaxBid = bundle[2]
     let existingIndex = -1
     // console.log('sbl ',sortedBundle.length)
     for (let i = 0; i < sortedBundles.length; i++) {
@@ -34,6 +35,7 @@ export default function OwnBids() {
       // console.log('bundle does not exist')
       const newObj = { 
         software: bundleSoftware,
+        maxBid: bundleMaxBid,
         bids: [bundleBid]
       } 
       sortedBundles.push(newObj)
@@ -70,11 +72,13 @@ export default function OwnBids() {
       </div>
       <section className='bundleDisplayCont'>
         { sortedBundles.length > 0 && sortedBundles.map(bundle => {
-          const { _id, software, bids } = bundle
+          const { _id, software, bids, maxBid } = bundle
+
           return (
             <div key = {_id} className='outerBorder'>
               <div className='indivBundleCont'>
                 <p>{software}</p>
+                <p>{maxBid}</p>
                 <ul>
                   <li key = {_id}>£{bids[0]}</li>
                   <li key = {_id}>£{bids[1]}</li>

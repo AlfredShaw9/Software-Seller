@@ -63,7 +63,7 @@ export default function BundleSingle(){
         <div className='lhs'>
           <img className='bundle-pic' src={ image } alt='live reaction'/>
           <div className='buttons'> 
-            <ChakraLink as={Link} to='/buy'>Back</ ChakraLink>
+            <ChakraLink as={Link} to='/buy'>To All Active Auctions</ ChakraLink>
             {activeUser() === owner._id && active &&
               <div>
                 <ChakraLink as={Link} to={`/buy/${_id}/edit`}>Edit</ ChakraLink>

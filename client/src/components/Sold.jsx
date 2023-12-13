@@ -14,6 +14,7 @@ export default function AllSold() {
     search: ''
   })
   const [ filteredBundles, setFilteredBundles ] = useState('')
+  const [ validBundles, setValidBundles ] = useState([])
 
 
   // & Functions
@@ -25,11 +26,22 @@ export default function AllSold() {
     setFilters(newObj)
   }
 
-
   // & Effects
+  // * Error filter
+  useEffect(() => {
+    const sold = soldAll.filter(bundle => {
+      console.log('Bundle: ', bundle)
+      console.log('Bundle winDetails: ', bundle.winDetails)
+      return bundle.winDetails !== undefined
+      })
+    setValidBundles(sold)
+  }, [soldAll])
+
+  console.log(validBundles)
+
   useEffect(() => {
     const pattern = new RegExp(filters.search, 'i')
-    const filteredArr = soldAll.filter(bundle => {
+    const filteredArr = validBundles.filter(bundle => {
       if (filters.status === 'Selling') {
         return pattern.test(bundle.software) && (new Date(bundle.auctionEnd)>new Date())
       } else if (filters.status === 'Sold') {
@@ -37,7 +49,7 @@ export default function AllSold() {
       }
     })
     setFilteredBundles(filteredArr)
-  }, [soldAll, filters.search, filters.status])
+  }, [validBundles, filters.search, filters.status])
 
 
   return (

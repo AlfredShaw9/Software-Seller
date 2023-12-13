@@ -1,6 +1,8 @@
 
 .buyWindow {
   height: calc(100vh - 30 * $standard-padding);
+  margin-right: calc(8 * $standard-padding);
+  align-self: flex-end;
 }
 
 .bundleDisplayCont {
