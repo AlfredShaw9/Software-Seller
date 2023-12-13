@@ -11,6 +11,8 @@ export default function Login() {
   useEffect(() => {
     if (res?.status === 202){
       setToken(res.data.token)
+      console.log(res.data.message.replace('Welcome back ',''))
+      localStorage.setItem('ss-username',res.data.message.replace('Welcome back ',''))
       navigate('/')
     }
   }, [res, navigate])

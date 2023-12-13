@@ -28,8 +28,14 @@ import {
 
 // & Default function
 export default function Footer(){
-  // // * Current user
-  // const currentUser = useLoaderData()
+  // * Current user
+  const [ user, setUser ] = useState('')
+
+  // Put within a useEffect with currentUser as the condition to re-render
+  useEffect(() => {
+        const username = localStorage.getItem('ss-username')
+        setUser(username)
+    } , [localStorage.getItem('ss-username')])
 
   // * Clock
   // Set state
@@ -121,7 +127,7 @@ export default function Footer(){
               </DrawerContent>
             </Drawer>
           <div className="citationsGroup">
-            <a target='_blank' rel='noreferrer' href="https://www.apple.com/mac/" className='citationsWindow display-6'>A</a>
+            <a target='_blank' rel='noreferrer' href="https://www.apple.com/mac/" className='citationsWindow display-6'>{user}</a>
             <a target='_blank' rel='noreferrer' href="https://github.com/philiphart1006" className='citationsWindow display-6'>Code with Hart</a>
             <a target='_blank' rel='noreferrer' href="https://github.com/AlfredShaw9" className='citationsWindow display-6'>Shaw-fire Coding</a>
             <a target='_blank' rel='noreferrer' href="https://github.com/AlfredShaw9/Software-Seller" className='citationsWindow display-6'>Collaboration</a>
