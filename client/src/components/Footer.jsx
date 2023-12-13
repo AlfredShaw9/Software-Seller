@@ -5,6 +5,8 @@ import React from 'react'
 import { useLoaderData } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { removeToken } from '../utils/helpers/common'
+import { useNavigate } from "react-router-dom"
+
 
 // * Images
 import startButton from '../assets/xp_assets/start-button.png'
@@ -39,6 +41,10 @@ import {
 
 // & Default function
 export default function Footer(){
+
+  // * Setup navigate
+  const navigate = useNavigate()
+
   // * Current user
   const [ user, setUser ] = useState('')
 
@@ -68,6 +74,11 @@ export default function Footer(){
   // * Start menu draw from Chakra
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
+
+  function handleClick() {
+    removeToken()
+    navigate('/login')
+  }
 
   //  * JSX
   return(
@@ -129,7 +140,7 @@ export default function Footer(){
                     </nav>
                   </DrawerBody>
                   <DrawerFooter className='startFooter'>
-                    <button className ='iconButton' onClick={removeToken}>
+                    <button className ='iconButton' onClick={handleClick}>
                       <img className='iconImage' src={loIcon} />
                       <p>Log Off</p>
                     </button>

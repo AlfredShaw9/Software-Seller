@@ -1,6 +1,6 @@
 // * Packages
 import { Outlet, useNavigation } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 // * Components
 import Header from './components/Header'
