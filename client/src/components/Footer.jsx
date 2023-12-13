@@ -2,6 +2,8 @@
 // * Packages
 import { useEffect, useState } from 'react'
 import React from 'react'
+import { useLoaderData } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 // * Images
 import startButton from '../assets/xp_assets/start-button.png'
@@ -23,8 +25,12 @@ import {
 } from '@chakra-ui/react'
 
 
+
 // & Default function
 export default function Footer(){
+  // // * Current user
+  // const currentUser = useLoaderData()
+
   // * Clock
   // Set state
   const [time, setTime] = useState()
@@ -86,18 +92,31 @@ export default function Footer(){
                 {/* <DrawerCloseButton /> */}
                 <DrawerHeader className='startHeader'>
                 <img src={logoSq} />
-                  Start Menu
+                  Welcome
                   </DrawerHeader>
                 <DrawerBody className="startBody">
-                  <h1>Hello world</h1>
+                  <nav>
+                    <Link to ='/buy'>Buy</Link>
+                    <Link to ='/sell'>Sell</Link>
+                    <Link to ='/reviews'>Reviews</Link>
+                    <Link to ='/profile'>Profile</Link>
+                    <Link to ='/login' className='loggedOut'>Register/Login</Link>
+                  </nav>
+                  <nav>
+                    <Link to ='/buy'>Buy</Link>
+                    <Link to ='/sell'>Sell</Link>
+                    <Link to ='/reviews'>Reviews</Link>
+                    <Link to ='/profile'>Profile</Link>
+                    <Link to ='/login' className='loggedOut'>Register/Login</Link>
+                  </nav>
                 </DrawerBody>
                 <DrawerFooter className='startFooter'>
-                  <Button className ='iconButton' variant='outline' mr={6} onClick={onClose}>
+                  <button className ='iconButton' onClick={onClose}>
                     <img className='iconImage' src={sdIcon} />
-                  </Button>
-                  <Button colorScheme='blue'>
+                  </button>
+                  <button className ='iconButton'>
                   <img className='iconImage' src={loIcon} />
-                  </Button>
+                  </button>
                 </DrawerFooter>
               </DrawerContent>
             </Drawer>

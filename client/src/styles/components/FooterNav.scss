@@ -1,9 +1,6 @@
 header, footer {
-  background-color: $dark-blue;
   color: $off-white;
   position: fixed;
-  height: calc(6 * $standard-padding);
-  
   display: flex;
   justify-content: space-between;
   margin: 0;
@@ -23,9 +20,15 @@ header, footer {
 }
 
 header {
-  top: 0;
+  left: 0;
   padding: $standard-padding (2 * $standard-padding);
-  width: calc(100vw - 4 * $standard-padding);
+  width:  8 * $standard-padding;
+  height: calc(100vh - 6 * $standard-padding);
+  @include flex(column, space-around);
+
+  nav {
+    @include flex(column, space-around)
+  }
 }
 
 footer {
@@ -56,7 +59,9 @@ footer {
   border-top-style: solid;
   border-top: 2px;
   border-top-color: orange;
-  padding: $standard-padding
+  padding: $standard-padding;
+  @include flex(row, space-between);
+  background-color: $dark-blue;
 }
 
 .startBody{
@@ -66,7 +71,14 @@ footer {
   bottom: 6 * $standard-padding;
   // height: calc(100% - 2 * $standard-padding);
   width: 400px;
-  padding: $standard-padding
+  padding: $standard-padding;
+  @include flex(row, space-between);
+
+  nav{
+    height: 100%;
+    @include flex(column, space-around);
+  }
+  
 }
 
 .startFooter{
@@ -83,6 +95,7 @@ footer {
   }
 
 }
+
 
 .footerLeft{
   @include flex(row, space-between);
