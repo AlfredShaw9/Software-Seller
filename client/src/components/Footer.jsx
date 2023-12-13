@@ -4,12 +4,23 @@ import { useEffect, useState } from 'react'
 import React from 'react'
 import { useLoaderData } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import { removeToken } from '../utils/helpers/common'
 
 // * Images
 import startButton from '../assets/xp_assets/start-button.png'
 import logoSq from '../assets/software-seller-icon.png'
-import sdIcon from '../assets/xp_assets/shutdown-icon-windows-10-26.jpg'
-import loIcon from '../assets/xp_assets/log-off-icon.jpeg'
+// import sdIcon from '../assets/xp_assets/shutdown-icon-windows-10-26.jpg'
+// import loIcon from '../assets/xp_assets/log-off-icon.jpeg'
+
+// Images
+import usersSq from '../assets/xp_assets/1111.ico'
+import compSq from '../assets/xp_assets/123.ico'
+import buySq from '../assets/xp_assets/160.ico'
+import networkSq from '../assets/xp_assets/142.ico'
+import sellSq from '../assets/xp_assets/425.ico'
+import loIcon from '../assets/xp_assets/1393.ico'
+import sdIcon from '../assets/xp_assets/1429.ico'
+import frogUser from '../assets/xp_assets/frog-user.jpeg'
 
 // * Styling
 import {
@@ -57,7 +68,6 @@ export default function Footer(){
   // * Start menu draw from Chakra
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
-  console.log(user)
 
   //  * JSX
   return(
@@ -99,31 +109,33 @@ export default function Footer(){
                 >
                   {/* <DrawerCloseButton /> */}
                   <DrawerHeader className='startHeader'>
-                  <img src={logoSq} />
-                    Welcome
-                    </DrawerHeader>
+                    <img src={frogUser} />
+                    <p>Welcome {user && user}</p>
+                  </DrawerHeader>
                   <DrawerBody className="startBody">
                     <nav>
-                      <Link to ='/buy'>Buy</Link>
-                      <Link to ='/sell'>Sell</Link>
-                      <Link to ='/reviews'>Reviews</Link>
-                      <Link to ='/profile'>Profile</Link>
-                      <Link to ='/login' className='loggedOut'>Register/Login</Link>
+                      <Link textDecoration={'none'} className='nav-link' to ='/'><img className='logo-icon' src={logoSq} alt='ss logo' /><p>Home</p></Link>
+                      <Link className='nav-link' to ='/buy'><img className='logo-icon random-padding' src={buySq} alt='buy logo' /><p>Buy</p></Link>
+                      {(user !== null) && <Link className='nav-link' to ='/sell'><img className='logo-icon' src={sellSq} alt='buy logo' /><p>Sell</p></Link>}
+                      <Link className='nav-link' to ='/reviews'><img className='logo-icon random-padding' src={networkSq} alt='comp logo' /><p>Reviews</p></Link>
+                      {(user !== null) && <Link className='nav-link' to ='/profile'><img className='logo-icon random-padding' src={compSq} alt='comp logo' /><p>Profile</p></Link>}
+                      {(user === null) && <Link className='nav-link' to ='/login'><img className='logo-icon' src={usersSq} alt='users logo' /><p>Register/Login</p></Link>}
+                      <Link className='nav-link' to ='/buy'><p></p></Link>
+                      <Link className='nav-link' to ='/buy'><p></p></Link>
+                      <Link className='nav-link' to ='/buy'><p></p></Link>
                     </nav>
-                    <nav>
-                      <Link to ='/buy'>Buy</Link>
-                      <Link to ='/sell'>Sell</Link>
-                      <Link to ='/reviews'>Reviews</Link>
-                      <Link to ='/profile'>Profile</Link>
-                      <Link to ='/login' className='loggedOut'>Register/Login</Link>
+                    <nav className='rhnav'>
+                      
                     </nav>
                   </DrawerBody>
                   <DrawerFooter className='startFooter'>
+                    <button className ='iconButton' onClick={removeToken}>
+                      <img className='iconImage' src={loIcon} />
+                      <p>Log Off</p>
+                    </button>
                     <button className ='iconButton' onClick={onClose}>
                       <img className='iconImage' src={sdIcon} />
-                    </button>
-                    <button className ='iconButton'>
-                    <img className='iconImage' src={loIcon} />
+                      <p>Close</p>
                     </button>
                   </DrawerFooter>
                 </DrawerContent>

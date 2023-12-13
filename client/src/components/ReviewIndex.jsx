@@ -1,6 +1,6 @@
 
 import { useLoaderData, Link as ReactRouterLink } from 'react-router-dom'
-import { Link as ChakraLink } from '@chakra-ui/react'
+import { Link as ChakraLink, Button as ChakraButton } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import { activeUser } from '../utils/helpers/common'
 
@@ -31,33 +31,45 @@ export default function AllReviews() {
 
   return (
     <>
-      {activeUser() && <ChakraLink as={ReactRouterLink} to={`/reviews/yourOpinion`}>
-        Write a review
-      </ ChakraLink>}
-      <div id='filters'>
-        <select name='rating' value={rating} onChange={handleChange}>
-          <option value='All'>All</option>
-          <option value='0'>0</option>
-          <option value='1'>1</option>
-          <option value='2'>2</option>
-          <option value='3'>3</option>
-          <option value='4'>4</option>
-          <option value='5'>5</option>
-        </select>
-      </div>
-      <section className='reviewDisplayCont'>
-        { filteredReviews.length > 0 && filteredReviews.map(review => {
-          const { _id, rating, description } = review
-          return (
-            <div key = {_id}>
-              <div className='indivReviewCont'>
-                <p>{description}</p>
-                <p>Rating: {rating}/5 </p>
+      <div className='window reviewWindow'>
+        <div className="title-bar">
+          <div className="title-bar-text">Reviews</div>
+          <div className="title-bar-controls">
+            <button aria-label="Minimize" />
+            <button aria-label="Maximize" />
+            <button aria-label="Close" />
+          </div>
+        </div>
+        {activeUser() && <ChakraButton as={ReactRouterLink} to={`/reviews/yourOpinion`} colorScheme='blue' className='actionLink'>
+          Write a review
+        </ ChakraButton>}
+        <div id='filters'>
+          <select name='rating' value={rating} onChange={handleChange}>
+            <option value='All'>All</option>
+            <option value='0'>0</option>
+            <option value='1'>1</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+            <option value='4'>4</option>
+            <option value='5'>5</option>
+          </select>
+        </div>
+        <section className='displayCont'>
+          { filteredReviews.length > 0 && filteredReviews.map(review => {
+            const { _id, rating, description } = review
+            return (
+              <div key = {_id}>
+                <div className='outerBorder'>
+                  <div className='indivBundleCont'>
+                    <p className='reviewTxt'>{description}</p>
+                    <p>Rating: {rating}/5 </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          )
-        }) }
-      </section>
+            )
+          }) }
+        </section>
+      </div>
     </>
   )
 }

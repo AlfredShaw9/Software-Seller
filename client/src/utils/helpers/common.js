@@ -15,6 +15,7 @@ export function getToken(){
 
 export function removeToken(){
   localStorage.removeItem(tokenName)
+  localStorage.removeItem('ss-username')
 }
 
 //& Return id of active user

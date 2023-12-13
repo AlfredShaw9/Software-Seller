@@ -16,6 +16,8 @@ header, footer {
 
   nav * {
     padding: $standard-padding;
+    color: $white;
+    text-decoration: none;
   }
 }
 
@@ -36,14 +38,10 @@ header {
 }
 
 footer {
-  // bottom: 0;
   width: 100vw;
   height: calc(5 * $standard-padding);
   background: linear-gradient(rgb(31, 47, 134) 0px, rgb(49, 101, 196) 3%, rgb(54, 130, 229) 6%, rgb(68, 144, 230) 10%, rgb(56, 131, 229) 12%, rgb(43, 113, 224) 15%, rgb(38, 99, 218) 18%, rgb(35, 91, 214) 20%, rgb(34, 88, 213) 23%, rgb(33, 87, 214) 38%, rgb(36, 93, 219) 54%, rgb(37, 98, 223) 86%, rgb(36, 95, 220) 89%, rgb(33, 88, 212) 92%, rgb(29, 78, 192) 95%, rgb(25, 65, 165) 98%);
-  // position: absolute;
   bottom: 0px;
-  // right: 0px;
-  // left: 0px;
   display: flex;
 
   img {
@@ -51,21 +49,32 @@ footer {
   }
 }
 
-// .startMenu{
-//   transition: none !important;
-// }
 
 .startHeader{
-  width: 400px;
+  width: 390px;
   padding: 0;
-  height: 8 * $standard-padding;
+  height: 9 * $standard-padding;
   border-radius: 10px 10px 0 0;
-  border-top-style: solid;
-  border-top: 2px;
-  border-top-color: orange;
-  padding: $standard-padding;
-  @include flex(row, space-between);
-  background-color: $dark-blue;
+  border: solid;
+  border-color: $dark-blue;
+  border-width: 1px;
+  padding: 0.5 * $standard-padding;
+  @include flex(row, left);
+  align-items: center;
+  background: linear-gradient(rgb(24, 104, 206) 0%, rgb(14, 96, 203) 12%, rgb(14, 96, 203) 20%, rgb(17, 100, 207) 32%, rgb(22, 103, 207) 33%, rgb(27, 108, 211) 47%, rgb(30, 112, 217) 54%, rgb(36, 118, 220) 60%, rgb(41, 122, 224) 65%, rgb(52, 130, 227) 77%, rgb(55, 134, 229) 79%, rgb(66, 142, 233) 90%, rgb(71, 145, 235) 100%);
+
+  p{
+    font-weight: bold;
+    font-size: 2 * $standard-padding;
+    margin-left: $standard-padding;
+  }
+
+  img{
+    border-radius: 6px;
+    border-style: solid;
+    border-color: $light-blue;
+    margin-left: $standard-padding
+  }
 }
 
 .startBody{
@@ -75,27 +84,66 @@ footer {
   bottom: 6 * $standard-padding;
   // height: calc(100% - 2 * $standard-padding);
   width: 400px;
-  padding: $standard-padding;
+  // padding: $standard-padding;
   @include flex(row, space-between);
 
   nav{
     height: 100%;
+    width: 50%;
     @include flex(column, space-around);
+    border-style: solid;
+    border-color: $dark-blue;
+    border-width: 1px;
+    
+    .nav-link{
+      @include flex(row, left);
+      flex-grow: 1;
+      align-items: center;
+      padding-left: $standard-padding;
+      // border-top: 1px;
+      // border-top-style: solid;
+      // border-top-color: $dark-off-white
+
+      p{
+        padding-left: $standard-padding;
+        text-decoration: none;
+        color: black;
+        // font-weight: bold;
+      }
+    }
+
+    img{
+      width: 48px;
+    }
+
+  }
+
+  .rhnav{
+    background-color: $off-white-blue;
   }
   
 }
 
 .startFooter{
-  width: 400px;
+  width: 383px;
   padding: 0 $standard-padding;
   height: 6 * $standard-padding;
+  background: linear-gradient(rgb(66, 130, 214) 0%, rgb(59, 133, 224) 3%, rgb(65, 138, 227) 5%, rgb(65, 138, 227) 17%, rgb(60, 135, 226) 21%, rgb(55, 134, 228) 26%, rgb(52, 130, 227) 29%, rgb(46, 126, 225) 39%, rgb(35, 116, 223) 49%, rgb(32, 114, 219) 57%, rgb(25, 110, 219) 62%, rgb(23, 107, 216) 72%, rgb(20, 104, 213) 75%, rgb(17, 101, 210) 83%, rgb(15, 97, 203) 88%);
 
   .iconButton{
-    width: 30px;
+    width: 60px;
     padding: 0;
+    @include flex(row,justify-content);
+    align-items: center;
+    margin: $standard-padding;
+    background: none;
+    border: none;
+    *{
+      color: white
+    }
   }
   .iconImage{
-    width: 30px;
+    width: 38px;
   }
 
 }

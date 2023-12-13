@@ -1,12 +1,10 @@
 
-.buyWindow {
+.buyWindow{
   height: calc(100vh - 30 * $standard-padding);
-  margin-right: calc(8 * $standard-padding);
-  align-self: flex-end;
 }
 
-.bundleDisplayCont {
-  width: 80vw;
+.displayCont {
+  width: 55vw;
   max-width: 1500px;
   margin: 20px;
   height: calc(100vh - 40 * $standard-padding);
@@ -26,21 +24,26 @@
   }
 
   .indivBundleCont{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    @include flex(column,center);
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
     align-items: center;
     border: 1px solid $white;
     padding: 5px;
 
     .bundleImg{
-      // width: 10vw;
-      // height: 10vw;
       width: 200px;
       height: 200px;
       max-width: 200px;
       max-height: 200px;
-      background-color: aquamarine;
+      text-align: left;
+    }
+
+    .reviewTxt{
+      width: 200px;
+      max-width: 200px;
+      max-height: 200px;
       text-align: left;
     }
   }

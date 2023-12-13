@@ -70,7 +70,7 @@ export default function OwnBids() {
           <button aria-label="Close" />
         </div>
       </div>
-      <section className='bundleDisplayCont'>
+      <section className='displayCont'>
         { sortedBundles.length > 0 && sortedBundles.map(bundle => {
           const { _id, software, bids, maxBid } = bundle
 

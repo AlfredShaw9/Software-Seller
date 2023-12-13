@@ -75,7 +75,7 @@ export default function AllBundles() {
         <input name='search' placeholder='Search...' value={filters.search} onChange={handleChange} />
       </div>
       <p hidden={true}>{remaining}</p>
-      <section className='bundleDisplayCont'>
+      <section className='displayCont'>
         { filteredBundles.length > 0 && filteredBundles.map(bundle => {
           const { _id, software, version, operatingSystem, image, auctionEnd, winDetails, startPrice } = bundle
           const { maxBid } = winDetails
