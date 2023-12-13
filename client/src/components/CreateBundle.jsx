@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Form, useActionData, useNavigate } from 'react-router-dom'
 import ImageUploadField from './ImageUpload'
 import { createBundle } from '../utils/actions/bundle'
+import { activeUser } from '../utils/helpers/common'
 
 // & Register function
 export default function CreateBundle(){
@@ -17,6 +18,8 @@ export default function CreateBundle(){
   //   }
   // }, [res, navigate])
 
+
+  // & State
   const [ formData, setFormData ] = useState({
     software: '',
     version: '',
@@ -28,6 +31,14 @@ export default function CreateBundle(){
     auctionEnd: '2023-12-12T00:00'
   })
 
+
+  // & Effects
+  useEffect(() => {
+    if (!activeUser()) navigate('/login')
+  }, [])
+
+
+  // & Functions
   function handleChange(e){
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }

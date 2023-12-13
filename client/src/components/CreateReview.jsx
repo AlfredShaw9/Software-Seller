@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Form, useActionData, useNavigate } from 'react-router-dom'
+import { activeUser } from '../utils/helpers/common'
 
 export default function createReview(){
   const res = useActionData()
@@ -10,6 +11,10 @@ export default function createReview(){
       navigate('/reviews')
     }
   }, [res, navigate])
+
+  useEffect(() => {
+    if (!activeUser()) navigate('/login')
+  }, [])
 
   const [ formData, setFormData ] = useState({
     description: '',

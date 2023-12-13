@@ -1,6 +1,7 @@
 // & Imports
 import axios from 'axios'
 import { getToken } from '../helpers/common.js'
+import { redirect } from "react-router-dom"
 
 // & User bids
 
@@ -11,5 +12,8 @@ export async function getOwnBids() {
       Authorization: `Bearer ${getToken()}`
     }
   })
+  if (!getToken()) {
+    return redirect("/login");
+  }
   return res.data
 }
