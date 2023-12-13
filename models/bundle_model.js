@@ -28,7 +28,7 @@ bundleSchema
     foreignField: 'bundle',
   })
   .get(function(bids){
-    console.log(`Hopefully bids: ${bids}`)
+    // console.log(`Hopefully bids: ${bids}`)
     if (bids == '') {
       return 
     } else {

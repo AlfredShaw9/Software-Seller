@@ -24,7 +24,6 @@ export default function BundleSingle(){
   // Destructure
   const { _id, software, version, operatingSystem, releaseYear, description, image, startPrice, auctionEnd, owner, winDetails } = bundle
   const { maxBid, winner } = winDetails
-  console.log(typeof(winner))
   // const { email } = winner
 
   // * Time remaining
@@ -104,6 +103,7 @@ export default function BundleSingle(){
             <p className='auction-end'>Auction ends: {auctionEndHour}:{auctionEndMinute} on {auctionEndDate}</p>
             <p className='timer'>Time Remaining: {remaining} seconds</p>
             <p>Winner: {winner}</p>
+            {/* Make it so the owner cant place a bid on their own item possibly? */}
             { active
               ?
               <div>

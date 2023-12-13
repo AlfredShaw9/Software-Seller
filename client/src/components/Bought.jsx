@@ -2,18 +2,22 @@
 import { useLoaderData, Link as ReactRouterLink } from 'react-router-dom'
 import { Link as ChakraLink } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
+import { activeUser } from '../utils/helpers/common'
 import "xp.css/dist/XP.css"
 
 
 export default function AllBought() {
 
-  const boughtAll = useLoaderData()
+  const all = useLoaderData()
+
+
   // & State
   const [ filters, setFilters ] = useState({
     status: 'Won',
     search: ''
   })
   const [ filteredBundles, setFilteredBundles ] = useState('')
+  const [ boughtBundles, setBoughtBundles ] = useState([])
 
 
   // & Functions
@@ -27,9 +31,19 @@ export default function AllBought() {
 
 
   // & Effects
+
+  useEffect(() => {
+    const bought = all.filter(bundle => {
+      if (bundle.winDetails !== undefined) {
+        return (bundle.winDetails.winner === activeUser())
+      } else return
+    })
+    setBoughtBundles(bought)
+  }, [all])
+
   useEffect(() => {
     const pattern = new RegExp(filters.search, 'i')
-    const filteredArr = boughtAll.filter(bundle => {
+    const filteredArr = boughtBundles.filter(bundle => {
       if (filters.status === 'Winning') {
         return pattern.test(bundle.software) && (new Date(bundle.auctionEnd)>new Date())
       } else if (filters.status === 'Won') {
@@ -37,7 +51,7 @@ export default function AllBought() {
       }
     })
     setFilteredBundles(filteredArr)
-  }, [boughtAll, filters.search, filters.status])
+  }, [boughtBundles, filters.search, filters.status])
 
 
   return (
@@ -59,7 +73,8 @@ export default function AllBought() {
       </div>
       <section className='bundleDisplayCont'>
         { filteredBundles.length > 0 && filteredBundles.map(bundle => {
-          const { _id, software, version, operatingSystem, image, auctionEnd, maxBid, startPrice } = bundle
+          const { _id, software, version, operatingSystem, image, auctionEnd, winDetails, startPrice } = bundle
+          const { maxBid } = winDetails
           return (
             <ChakraLink
             key = {_id}
@@ -72,7 +87,7 @@ export default function AllBought() {
                     {operatingSystem}
                   </div>
                   {software}, {version}
-                  <button>Current Bid: £{maxBid} </button>
+                  <button>Current Bid: £{!maxBid ? startPrice : maxBid}  </button>
                 </div>
               </div>
             </ChakraLink>

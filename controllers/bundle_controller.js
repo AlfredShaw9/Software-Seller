@@ -5,7 +5,7 @@ import Bundle from '../models/bundle_model.js'
 // * /bundles
 
 export const getAllBundles = async (req, res) => {
-  const bundles = await Bundle.find().populate('maxBid')
+  const bundles = await Bundle.find().populate('winDetails')
   return res.json(bundles)
 }
 
@@ -30,7 +30,6 @@ export const getActiveBundles = async (req, res) => {
 // ? GET
 // * /sold
 export const getSoldBundles = async (req, res) => {
-  // const bundles = await Bundle.find( { owner: req.currentUser._id  } ).populate('maxBid').populate('winner')
   const bundles = await Bundle.find( { owner: req.currentUser._id  } ).populate('winDetails')
   return res.json(bundles)
 }
