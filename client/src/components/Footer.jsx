@@ -83,10 +83,10 @@ export default function Footer(){
   //  * JSX
   return(
     <>
-      {(user !== null) &&
+      {/* {(user !== null) && */}
           <footer>
           <div className ="footerLeft">
-            <Button onClick={!isOpen ? onOpen : onClose} className="startButton"><img src={startButton} /></Button>
+            <Button onClick={(!isOpen && user) ? onOpen : onClose} className="startButton"><img src={startButton} /></Button>
   
               {/* Modal */}
               <Drawer
@@ -163,7 +163,7 @@ export default function Footer(){
             <p className='narrow-mode'>{time}</p>
           </div>
         </footer>
-      }
+      {/* } */}
     </>
   )
 }
