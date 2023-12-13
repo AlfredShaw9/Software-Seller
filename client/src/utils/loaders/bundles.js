@@ -2,6 +2,7 @@
 // & Imports
 import axios from 'axios'
 import { getToken } from '../helpers/common.js'
+import { redirect } from "react-router-dom"
 
 // & Functions
 
@@ -20,10 +21,10 @@ export async function getAllReviews() {
   return res.json()
 }
 
-export async function getSingleReview(id){
-  const res = await fetch(`/api/reviews/${id}`)
-  return res.json()
-}
+// export async function getSingleReview(id){
+//   const res = await fetch(`/api/reviews/${id}`)
+//   return res.json()
+// }
 
 // & Bought user bundles
 
@@ -34,6 +35,9 @@ export async function getBoughtBundles() {
       Authorization: `Bearer ${getToken()}`
     }
   })
+  if (!getToken()) {
+    return redirect("/login");
+  }
   return res.data
 }
 
@@ -46,5 +50,8 @@ export async function getSoldBundles() {
       Authorization: `Bearer ${getToken()}`
     }
   })
+  if (!getToken()) {
+    return redirect("/login");
+  }
   return res.data
 }

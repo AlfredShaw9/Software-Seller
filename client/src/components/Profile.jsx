@@ -1,6 +1,8 @@
 // & Imports
 import { Link as ChakraLink } from '@chakra-ui/react'
-import { Link as ReactRouterLink } from 'react-router-dom'
+import { Link as ReactRouterLink, useNavigate } from 'react-router-dom'
+import { activeUser } from '../utils/helpers/common'
+import { useEffect } from 'react'
 import 'xp.css/dist/XP.css'
 
 // * Images
@@ -9,6 +11,13 @@ import hardDrive from '../assets/xp_assets/hard-drive-icon-large.png'
 import diskDrive from '../assets/xp_assets/disk-drive-icon-large.png'
 
 export default function Profile(){
+
+  const navigate = useNavigate()
+
+  // & Effects
+  useEffect(() => {
+    if (!activeUser()) navigate('/login')
+  }, [])
 
   // * JSX
   return(

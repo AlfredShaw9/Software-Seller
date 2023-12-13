@@ -29,32 +29,3 @@ main{
 .mainHero{
   background: linear-gradient(rgba(255,255,255,0.3),rgba(255,255,255,0.8)),url('../assets/xp_bg.jpg');
 }
-
-
-.logRegBg {
-  background-color: $dark-blue;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;  
-}
-
-.formWindow {
-  width: 500px;
-  height: fit-content;
-}
-
-.dataCont {
-  padding: 0px 20px 10px 20px;
-}
-
-.dataFormFields {
-  display: flex;
-  flex-direction: column;
-
-  div {
-    display: flex;
-    justify-content: space-between;
-  }
-}
