@@ -24,10 +24,14 @@ header {
   padding: $standard-padding (2 * $standard-padding);
   width:  8 * $standard-padding;
   height: calc(100vh - 6 * $standard-padding);
-  @include flex(column, space-around);
+  // @include flex(column, space-between);
 
   nav {
-    @include flex(column, space-around)
+    @include flex(column, space-around);
+  }
+
+  .random-padding{
+    padding-top: 6 * $standard-padding;
   }
 }
 
@@ -160,5 +164,12 @@ footer {
   *{
     padding: 0 calc(0.5 * $standard-padding);
     text-decoration: none
+  }
+}
+
+// & Media queries
+@media screen and (max-width: 768px) {
+  .narrow-mode{
+    display: none
   }
 }

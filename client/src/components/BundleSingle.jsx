@@ -14,6 +14,8 @@ import windows2000 from '../assets/windows2000.png'
 
 // & Default function
 export default function BundleSingle(){
+  
+  // * Constants
   const res = useActionData()
   const navigate = useNavigate()
   const fetcher = useFetcher()
@@ -108,7 +110,7 @@ export default function BundleSingle(){
               ?
               <div>
                 <p className='timer'>Time Remaining: {remaining < 0 ? 'Expired' : `${DaysRemaining} days ${HoursRemaining < 10 ? 0 : ''}${HoursRemaining} hours ${MinutesRemaining < 10 ? 0 : ''}${MinutesRemaining} minutes ${SecondsRemaining < 10 ? 0 : ''}${SecondsRemaining} seconds`}</p>
-                <div className='active-actions'>
+                {activeUser() && <div className='active-actions'>
                   <Button className='bid'>Place Bid</Button>
                   <p>Current Bid: <span>£{!maxBid ? startPrice : maxBid}</span></p>
                   <div>
@@ -119,7 +121,7 @@ export default function BundleSingle(){
                       {res && <p>{res.data.message}</p>}
                     </Form>
                   </div>
-                </div>
+                </div>}
               </div>
               :
               <div className='inactive-actions'>

@@ -7,7 +7,7 @@ import React from 'react'
 import { Fade, ScaleFade, Slide, SlideFade, Collapse, Button } from '@chakra-ui/react'
 
 // * Images
-import logoRect from '../assets/ss_logo_rect.png'
+import logoSq from '../assets/software-seller-icon.png'
 import windows2000 from '../assets/windows2000.png'
 
 // & Default function
@@ -20,8 +20,8 @@ export default function Home(){
     <>
       <Collapse startingHeight={20} in={show}>
       <section className='mainHero collapsible'>
-        <h1>Livin' La Vista Loca</h1>
-        <Link to='#'><img src={ logoRect } alt='ss logo' /></Link>
+        <h2>Livin' La Vista Loca</h2>
+        <Link to='#'><img src={ logoSq } alt='ss logo' /></Link>
         <h4>Find the (used software) key to your happiness</h4>
       </section>
     

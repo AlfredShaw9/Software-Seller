@@ -57,87 +57,90 @@ export default function Footer(){
   // * Start menu draw from Chakra
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
+  console.log(user)
 
   //  * JSX
   return(
     <>
-      <footer>
-        <div className ="footerLeft">
-          <Button onClick={!isOpen ? onOpen : onClose} className="startButton"><img src={startButton} /></Button>
-
-            {/* Modal */}
-            <Drawer
-              className='startMenu'
-              isOpen={isOpen}
-              placement='left'
-              onClose={onClose}
-              finalFocusRef={btnRef}
-              size={"xs"}
-              closeOnOverlayClick
-              closeonEsc
-              isFullWidth={false}
-              // motionPreset={'none'}
-            >
-              <DrawerOverlay
-                h='auto'
-                position='absolute'
-                bottom={'16px'}
-                top={'200px'}
-                right={'400px'}
-              />
-              <DrawerContent
-              className='startContent'
-              containerProps={{
-                h: 'auto',
-                top: '200px',
-                bottom: '40px',
-                right: '400px'
-              }}
-              style={{ position: 'absolute' }}
+      {(user !== null) &&
+          <footer>
+          <div className ="footerLeft">
+            <Button onClick={!isOpen ? onOpen : onClose} className="startButton"><img src={startButton} /></Button>
+  
+              {/* Modal */}
+              <Drawer
+                className='startMenu'
+                isOpen={isOpen}
+                placement='left'
+                onClose={onClose}
+                finalFocusRef={btnRef}
+                size={"xs"}
+                closeOnOverlayClick
+                closeonEsc
+                isFullWidth={false}
+                // motionPreset={'none'}
               >
-                {/* <DrawerCloseButton /> */}
-                <DrawerHeader className='startHeader'>
-                <img src={logoSq} />
-                  Welcome
-                  </DrawerHeader>
-                <DrawerBody className="startBody">
-                  <nav>
-                    <Link to ='/buy'>Buy</Link>
-                    <Link to ='/sell'>Sell</Link>
-                    <Link to ='/reviews'>Reviews</Link>
-                    <Link to ='/profile'>Profile</Link>
-                    <Link to ='/login' className='loggedOut'>Register/Login</Link>
-                  </nav>
-                  <nav>
-                    <Link to ='/buy'>Buy</Link>
-                    <Link to ='/sell'>Sell</Link>
-                    <Link to ='/reviews'>Reviews</Link>
-                    <Link to ='/profile'>Profile</Link>
-                    <Link to ='/login' className='loggedOut'>Register/Login</Link>
-                  </nav>
-                </DrawerBody>
-                <DrawerFooter className='startFooter'>
-                  <button className ='iconButton' onClick={onClose}>
-                    <img className='iconImage' src={sdIcon} />
-                  </button>
-                  <button className ='iconButton'>
-                  <img className='iconImage' src={loIcon} />
-                  </button>
-                </DrawerFooter>
-              </DrawerContent>
-            </Drawer>
-          <div className="citationsGroup">
-            <a target='_blank' rel='noreferrer' href="https://www.apple.com/mac/" className='citationsWindow display-6'>{user}</a>
-            <a target='_blank' rel='noreferrer' href="https://github.com/philiphart1006" className='citationsWindow display-6'>Code with Hart</a>
-            <a target='_blank' rel='noreferrer' href="https://github.com/AlfredShaw9" className='citationsWindow display-6'>Shaw-fire Coding</a>
-            <a target='_blank' rel='noreferrer' href="https://github.com/AlfredShaw9/Software-Seller" className='citationsWindow display-6'>Collaboration</a>
+                <DrawerOverlay
+                  h='auto'
+                  position='absolute'
+                  bottom={'16px'}
+                  top={'200px'}
+                  right={'400px'}
+                />
+                <DrawerContent
+                className='startContent'
+                containerProps={{
+                  h: 'auto',
+                  top: '200px',
+                  bottom: '40px',
+                  right: '400px'
+                }}
+                style={{ position: 'absolute' }}
+                >
+                  {/* <DrawerCloseButton /> */}
+                  <DrawerHeader className='startHeader'>
+                  <img src={logoSq} />
+                    Welcome
+                    </DrawerHeader>
+                  <DrawerBody className="startBody">
+                    <nav>
+                      <Link to ='/buy'>Buy</Link>
+                      <Link to ='/sell'>Sell</Link>
+                      <Link to ='/reviews'>Reviews</Link>
+                      <Link to ='/profile'>Profile</Link>
+                      <Link to ='/login' className='loggedOut'>Register/Login</Link>
+                    </nav>
+                    <nav>
+                      <Link to ='/buy'>Buy</Link>
+                      <Link to ='/sell'>Sell</Link>
+                      <Link to ='/reviews'>Reviews</Link>
+                      <Link to ='/profile'>Profile</Link>
+                      <Link to ='/login' className='loggedOut'>Register/Login</Link>
+                    </nav>
+                  </DrawerBody>
+                  <DrawerFooter className='startFooter'>
+                    <button className ='iconButton' onClick={onClose}>
+                      <img className='iconImage' src={sdIcon} />
+                    </button>
+                    <button className ='iconButton'>
+                    <img className='iconImage' src={loIcon} />
+                    </button>
+                  </DrawerFooter>
+                </DrawerContent>
+              </Drawer>
+            <div className="citationsGroup">
+              <a target='_blank' rel='noreferrer' href="https://www.apple.com/mac/" className='citationsWindow display-6'>A</a>
+              <a target='_blank' rel='noreferrer' href="https://github.com/philiphart1006" className='citationsWindow display-6'><span className='narrow-mode'>Code with </span>Hart</a>
+              <a target='_blank' rel='noreferrer' href="https://github.com/AlfredShaw9" className='citationsWindow display-6'>Shaw<span className='narrow-mode'>-fire Coding</span></a>
+              <a target='_blank' rel='noreferrer' href="https://github.com/AlfredShaw9/Software-Seller" className='citationsWindow display-6'>Collab<span className='narrow-mode'>oration</span></a>
+            </div>
           </div>
-        </div>
-        <div className="clockGroup">
-          <p className='citations display-6'><a target='_blank' href="https://forms.gle/Mt7EpfroDbSBCBxw8">🐛</a></p>
-          <p>{time}</p>
-        </div>
-      </footer>
+          <div className="clockGroup">
+            <p className='citations display-6'><a target='_blank' href="https://forms.gle/Mt7EpfroDbSBCBxw8">🐛</a></p>
+            <p className='narrow-mode'>{time}</p>
+          </div>
+        </footer>
+      }
     </>
   )
 }

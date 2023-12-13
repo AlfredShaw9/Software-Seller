@@ -2,6 +2,7 @@
 import { useLoaderData, Link as ReactRouterLink } from 'react-router-dom'
 import { Link as ChakraLink } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
+import { activeUser } from '../utils/helpers/common'
 
 
 export default function AllReviews() {
@@ -30,9 +31,9 @@ export default function AllReviews() {
 
   return (
     <>
-      <ChakraLink as={ReactRouterLink} to={`/reviews/yourOpinion`}>
+      {activeUser() && <ChakraLink as={ReactRouterLink} to={`/reviews/yourOpinion`}>
         Write a review
-      </ ChakraLink>
+      </ ChakraLink>}
       <div id='filters'>
         <select name='rating' value={rating} onChange={handleChange}>
           <option value='All'>All</option>
