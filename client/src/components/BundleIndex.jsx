@@ -53,7 +53,11 @@ export default function AllBundles() {
   })
 
   function tock() {
+    filteredBundles[0] !== undefined
+    ?
     setRemaining(parseInt(filteredBundles[0].auctionEnd) - parseInt(parseInt((new Date().getTime() / (1000)))))
+    :
+    0
   }
 
   return (
@@ -77,16 +81,18 @@ export default function AllBundles() {
       </div>
       <p hidden={true}>{remaining}</p>
       <section className='displayCont'>
-        { filteredBundles.length > 0 && filteredBundles.map(bundle => {
+        { filteredBundles?.length > 0
+        ?
+        filteredBundles.map(bundle => {
           const { _id, software, version, operatingSystem, image, auctionEnd, winDetails, startPrice } = bundle
-          const { maxBid } = winDetails
+          const { maxbid } = winDetails
           // * Time remaining
-            const auctionEndDT = parseInt((new Date(auctionEnd).getTime() / (1000)))
-            const timeRemaining = (parseInt(auctionEndDT) - parseInt(parseInt((new Date().getTime() / (1000)))))
-            const DaysRemaining = Math.floor(timeRemaining/(3600*24))
-            const HoursRemaining = (Math.floor(timeRemaining/3600) % 24)
-            const MinutesRemaining = (Math.floor(timeRemaining/60) % 60)
-            const SecondsRemaining = timeRemaining % 60
+          const auctionEndDT = parseInt((new Date(auctionEnd).getTime() / (1000)))
+          const timeRemaining = (parseInt(auctionEndDT) - parseInt(parseInt((new Date().getTime() / (1000)))))
+          const DaysRemaining = Math.floor(timeRemaining/(3600*24))
+          const HoursRemaining = (Math.floor(timeRemaining/3600) % 24)
+          const MinutesRemaining = (Math.floor(timeRemaining/60) % 60)
+          const SecondsRemaining = timeRemaining % 60
           return (
             <ChakraLink
             key = {_id}
@@ -102,17 +108,20 @@ export default function AllBundles() {
                   </div>
                   <p>{software}, {version}</p>
                   <p>{timeRemaining < 0 ? 'Expired' : `${DaysRemaining} days ${HoursRemaining < 10 ? 0 : ''}${HoursRemaining} hours ${MinutesRemaining < 10 ? 0 : ''}${MinutesRemaining} minutes ${SecondsRemaining < 10 ? 0 : ''}${SecondsRemaining} seconds`}</p>
-                  { !maxBid
+                  { !maxbid
                   ?
                   <button>Starting Bid: £{startPrice}</button>
                   :
-                  <button>Current Bid: £{maxBid}</button>
+                  <button>Current Bid: £{maxbid}</button>
                   }
                 </div>
               </div>
-            </ChakraLink>
-          )
-        }) }
+              </ChakraLink>
+          )}
+        )
+        :
+        <p>No auctions to display</p>
+        }
       </section>
     </div>
   )

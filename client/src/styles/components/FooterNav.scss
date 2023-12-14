@@ -17,6 +17,7 @@ header, footer {
   nav * {
     padding: $standard-padding;
     color: $white;
+    text-shadow: 1px 1px black;
     text-decoration: none;
   }
 }

@@ -1,64 +1,64 @@
 // Group by software; only display top 5
-import { useLoaderData, Link as ReactRouterLink } from 'react-router-dom'
-import { Link as ChakraLink } from '@chakra-ui/react'
+// import { useLoaderData, Link as ReactRouterLink } from 'react-router-dom'
+// import { Link as ChakraLink } from '@chakra-ui/react'
 import "xp.css/dist/XP.css"
 
 export default function OwnBids() {
 
-  const bidsOwn = useLoaderData()
-  // const sortedBundles = bidsOwn
-  const sort = []
-  const sortedBundles = []
+  // const bidsOwn = useLoaderData()
+  // // const sortedBundles = bidsOwn
+  // const sort = []
+  // const sortedBundles = []
 
-  bidsOwn.map(bid => {
-    sort.push([bid.bundle.software, bid.value, bid.bundle.winDetails.maxBid])
-    return
-  })
+  // bidsOwn.map(bid => {
+  //   sort.push([bid.bundle.software, bid.value, bid.bundle.winDetails.maxBid])
+  //   return
+  // })
 
-  console.log('Sort array: ', sort)
-  // ! FIX THIS THING or not idk
-  // & i fixed it
-  sort.map(bundle => {
-    // console.log(bundle)
-    const bundleSoftware = bundle[0]
-    const bundleBid = bundle[1]
-    const bundleMaxBid = bundle[2]
-    let existingIndex = -1
-    // console.log('sbl ',sortedBundle.length)
-    for (let i = 0; i < sortedBundles.length; i++) {
-      if (sortedBundles[i]['software'] === bundleSoftware) {
-        existingIndex = i
-      }
-    }
-    // console.log('ei ',existingIndex)
-    if (existingIndex === -1) {
-      // console.log('bundle does not exist')
-      const newObj = { 
-        software: bundleSoftware,
-        maxBid: bundleMaxBid,
-        bids: [bundleBid]
-      } 
-      sortedBundles.push(newObj)
-    } else {
-      // console.log('bundle exists')
-      sortedBundles[existingIndex]['bids'].push(bundleBid)
-    }
-    // console.log('-----------------')
+  // console.log('Sort array: ', sort)
+  // // ! FIX THIS THING or not idk
+  // // & i fixed it
+  // sort.map(bundle => {
+  //   // console.log(bundle)
+  //   const bundleSoftware = bundle[0]
+  //   const bundleBid = bundle[1]
+  //   const bundleMaxBid = bundle[2]
+  //   let existingIndex = -1
+  //   // console.log('sbl ',sortedBundle.length)
+  //   for (let i = 0; i < sortedBundles.length; i++) {
+  //     if (sortedBundles[i]['software'] === bundleSoftware) {
+  //       existingIndex = i
+  //     }
+  //   }
+  //   // console.log('ei ',existingIndex)
+  //   if (existingIndex === -1) {
+  //     // console.log('bundle does not exist')
+  //     const newObj = { 
+  //       software: bundleSoftware,
+  //       maxBid: bundleMaxBid,
+  //       bids: [bundleBid]
+  //     } 
+  //     sortedBundles.push(newObj)
+  //   } else {
+  //     // console.log('bundle exists')
+  //     sortedBundles[existingIndex]['bids'].push(bundleBid)
+  //   }
+  //   // console.log('-----------------')
     
-    // if (sortedBundle.includes(bundleSoftware)) {
-    //   sortedBundle[sortedBundle.findIndex(bundleSoftware)].push(bundleBid)
-    // } else if (!sortedBundle.includes(bundleSoftware)) {
-    //   sortedBundle.push(bundleSoftware)
-    //   sortedBundle[sortedBundle.findIndex(bundleSoftware)].push(bundleBid)
-    // }
-  })
+  //   // if (sortedBundle.includes(bundleSoftware)) {
+  //   //   sortedBundle[sortedBundle.findIndex(bundleSoftware)].push(bundleBid)
+  //   // } else if (!sortedBundle.includes(bundleSoftware)) {
+  //   //   sortedBundle.push(bundleSoftware)
+  //   //   sortedBundle[sortedBundle.findIndex(bundleSoftware)].push(bundleBid)
+  //   // }
+  // })
 
-  for (let i = 0; i < sortedBundles.length; i++) {
-    sortedBundles[i]['bids'].sort().reverse()
-  }
+  // for (let i = 0; i < sortedBundles.length; i++) {
+  //   sortedBundles[i]['bids'].sort().reverse()
+  // }
   
 
-  console.log(sortedBundles)
+  // console.log(sortedBundles)
 
   return (
     <div className='window buyWindow'>
@@ -71,7 +71,8 @@ export default function OwnBids() {
         </div>
       </div>
       <section className='displayCont'>
-        { sortedBundles.length > 0 && sortedBundles.map(bundle => {
+        <h1>UNDER CONSTRUCTION🚧🏗️</h1>
+        {/* { sortedBundles.length > 0 && sortedBundles.map(bundle => {
           const { _id, software, bids, maxBid } = bundle
 
           return (
@@ -86,11 +87,10 @@ export default function OwnBids() {
                   <li key = {_id}>£{bids[3]}</li>
                   <li key = {_id}>£{bids[4]}</li>
                 </ul>
-                {/* going insane, but it works, wooooo */}
               </div>
             </div>
           )
-        }) }
+        }) } */}
       </section>
     </div>
   )
