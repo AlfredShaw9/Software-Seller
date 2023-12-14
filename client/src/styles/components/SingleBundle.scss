@@ -1,8 +1,60 @@
 .bundle-container{
   @include flex(row, space-around);
-  padding: calc(5 * $standard-padding);
+  padding: 3px;
+  text-align: left;
+  min-height: 60vh;
 
   .lhs{
-    @include flex(column, space-around)
+    @include flex(column, left);
+    align-items: center;
+    height: 100%;
+    width: 30vw;
+    background-color: $dark-blue;
+
+    img{
+      margin-top: 8 * $standard-padding;
+      margin-left: 8 * $standard-padding;
+    }
+  }
+
+  .rhs{
+    background-color: white;
+    padding: 2 * $standard-padding;
+    @include flex(column, space-around);
+    max-width: 50vw;
+
+    .set-details{
+      font-size: larger;
+      font-weight: bold;
+    }
+
+    .bid-form{
+      label{
+      font-size: large;
+      font-weight: bold;
+      }
+    }
   }
 }
+
+.buttons{
+  width: calc(100% - 4*$standard-padding);
+  @include flex(row, space-between);
+  padding: 2 * $standard-padding;
+  border-top-style: solid;
+  border-top-width: 1px;
+  margin-top: -3px;
+}
+
+.owner-buttons{
+  width: 50%;
+  @include flex(row, right);
+
+  * {
+    padding-left: $standard-padding
+  }
+}
+h3, h4 {
+  font-family: 'MS Sans Serif',Arial !important;
+}
+

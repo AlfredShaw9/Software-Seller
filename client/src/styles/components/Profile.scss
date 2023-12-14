@@ -1,19 +1,53 @@
 .profileWindow{
   width: 60vh;
   background-color: white;
+  text-align: left;
+  // padding: $standard-padding
+
+  h5 {
+    font-size: small;
+    margin: $standard-padding;
+    margin-right: 24 * $standard-padding;
+    padding-bottom: 0.5 * $standard-padding;
+    border-bottom: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: $mid-blue;
+  }
+
+  .computerContainer{
+    margin-bottom: 2 * $standard-padding;
+  }
 
   .profileContainer{
     @include flex(row,left);
+    margin-top: 2 * $standard-padding;
+    
     // background-color: white;
     // padding: $standard-padding
   }
 
   .profileLink{
-    @include flex(row, left)
+    @include flex(row, left);
+    text-decoration: none;
+    color: black
   }
 
   img{
-    height: 45px;
-    width: 45px;
+    height: 42px;
+    width: 42px;
+  }
+  p{
+    margin-left: $standard-padding;
+  }
+}
+
+.computerRow{
+  margin-left: 2 * $standard-padding;
+}
+
+.title-bar-text{
+  img{
+    width: 2 * $standard-padding;
+    height: 2 * $standard-padding;
   }
 }
