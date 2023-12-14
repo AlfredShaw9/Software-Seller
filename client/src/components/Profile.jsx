@@ -22,9 +22,9 @@ export default function Profile(){
   // * JSX
   return(
     <>
-      <div className='window buyWindow'>
+      <div className='window profileWindow'>
         <div className="title-bar">
-          <div className="title-bar-text">Buy</div>
+          <div className="title-bar-text">Profile</div>
           <div className="title-bar-controls">
             <button aria-label="Minimize" />
             <button aria-label="Maximize" />
@@ -37,8 +37,8 @@ export default function Profile(){
               <h5>Files Stored on This Computer</h5>
             </div>
             <div className='rowMain'>
-              <div className='bidsContainer'>
-                <ChakraLink as = {ReactRouterLink} to={'/profile/bids'}>
+              <div className='profileContainer bidsContainer'>
+                <ChakraLink as = {ReactRouterLink} to={'/profile/bids'} className='profileLink'>
                   <img src={fileImg}/>
                   <p>My Bids</p>
                 </ChakraLink>
@@ -50,8 +50,8 @@ export default function Profile(){
               <h5>Hard Disk Drives</h5>
             </div>
             <div className='rowMain'>
-              <div className='boughtContainer'>
-                <ChakraLink as = {ReactRouterLink} to={'/profile/bought'}>
+              <div className='profileContainer boughtContainer'>
+                <ChakraLink as = {ReactRouterLink} to={'/profile/bought'} className='profileLink'>
                   <img src={hardDrive}/>
                   <p>Purchases</p>
                 </ChakraLink>
@@ -63,8 +63,8 @@ export default function Profile(){
               <h5>Devices with Removable Storage</h5>
             </div>
             <div className='rowMain'>
-              <div className='soldContainer'>
-                <ChakraLink as = {ReactRouterLink} to={'/profile/sold'}>
+              <div className='profileContainer soldContainer'>
+                <ChakraLink as = {ReactRouterLink} to={'/profile/sold'} className='profileLink'>
                   <img src={diskDrive}/>
                   <p>Sales</p>
                 </ChakraLink>

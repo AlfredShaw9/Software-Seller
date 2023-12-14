@@ -22,7 +22,13 @@ import networkSq from '../assets/xp_assets/142.ico'
 import sellSq from '../assets/xp_assets/425.ico'
 import loIcon from '../assets/xp_assets/1393.ico'
 import sdIcon from '../assets/xp_assets/1429.ico'
+import msn from '../assets/xp_assets/842.ico'
+import star from '../assets/xp_assets/1366.ico'
+import palette from '../assets/xp_assets/1018.ico'
+import folder from '../assets/xp_assets/994.ico'
+import program from '../assets/xp_assets/1027.ico'
 import frogUser from '../assets/xp_assets/frog-user.jpeg'
+import doge from '../assets/xp_assets/doge.png'
 
 // * Styling
 import {
@@ -96,7 +102,7 @@ export default function Footer(){
                 onClose={onClose}
                 finalFocusRef={btnRef}
                 size={"xs"}
-                closeOnOverlayClick
+                // closeOnOverlayClick={'true'}
                 closeonEsc
                 isFullWidth={false}
                 // motionPreset={'none'}
@@ -104,7 +110,7 @@ export default function Footer(){
                 <DrawerOverlay
                   h='auto'
                   position='absolute'
-                  bottom={'16px'}
+                  bottom={'40px'}
                   top={'200px'}
                   right={'400px'}
                 />
@@ -136,6 +142,14 @@ export default function Footer(){
                       <Link className='nav-link' to ='/buy'><p></p></Link>
                     </nav>
                     <nav className='rhnav'>
+                    <Link textDecoration={'none'} className='nav-link' to ='/'><img className='logo-icon' src={star} alt='star' /><p>Styling credits</p></Link>
+                      <Link className='nav-link' to ='http://interface.free.fr/Archives/GUI_Xp.pdf'><img className='logo-icon random-padding' src={palette} alt='buy logo' /><p>XP visual guidelines</p></Link>
+                      <Link className='nav-link' to ='https://www.mediafire.com/file/z32oaww92k8cuuu/ICON.zip/file'><img className='logo-icon' src={folder} alt='buy logo' /><p>Icons bundle</p></Link>
+                      <Link className='nav-link' to ='https://botoxparty.github.io/XP.css/'><img className='logo-icon random-padding' src={program} alt='comp logo' /><p>XP.css</p></Link>
+                      <Link className='nav-link' to ='https://winxp.vercel.app/'><img className='logo-icon random-padding' src={doge} alt='doge' /><p>Personal site 1</p></Link>
+                      <Link className='nav-link' to ='https://pohwp.dev/'><img className='logo-icon' src={msn} alt='msn' /><p>Wei Pin's Personal Website</p></Link>
+                      <Link className='nav-link' to ='/'><p></p></Link>
+                      <Link className='nav-link' to ='/'><p></p></Link>
                       
                     </nav>
                   </DrawerBody>
