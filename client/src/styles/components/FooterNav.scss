@@ -100,9 +100,7 @@ footer {
       flex-grow: 1;
       align-items: center;
       padding-left: $standard-padding;
-      // border-top: 1px;
-      // border-top-style: solid;
-      // border-top-color: $dark-off-white
+      text-decoration: none;
 
       p{
         padding-left: $standard-padding;
@@ -120,6 +118,13 @@ footer {
 
   .rhnav{
     background-color: $off-white-blue;
+
+    img{
+      width: 32px;
+    }
+    p{
+      font-size: smaller;
+    }
   }
   
 }

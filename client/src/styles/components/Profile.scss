@@ -1,0 +1,19 @@
+.profileWindow{
+  width: 60vh;
+  background-color: white;
+
+  .profileContainer{
+    @include flex(row,left);
+    // background-color: white;
+    // padding: $standard-padding
+  }
+
+  .profileLink{
+    @include flex(row, left)
+  }
+
+  img{
+    height: 45px;
+    width: 45px;
+  }
+}

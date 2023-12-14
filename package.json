@@ -6,6 +6,7 @@
   "scripts": {
     "serve": "npx nodemon index.js",
     "seed": "node db/seeds.js",
+    "seedongoing": "node db/seeds_ongoing.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

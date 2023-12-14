@@ -103,15 +103,15 @@ export default function BundleSingle(){
           </section>
           <div className='bid-section'>
             <p className='auction-end'>Auction ends: {auctionEndHour}:{auctionEndMinute} on {auctionEndDate}</p>
-            <p className='timer'>Time Remaining: {remaining} seconds</p>
-            <p>Winner: {winner}</p>
+            {/* <p className='timer'>Time Remaining: {remaining} seconds</p> */}
+            {/* <p>Winner: {winner}</p> */}
             {/* Make it so the owner cant place a bid on their own item possibly? */}
             { active
               ?
               <div>
                 <p className='timer'>Time Remaining: {remaining < 0 ? 'Expired' : `${DaysRemaining} days ${HoursRemaining < 10 ? 0 : ''}${HoursRemaining} hours ${MinutesRemaining < 10 ? 0 : ''}${MinutesRemaining} minutes ${SecondsRemaining < 10 ? 0 : ''}${SecondsRemaining} seconds`}</p>
                 {activeUser() && <div className='active-actions'>
-                  <Button className='bid'>Place Bid</Button>
+                  {/* <Button className='bid'>Place Bid</Button> */}
                   <p>Current Bid: <span>£{!maxBid ? startPrice : maxBid}</span></p>
                   <div>
                     <Form method="post">
