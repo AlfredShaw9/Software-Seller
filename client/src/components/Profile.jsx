@@ -9,6 +9,7 @@ import 'xp.css/dist/XP.css'
 import fileImg from '../assets/xp_assets/file.png'
 import hardDrive from '../assets/xp_assets/hard-drive-icon-large.png'
 import diskDrive from '../assets/xp_assets/disk-drive-icon-large.png'
+import compSq from '../assets/xp_assets/123.ico'
 
 export default function Profile(){
 
@@ -24,7 +25,7 @@ export default function Profile(){
     <>
       <div className='window profileWindow'>
         <div className="title-bar">
-          <div className="title-bar-text">Profile</div>
+          <div className="title-bar-text"><img src={compSq}/> Profile</div>
           <div className="title-bar-controls">
             <button aria-label="Minimize" />
             <button aria-label="Maximize" />
@@ -53,7 +54,7 @@ export default function Profile(){
               <div className='profileContainer boughtContainer'>
                 <ChakraLink as = {ReactRouterLink} to={'/profile/bought'} className='profileLink'>
                   <img src={hardDrive}/>
-                  <p>Purchases</p>
+                  <p>Purchases (C:)</p>
                 </ChakraLink>
               </div>
             </div>
@@ -66,7 +67,7 @@ export default function Profile(){
               <div className='profileContainer soldContainer'>
                 <ChakraLink as = {ReactRouterLink} to={'/profile/sold'} className='profileLink'>
                   <img src={diskDrive}/>
-                  <p>Sales</p>
+                  <p>Sales (D:)</p>
                 </ChakraLink>
               </div>
             </div>
