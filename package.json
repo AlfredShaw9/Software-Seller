@@ -4,6 +4,8 @@
   "description": "Software auction website",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "heroku-postbuild": "cd client && npm i --only=dev && npm i && npm run build",
     "serve": "npx nodemon index.js",
     "seed": "node db/seeds.js",
     "seedongoing": "node db/seeds_ongoing.js",
@@ -19,6 +21,7 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.2",
-    "react-bootstrap": "^2.9.1"
+    "react-bootstrap": "^2.9.1",
+    "vite": "^5.0.9"
   }
 }
