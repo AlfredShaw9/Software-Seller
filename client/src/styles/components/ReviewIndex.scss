@@ -1,3 +1,28 @@
 .reviewWindow{
-  min-width: 600px
+  min-width: 60vw;
+
+  .reviews-header{
+    @include flex(row, center);
+    // margin: $standard-padding;
+
+    *{
+      margin: $standard-padding
+    }
+
+    .actionLink{
+      text-decoration: none;
+    }
+  }
+
+  .indivBundleCont{
+    width: 220px;
+    height: 240px;
+    border-radius: 10px;
+  }
+
+  .outerBorder{
+    border-radius: 10px;
+    margin: $standard-padding
+  }
+  
 }

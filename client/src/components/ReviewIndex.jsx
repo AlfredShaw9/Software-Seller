@@ -40,19 +40,21 @@ export default function AllReviews() {
             <button aria-label="Close" />
           </div>
         </div>
-        {activeUser() && <ChakraButton as={ReactRouterLink} to={`/reviews/yourOpinion`} colorScheme='blue' className='actionLink'>
-          Write a review
-        </ ChakraButton>}
-        <div id='filters'>
-          <select name='rating' value={rating} onChange={handleChange}>
-            <option value='All'>All</option>
-            <option value='0'>0</option>
-            <option value='1'>1</option>
-            <option value='2'>2</option>
-            <option value='3'>3</option>
-            <option value='4'>4</option>
-            <option value='5'>5</option>
-          </select>
+        <div className='reviews-header'>
+          {activeUser() && <ChakraButton as={ReactRouterLink} to={`/reviews/yourOpinion`} colorScheme='blue' className='actionLink'>
+            <button type='button'>Write a review</button>
+          </ ChakraButton>}
+          <div id='filters'>
+            <select name='rating' value={rating} onChange={handleChange}>
+              <option value='All'>All</option>
+              <option value='0'>0</option>
+              <option value='1'>1</option>
+              <option value='2'>2</option>
+              <option value='3'>3</option>
+              <option value='4'>4</option>
+              <option value='5'>5</option>
+            </select>
+          </div>
         </div>
         <section className='displayCont'>
           { filteredReviews.length > 0 && filteredReviews.map(review => {
@@ -62,7 +64,7 @@ export default function AllReviews() {
                 <div className='outerBorder'>
                   <div className='indivBundleCont'>
                     <p className='reviewTxt'>{description}</p>
-                    <p>Rating: {rating}/5 </p>
+                    <p><b>Rating: {rating}/5 </b></p>
                   </div>
                 </div>
               </div>
