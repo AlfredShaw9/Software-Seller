@@ -1,6 +1,6 @@
 .bundle-container{
   @include flex(row, space-around);
-  padding: 3px;
+  padding: 0 3px;
   text-align: left;
   min-height: 60vh;
 
@@ -8,13 +8,10 @@
     @include flex(column, left);
     align-items: center;
     height: 100%;
-    width: 30vw;
+    width: 20vw;
     background-color: $dark-blue;
-
-    img{
-      margin-top: 8 * $standard-padding;
-      margin-left: 8 * $standard-padding;
-    }
+    background-repeat: none;
+    background-size: cover;
   }
 
   .rhs{
@@ -23,15 +20,40 @@
     @include flex(column, space-around);
     max-width: 50vw;
 
+    .details{
+      @include flex(row, space-between);
+      border-top: 1px;
+      border-top-style: solid;
+      padding-bottom: $standard-padding;
+
+      img{
+        align-self: center;
+        width: 150px;
+        height: 150px;
+        border-radius: 5px;
+        box-shadow: 3px 8px $off-white-blue;
+      }
+    }
+
     .set-details{
       font-size: larger;
       font-weight: bold;
+    }
+
+    .bid-section{
+      border-top: 1px;
+      border-top-style: solid;
     }
 
     .bid-form{
       label{
       font-size: large;
       font-weight: bold;
+      }
+      input {
+        margin: $standard-padding;
+        padding: 0.5 * $standard-padding;
+        width: 60px
       }
     }
   }
@@ -51,10 +73,42 @@
   @include flex(row, right);
 
   * {
-    padding-left: $standard-padding
+    padding-left: $standard-padding;
   }
 }
 h3, h4 {
   font-family: 'MS Sans Serif',Arial !important;
 }
 
+.modal-content{
+  max-width: 50vw;
+  height: 30vh;
+  align-self: center;
+  justify-self: center;
+  background-color: $off-white;
+  margin: auto;
+  margin-top: 30vh;
+  border-radius: 7px;
+  
+
+  .payWindow{
+    height: 30vh;
+    width: 50vw;
+
+    .payBody{
+      @include flex(column, justify-content);
+      align-items: center;
+    }
+    
+    img{
+      align-self: center;
+      height: 15vh;
+      padding: $standard-padding;
+      margin: 0 auto;
+    }
+  }
+
+  ModalCloseButton{
+    width: 64px;
+  }
+}

@@ -82,6 +82,7 @@ export default function Footer(){
   const btnRef = React.useRef()
 
   function handleClick() {
+    onClose()
     removeToken()
     navigate('/login')
   }
@@ -102,10 +103,8 @@ export default function Footer(){
                 onClose={onClose}
                 finalFocusRef={btnRef}
                 size={"xs"}
-                // closeOnOverlayClick={'true'}
                 closeonEsc
                 isFullWidth={false}
-                // motionPreset={'none'}
               >
                 <DrawerOverlay
                   h='auto'
@@ -131,25 +130,25 @@ export default function Footer(){
                   </DrawerHeader>
                   <DrawerBody className="startBody">
                     <nav>
-                      <Link textDecoration={'none'} className='nav-link' to ='/'><img className='logo-icon' src={logoSq} alt='ss logo' /><p>Home</p></Link>
-                      <Link className='nav-link' to ='/buy'><img className='logo-icon random-padding' src={buySq} alt='buy logo' /><p>Buy</p></Link>
-                      {(user !== null) && <Link className='nav-link' to ='/sell'><img className='logo-icon' src={sellSq} alt='buy logo' /><p>Sell</p></Link>}
-                      <Link className='nav-link' to ='/reviews'><img className='logo-icon random-padding' src={networkSq} alt='comp logo' /><p>Reviews</p></Link>
-                      {(user !== null) && <Link className='nav-link' to ='/profile'><img className='logo-icon random-padding' src={compSq} alt='comp logo' /><p>Profile</p></Link>}
-                      {(user === null) && <Link className='nav-link' to ='/login'><img className='logo-icon' src={usersSq} alt='users logo' /><p>Register/Login</p></Link>}
-                      <Link className='nav-link' to ='/buy'><p></p></Link>
-                      <Link className='nav-link' to ='/buy'><p></p></Link>
-                      <Link className='nav-link' to ='/buy'><p></p></Link>
+                      <Link textDecoration={'none'} className='nav-link' to ='/' onClick={onClose}><img className='logo-icon' src={logoSq} alt='ss logo' /><p>Home</p></Link>
+                      <Link className='nav-link' to ='/buy' onClick={onClose}><img className='logo-icon random-padding' src={buySq} alt='buy logo' /><p>Buy</p></Link>
+                      {(user !== null) && <Link className='nav-link' to ='/sell' onClick={onClose}><img className='logo-icon' src={sellSq} alt='buy logo' /><p>Sell</p></Link>}
+                      <Link className='nav-link' to ='/reviews' onClick={onClose}><img className='logo-icon random-padding' src={networkSq} alt='comp logo' /><p>Reviews</p></Link>
+                      {(user !== null) && <Link className='nav-link' to ='/profile' onClick={onClose}><img className='logo-icon random-padding' src={compSq} alt='comp logo' /><p>Profile</p></Link>}
+                      {(user === null) && <Link className='nav-link' to ='/login' onClick={onClose}><img className='logo-icon' src={usersSq} alt='users logo' /><p>Register/Login</p></Link>}
+                      <Link className='nav-link' to ='/buy' onClick={onClose}><p></p></Link>
+                      <Link className='nav-link' to ='/buy' onClick={onClose}><p></p></Link>
+                      <Link className='nav-link' to ='/buy' onClick={onClose}><p></p></Link>
                     </nav>
                     <nav className='rhnav'>
-                    <Link textDecoration={'none'} className='nav-link' to ='/'><img className='logo-icon' src={star} alt='star' /><p>Styling credits</p></Link>
-                      <Link className='nav-link' to ='http://interface.free.fr/Archives/GUI_Xp.pdf'><img className='logo-icon random-padding' src={palette} alt='buy logo' /><p>XP visual guidelines</p></Link>
-                      <Link className='nav-link' to ='https://www.mediafire.com/file/z32oaww92k8cuuu/ICON.zip/file'><img className='logo-icon' src={folder} alt='buy logo' /><p>Icons bundle</p></Link>
-                      <Link className='nav-link' to ='https://botoxparty.github.io/XP.css/'><img className='logo-icon random-padding' src={program} alt='comp logo' /><p>XP.css</p></Link>
-                      <Link className='nav-link' to ='https://winxp.vercel.app/'><img className='logo-icon random-padding' src={doge} alt='doge' /><p>Personal site 1</p></Link>
-                      <Link className='nav-link' to ='https://pohwp.dev/'><img className='logo-icon' src={msn} alt='msn' /><p>Wei Pin's Personal Website</p></Link>
-                      <Link className='nav-link' to ='/'><p></p></Link>
-                      <Link className='nav-link' to ='/'><p></p></Link>
+                    <Link textDecoration={'none'} className='nav-link' to ='/' onClick={onClose}><img className='logo-icon' src={star} alt='star' /><p>Styling credits</p></Link>
+                      <Link className='nav-link' to ='http://interface.free.fr/Archives/GUI_Xp.pdf' target='_blank' onClick={onClose}><img className='logo-icon random-padding' src={palette} alt='buy logo' /><p>XP visual guidelines</p></Link>
+                      <Link className='nav-link' to ='https://www.mediafire.com/file/z32oaww92k8cuuu/ICON.zip/file' target='_blank' onClick={onClose}><img className='logo-icon' src={folder} alt='buy logo' /><p>Icons bundle</p></Link>
+                      <Link className='nav-link' to ='https://botoxparty.github.io/XP.css/' target='_blank' onClick={onClose}><img className='logo-icon random-padding' src={program} alt='comp logo' /><p>XP.css</p></Link>
+                      <Link className='nav-link' to ='https://winxp.vercel.app/' target='_blank' onClick={onClose}><img className='logo-icon random-padding' src={doge} alt='doge' /><p>Personal site 1</p></Link>
+                      <Link className='nav-link' to ='https://pohwp.dev/' target='_blank' onClick={onClose}><img className='logo-icon' src={msn} alt='msn' /><p>Wei Pin's Personal Website</p></Link>
+                      <Link className='nav-link' to ='/' onClick={onClose}><p></p></Link>
+                      <Link className='nav-link' to ='/' onClick={onClose}><p></p></Link>
                       
                     </nav>
                   </DrawerBody>
@@ -167,7 +166,7 @@ export default function Footer(){
               </Drawer>
             <div className="citationsGroup">
               <a target='_blank' rel='noreferrer' href="https://www.apple.com/mac/" className='citationsWindow display-6'>A</a>
-              <a target='_blank' rel='noreferrer' href="https://github.com/philiphart1006" className='citationsWindow display-6'><span className='narrow-mode'>Code with </span>Hart</a>
+              <a target='_blank' rel='noreferrer' href="https://github.com/philiphart1006" className='citationsWindow display-6'><span className='narrow-mode'>Code with&nbsp;</span>Hart</a>
               <a target='_blank' rel='noreferrer' href="https://github.com/AlfredShaw9" className='citationsWindow display-6'>Shaw<span className='narrow-mode'>-fire Coding</span></a>
               <a target='_blank' rel='noreferrer' href="https://github.com/AlfredShaw9/Software-Seller" className='citationsWindow display-6'>Collab<span className='narrow-mode'>oration</span></a>
             </div>
