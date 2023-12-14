@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Form, useActionData, useNavigate } from 'react-router-dom'
 import { activeUser } from '../utils/helpers/common'
+import reviewImg from '../assets/review.png'
 
 export default function createReview(){
   const res = useActionData()
@@ -35,7 +36,7 @@ export default function createReview(){
           <button aria-label="Close" />
         </div>
       </div>
-      <h1>Tell us what you think</h1>
+      <img src={reviewImg} />
       <Form method="POST" className='dataCont'>
         <div className='dataFormFields'>
           <div className="desc">

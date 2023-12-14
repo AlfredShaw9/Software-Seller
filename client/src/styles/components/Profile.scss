@@ -9,9 +9,14 @@
     margin: $standard-padding;
     margin-right: 24 * $standard-padding;
     padding-bottom: 0.5 * $standard-padding;
-    border-bottom: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: $mid-blue;
+    // border-bottom: 1px;
+    // border-bottom-style: solid;
+    // border-bottom-color: $mid-blue;
+  }
+
+  .divider {
+    background: linear-gradient(90deg, $light-blue 0, rgba(255, 255, 255, 0) 70%);
+    height: 2px;
   }
 
   .computerContainer{
@@ -21,6 +26,7 @@
   .profileContainer{
     @include flex(row,left);
     margin-top: 2 * $standard-padding;
+    margin-left: 20px;
     
     // background-color: white;
     // padding: $standard-padding
@@ -42,7 +48,7 @@
 }
 
 .computerRow{
-  margin-left: 2 * $standard-padding;
+  margin-left: 3px;
 }
 
 .title-bar-text{
