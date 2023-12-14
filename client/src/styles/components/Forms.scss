@@ -3,25 +3,75 @@
   height: 100vh;
   width: 100vw;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;  
+  justify-content: center;
 }
 
 .formWindow {
-  width: 500px;
+  max-width: 500px;
   height: fit-content;
+  // margin: 0 30vw 0 10vw;
+
+  img{
+    width: 490px;
+    padding: 0px 3px
+  }
 }
 
 .dataCont {
   padding: 0px 20px 10px 20px;
-}
 
-.dataFormFields {
-  display: flex;
-  flex-direction: column;
-
-  div {
+  .dataFormFields {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    padding: 10px 0px;
+
+    .instructionMsg {
+      margin: 0px 0px 5px 0px;
+      font-size: 15px;
+      font-family: 'Pixelated MS Sans Serif',Arial;
+
+      span {
+        color: $dark-blue;
+        font-weight: bold;
+        font-family: 'Pixelated MS Sans Serif',Arial;
+      }
+    }
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      // width: 32vw;
+      width: 380px;
+      margin: 5px 0px;
+
+      input, select {
+        // width: 26vw;
+        box-sizing: border-box;
+        width: 300px;
+      }
+    }
+
+    .desc {
+      align-items: start;
+
+      textarea {
+        max-width: 300px;
+        min-width: 300px;
+        max-height: 150px;
+      }
+    }
+  }
+
+  .buttonsCont {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    button{
+      margin: 0px 5px;
+    }
   }
 }

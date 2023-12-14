@@ -8,8 +8,8 @@ const bundleSchema = new mongoose.Schema({
   releaseYear: Number,
   description: String,
   image: String,
-  startPrice: Number,
-  auctionEnd: Date,
+  startPrice: { type: Number, required: true, min: 1 },
+  auctionEnd: { type: Date, required: true },
   owner: { type: mongoose.ObjectId, ref: 'User', required: true }
 })
 
@@ -30,9 +30,9 @@ bundleSchema
   .get(function(bids){
     // console.log(`Hopefully bids: ${bids}`)
     if (bids == '') {
-      return 
+      return { maxBid: 0, winner: 'No one bid :(' }
     } else {
-      return { maxbid: bids?.sort((a, b) => a.value - b.value)[bids.length - 1].value, winner: bids?.sort((a, b) => a.value - b.value)[bids.length - 1].owner }
+      return { maxBid: bids?.sort((a, b) => a.value - b.value)[bids.length - 1].value, winner: bids?.sort((a, b) => a.value - b.value)[bids.length - 1].owner }
     }
     // return (Math.max(bids.value))
   })

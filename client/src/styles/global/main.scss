@@ -40,36 +40,7 @@ main{
 
 .window {
   // height: calc(100vh - 30 * $standard-padding);
-  margin-left: 15vw;
-  margin-right: 30vw;
-  align-self: flex-end;
-}
-
-
-.logRegBg {
-  background-color: $dark-blue;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;  
-}
-
-.formWindow {
-  width: 500px;
-  height: fit-content;
-}
-
-.dataCont {
-  padding: 0px 20px 10px 20px;
-}
-
-.dataFormFields {
-  display: flex;
-  flex-direction: column;
-
-  div {
-    display: flex;
-    justify-content: space-between;
-  }
+  // margin-left: 15vw;
+  // margin-right: 30vw;
+  // align-self: flex-end;
 }

@@ -38,6 +38,38 @@
       max-width: 200px;
       max-height: 200px;
       text-align: left;
+      background-position: center;
+      background-size: cover;
+
+      div {
+        width: fit-content;
+        padding: 5px;
+        font-size: 15px;
+        margin: 10px;
+        border-radius: 10px;
+        box-shadow: 5px 5px black;
+        border: 1px black solid;
+      }
+
+      .windows {
+        background-color: $dark-blue;
+        color: rgb(255, 255, 255);
+      }
+
+      .macos {
+        background-color: rgb(210, 210, 210);
+        color: rgb(50, 50, 50);
+      }
+
+      .windowsmacos{
+        background: linear-gradient(90deg, $dark-blue 0%, rgb(210, 210, 210) 80%);
+        color: rgb(255, 19, 106)
+      }
+
+      .other {
+        background-color: rgb(255, 102, 0);
+        color: rgb(255, 215, 182)
+      }
     }
 
     .reviewTxt{

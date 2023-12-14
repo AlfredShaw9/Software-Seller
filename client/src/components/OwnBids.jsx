@@ -11,11 +11,11 @@ export default function OwnBids() {
   const sortedBundles = []
 
   bidsOwn.map(bid => {
-    sort.push([bid.bundle.software, bid.value, bid.bundle.winDetails.maxbid])
+    sort.push([bid.bundle.software, bid.value, bid.bundle.winDetails.maxBid])
     return
   })
 
-  console.log('Sort array: ',sort)
+  console.log('Sort array: ', sort)
   // ! FIX THIS THING or not idk
   // & i fixed it
   sort.map(bundle => {

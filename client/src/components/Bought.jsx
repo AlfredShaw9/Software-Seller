@@ -87,7 +87,12 @@ export default function AllBought() {
                     {operatingSystem}
                   </div>
                   {software}, {version}
-                  <button>Current Bid: £{!maxBid ? startPrice : maxBid}  </button>
+                  { !maxBid
+                  ?
+                  <button>Starting Bid: £{startPrice}</button>
+                  :
+                  <button>Current Bid: £{maxBid}</button>
+                  }
                 </div>
               </div>
             </ChakraLink>

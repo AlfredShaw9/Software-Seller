@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Form, useActionData, useNavigate } from 'react-router-dom'
 import { setToken } from '../utils/helpers/common'
 import { Link } from 'react-router-dom'
+import logImg from '../assets/log-reg.png'
 
 // & Login function
 export default function Login() {
@@ -28,9 +29,10 @@ export default function Login() {
             <button aria-label="Close" />
           </div>
         </div>
-        <h1>Login</h1>
+        <img src={logImg} />
         <Form method='POST' className='dataCont'>
           <div className='dataFormFields'>
+          <p className="instructionMsg">Enter your details below to <span>Login</span>:</p>
             <div>
               <label form='email'>Email:</label>
               <input type='email' id='email' name='email'/>
@@ -44,10 +46,12 @@ export default function Login() {
 
           <div className='buttonsCont'>
             <button type='submit'>Login</button>
-            <Link to ='/register' className='loggedOut'>Register</Link>
+            <Link to ='/register'>
+              <button  className='loggedOut'>Register</button>
+            </Link> 
+            {res && <p>{res.data.message}</p>}
           </div>
 
-          {res && <p>{res.data.message}</p>}
         </Form>
       </div>
     </div>

@@ -32,8 +32,9 @@ export default function AllBundles() {
   // & Effects
   useEffect(() => {
     const pattern = new RegExp(filters.search, 'i')
+    const pattern2 = new RegExp(filters.OS, 'i')
     const filteredArr = bundlesAll.filter(bundle => {
-      return pattern.test(bundle.software) && (bundle.operatingSystem === filters.OS || filters.OS === 'All')
+      return pattern.test(bundle.software) && (pattern2.test(bundle.operatingSystem) || filters.OS === 'All')
     })
     setFilteredBundles(filteredArr)
   }, [bundlesAll, filters.search, filters.OS])
@@ -95,11 +96,18 @@ export default function AllBundles() {
               <div className='outerBorder'>
                 <div className='indivBundleCont'>
                   <div className='bundleImg' style={ { backgroundImage: `url(${image})` } }>
-                    {operatingSystem}
+                    <div className={operatingSystem.toLowerCase().replaceAll(' ', '').replaceAll(/[^\w\s']|_/g, "")}>
+                      {operatingSystem}
+                    </div>
                   </div>
                   <p>{software}, {version}</p>
-                  <p>Time Remaining: {timeRemaining < 0 ? 'Expired' : `${DaysRemaining} days ${HoursRemaining < 10 ? 0 : ''}${HoursRemaining} hours ${MinutesRemaining < 10 ? 0 : ''}${MinutesRemaining} minutes ${SecondsRemaining < 10 ? 0 : ''}${SecondsRemaining} seconds`}</p>
-                  <button>Current Bid: £{!maxBid ? startPrice : maxBid} </button>
+                  <p>{timeRemaining < 0 ? 'Expired' : `${DaysRemaining} days ${HoursRemaining < 10 ? 0 : ''}${HoursRemaining} hours ${MinutesRemaining < 10 ? 0 : ''}${MinutesRemaining} minutes ${SecondsRemaining < 10 ? 0 : ''}${SecondsRemaining} seconds`}</p>
+                  { !maxBid
+                  ?
+                  <button>Starting Bid: £{startPrice}</button>
+                  :
+                  <button>Current Bid: £{maxBid}</button>
+                  }
                 </div>
               </div>
             </ChakraLink>

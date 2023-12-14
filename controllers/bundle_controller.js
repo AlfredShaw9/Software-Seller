@@ -46,7 +46,7 @@ export const createBundle = async (req, res) => {
     return res.status(201).json(bundleToCreate)
   } catch (error) {
     console.log(error)
-    return res.status(400).json(error)
+    return res.status(400).json({ message: 'Invalid input, check required fields' })
   }
 }
 
