@@ -9,12 +9,13 @@
 }
 
 .formWindow {
-  max-width: 500px;
+  max-width: 50vw;
+  min-width: 500px;
   height: fit-content;
   // margin: 0 30vw 0 10vw;
 
   img{
-    width: 490px;
+    width: calc(100% - 6px);
     padding: 0px 3px
   }
 }
@@ -43,13 +44,18 @@
       display: flex;
       justify-content: space-between;
       // width: 32vw;
-      width: 380px;
+      width: 85%;
       margin: 5px 0px;
+      
 
       input, select {
         // width: 26vw;
         box-sizing: border-box;
-        width: 300px;
+        width: 75%;
+      }
+
+      input, select, label, textarea {
+        font-size: $standard-font-size;
       }
     }
 
@@ -57,8 +63,8 @@
       align-items: start;
 
       textarea {
-        max-width: 300px;
-        min-width: 300px;
+        max-width: 75%;
+        min-width: 75%;
         max-height: 150px;
       }
     }
@@ -72,6 +78,8 @@
 
     button{
       margin: 0px 5px;
+      font-size: $standard-font-size;
+      padding: 5px 30px;
     }
   }
 }

@@ -21,6 +21,7 @@
 
   .outerBorder {
     border: 1px solid $dark-off-white;
+    border-radius: 5px;
   }
 
   .indivBundleCont{
@@ -31,6 +32,13 @@
     align-items: center;
     border: 1px solid $white;
     padding: 5px;
+    border-radius: 5px;
+
+    button{
+      margin: 0px 5px;
+      font-size: $standard-font-size;
+      padding: 5px 30px;
+    }
 
     .bundleImg{
       width: 200px;
@@ -40,6 +48,7 @@
       text-align: left;
       background-position: center;
       background-size: cover;
+      border-radius: 5px;
 
       div {
         width: fit-content;

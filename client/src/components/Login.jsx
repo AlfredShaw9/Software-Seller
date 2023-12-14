@@ -35,12 +35,12 @@ export default function Login() {
           <p className="instructionMsg">Enter your details below to <span>Login</span>:</p>
             <div>
               <label form='email'>Email:</label>
-              <input type='email' id='email' name='email'/>
+              <input type='email' id='email' name='email' placeholder='Email' />
             </div>
 
             <div>
               <label form='password'>Password:</label>
-              <input type='password' id='password' name='password'/>
+              <input type='password' id='password' name='password' placeholder='Password' />
             </div>
           </div>
 
