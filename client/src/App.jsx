@@ -1,13 +1,9 @@
 // * Packages
 import { Outlet, useNavigation } from 'react-router-dom'
-import { useState, useEffect } from 'react'
 
 // * Components
 import Header from './components/Header'
 import Footer from './components/Footer'
-
-// * Styling
-import { Spinner } from '@chakra-ui/react'
 
 function App() {
 
@@ -38,7 +34,6 @@ function App() {
             </div>
           </div>
         }
-        {/* <Outlet /> */}
       </main>
       <Footer />
     </>

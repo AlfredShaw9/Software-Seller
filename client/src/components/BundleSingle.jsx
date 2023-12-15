@@ -1,27 +1,22 @@
 // & Imports
 // * Packages
-import { Link, Form, useLoaderData, useActionData, useNavigate,  } from 'react-router-dom'
+import { Link, Form, useLoaderData, useActionData } from 'react-router-dom'
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { activeUser } from '../utils/helpers/common'
-// import { useFetcher } from 'react-router-dom'
 import { useDisclosure } from '@chakra-ui/react'
 
 // * Styling
-import { Button, ButtonGroup, Link as ChakraLink } from '@chakra-ui/react'
+import { Link as ChakraLink } from '@chakra-ui/react'
 import {
   Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
-  ModalCloseButton,
 } from '@chakra-ui/react'
 
 // * Images
-import windows2000 from '../assets/windows2000.png'
-import compSq from '../assets/xp_assets/123.ico'
 import sideMenu from '../assets/xp_assets/Side-menu.png'
 import laughingRich from '../assets/xp_assets/laughingRich.avif'
 
@@ -30,8 +25,6 @@ export default function BundleSingle(){
   
   // * Constants
   const res = useActionData()
-  // const navigate = useNavigate()
-  // const fetcher = useFetcher()
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   // Retrieve bundle data and save to const
@@ -41,7 +34,15 @@ export default function BundleSingle(){
   const { _id, software, version, operatingSystem, releaseYear, description, image, startPrice, auctionEnd, owner, winDetails } = bundle
   const { maxBid, winner } = winDetails
   const newBid = (maxBid + 1).toFixed(2)
-  // const { email } = winner
+
+  // * Current user
+  const [ user, setUser ] = useState('')
+
+  // Put within a useEffect with currentUser as the condition to re-render
+  useEffect(() => {
+    const username = localStorage.getItem('ss-username')
+    setUser(username)
+} , [localStorage.getItem('ss-username')])
 
   // * Time remaining
   const auctionEndDT = parseInt((new Date(auctionEnd).getTime() / (1000)))
@@ -62,21 +63,9 @@ export default function BundleSingle(){
     }
   })
 
-  // ! WIP
-  // * Current user
-  const [ user, setUser ] = useState('')
-
-  // Put within a useEffect with currentUser as the condition to re-render
-  useEffect(() => {
-    const username = localStorage.getItem('ss-username')
-    setUser(username)
-} , [localStorage.getItem('ss-username')])
-// ! Down to here
-
   function tock() {
     setRemaining(parseInt(auctionEndDT) - parseInt(parseInt((new Date().getTime() / (1000)))))
   }
-
 
   // Convert timer format to HH:MM:SS
   const DaysRemaining = Math.floor(remaining/(3600*24))
@@ -118,16 +107,12 @@ export default function BundleSingle(){
             <div className='bid-section'>
               <h4> Auction details</h4>
               <p className='auction-end'><b>Auction end:</b> {auctionEndHour}:{auctionEndMinute < 10 && 0}{auctionEndMinute} on {auctionEndDate}</p>
-              {/* <p className='timer'>Time Remaining: {remaining} seconds</p> */}
-              {/* <p>Winner: {winner}</p> */}
-              {/* Make it so the owner cant place a bid on their own item possibly? */}
               <p><b>Current Bid:</b> <span>£{!maxBid ? startPrice : maxBid}</span></p>
               { active
                 ?
                 <div>
                   <p className='timer'><b>Time Remaining: </b>{remaining < 0 ? 'Expired' : `${DaysRemaining} days ${HoursRemaining < 10 ? 0 : ''}${HoursRemaining} hours ${MinutesRemaining < 10 ? 0 : ''}${MinutesRemaining} minutes ${SecondsRemaining < 10 ? 0 : ''}${SecondsRemaining} seconds`}</p>
                   <div className='active-actions'>
-                    {/* <Button className='bid'>Place Bid</Button> */}
                     {activeUser() && activeUser() !== owner._id &&
                     <div className='bid-form font'>
                       <Form method="post">
@@ -203,18 +188,9 @@ export default function BundleSingle(){
               </div>
             </div>
           </ModalBody>
-
-          {/* <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={onClose}>
-              Close
-            </Button>
-            <Button variant='ghost'>Secondary Action</Button>
-          </ModalFooter> */}
         </ModalContent>
       </Modal>
       </div>
-
-      
     </>
   )
 }

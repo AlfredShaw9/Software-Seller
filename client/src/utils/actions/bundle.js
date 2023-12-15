@@ -21,8 +21,6 @@ export async function createBid(request, id) {
 
 export async function createBundle(data) {
   console.log('createBundle action reached')
-  // const data = await formToObj(request)
-  // console.log(data)
   return await axios.post('/api/bundles/', data, {
     validateStatus: () => true,
     headers: {
@@ -35,8 +33,6 @@ export async function createBundle(data) {
 
 export async function editBundle(data, id) {
   console.log('editBundle action reached')
-  // const data = await formToObj(request)
-  // console.log(data)
   return await axios.put(`/api/bundles/${id}`, data, {
     validateStatus: () => true,
     headers: {

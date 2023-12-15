@@ -31,7 +31,7 @@ export function activeUser(){
   const payload = JSON.parse(atob(b64))
   // * The below is only required if the logins have expiries
   // const exp = payload.exp
-  // // Check expiry date not passed
+  // Check expiry date not passed
   // if ( exp > (Date.now()/1000)){
     return payload.sub
   // }

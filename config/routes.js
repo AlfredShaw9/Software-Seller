@@ -1,5 +1,4 @@
 // & Imports
-// import secureRoute from './secureRoute.js'
 import express from 'express'
 import { register, login } from '../controllers/user_controller.js'
 import secureRoute from './secure_route.js'
@@ -46,19 +45,16 @@ router.route('/bundles/:bundleId')
   .delete(secureRoute, deleteBundle)
   .post(secureRoute, createBid)
 
-// ! WIP
 // * User specific bundles
 router.route('/bought')
   .get(secureRoute, getAllBundles)
 
 router.route('/sold')
   .get(secureRoute, getSoldBundles)
-// ! Down to here
 
 // * Bids
 router.route('/bundles/:bundleId/bids')
   .get(getAllBids)
-  // .post(secureRoute, createBid)
 
 router.route('/bundles/:bundleId/bids/:bidId')
   .get(getSingleBid)
