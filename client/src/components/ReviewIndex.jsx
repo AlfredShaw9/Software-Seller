@@ -7,7 +7,7 @@ import { activeUser } from '../utils/helpers/common'
 
 // * Images
 import star from '../assets/xp_assets/1366.ico'
-import folder from '../assets/xp_assets/folder8.svg'
+import folder from '../assets/xp_assets/folder8.png'
 
 // * Toolbar images
 import softSellImg from '../assets/software-seller-icon.png'
