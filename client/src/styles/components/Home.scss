@@ -1,0 +1,33 @@
+.welcome{
+  padding: 3 * $standard-padding;
+  height:30%;
+  @include flex(column, space-between);
+
+  * {
+    font-family: 'Pixelated MS Sans Serif',Arial;
+  }
+
+  img{
+    height: 3 * $standard-font-size;
+    width: 3 * $standard-font-size;
+  }
+
+  .welcomeHeader{
+    @include flex(row, left);
+    align-items: center
+  }
+
+  h5{
+    margin: $standard-padding;
+    text-align: left;
+  }
+
+  p{
+    text-align: left;
+    margin: $standard-padding
+  }
+
+  a{
+    text-align: right;
+  }
+}

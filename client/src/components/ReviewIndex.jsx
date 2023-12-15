@@ -1,9 +1,13 @@
-
+// & Imports
+// * Functions
 import { useLoaderData, Link as ReactRouterLink } from 'react-router-dom'
 import { Link as ChakraLink, Button as ChakraButton } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import { activeUser } from '../utils/helpers/common'
 
+// * Images
+import star from '../assets/xp_assets/1366.ico'
+import folder from '../assets/xp_assets/folder8.svg'
 
 export default function AllReviews() {
 
@@ -56,21 +60,26 @@ export default function AllReviews() {
             </select>
           </div>
         </div>
-        <section className='displayCont'>
+        <div className='displayCont'>
           { filteredReviews.length > 0 && filteredReviews.map(review => {
             const { _id, rating, description } = review
             return (
               <div key = {_id}>
-                <div className='outerBorder'>
-                  <div className='indivBundleCont'>
+                  <div className='indivBundleCont indivReviewCont' style={{backgroundImage: `url(${folder})` }}>
                     <p className='reviewTxt'>{description}</p>
-                    <p><b>Rating: {rating}/5 </b></p>
+                    {/* <p><b>Rating: {rating}/5 </b></p> */}
+                    <div className='visual-rating'>
+                      {rating > 0 && <img className='rating-star' src={star} alt='star'/>}
+                      {rating > 1 && <img className='rating-star' src={star} alt='star'/>}
+                      {rating > 2 && <img className='rating-star' src={star} alt='star'/>}
+                      {rating > 3 && <img className='rating-star' src={star} alt='star'/>}
+                      {rating > 4 && <img className='rating-star' src={star} alt='star'/>}
+                    </div>
                   </div>
                 </div>
-              </div>
             )
           }) }
-        </section>
+        </div>
       </div>
     </>
   )

@@ -1,5 +1,5 @@
 .reviewWindow{
-  min-width: 60vw;
+  min-width: 50vw;
 
   .reviews-header{
     @include flex(row, center);
@@ -14,15 +14,32 @@
     }
   }
 
-  .indivBundleCont{
-    width: 220px;
-    height: 240px;
-    border-radius: 10px;
+  .displayCont{
+    margin: 4px
   }
 
-  .outerBorder{
+  .indivBundleCont{
+    width: 270px;
+    height: 220px;
     border-radius: 10px;
-    margin: $standard-padding
+    margin: $standard-padding;
+    padding: $standard-padding;
+    background-repeat: none;
+    background-size: cover;
+    border-style: none;
+  }
+
+  
+
+
+  .rating-star{
+    height: 2 * $standard-font-size;
+    width: 2 * $standard-font-size;
   }
   
+}
+
+.reviewTxt{
+  height: 150px;
+  padding-top: 3 * $standard-padding
 }
