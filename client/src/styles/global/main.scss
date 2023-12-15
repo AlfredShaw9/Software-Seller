@@ -31,20 +31,12 @@ button{
   padding: 5px 30px;
 }
 
-// ! Do we want to keep this in?
 input, select, label, textarea {
   font-size: $standard-font-size;
   *{
     padding: 5px 30px;
   }
   
-}
-
-.window {
-  // height: calc(100vh - 30 * $standard-padding);
-  // margin-left: 15vw;
-  // margin-right: 30vw;
-  // align-self: flex-end;
 }
 
 .bill-build{

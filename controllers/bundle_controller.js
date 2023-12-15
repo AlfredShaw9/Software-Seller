@@ -12,28 +12,20 @@ export const getAllBundles = async (req, res) => {
 // & Index active
 // ? GET
 // * /bundles/active
+
 export const getActiveBundles = async (req, res) => {
   const bundles = await Bundle.find( { auctionEnd: { $gte: new Date() } } ).populate('winDetails')
   return res.json(bundles)
 }
 
-// ! WIP
-// & Index - user specific (winner)
-// ? GET
-// * /bought
-// export const getBoughtBundles = async (req, res) => {
-//   const bundles = await Bundle.find( { auctionEnd: { $lte: new Date() }  } ).populate('maxBid').populate('winner')
-//   return res.json(bundles)
-// }
-
 // & Index - user specific (owner)
 // ? GET
 // * /sold
+
 export const getSoldBundles = async (req, res) => {
   const bundles = await Bundle.find( { owner: req.currentUser._id  } ).populate('winDetails')
   return res.json(bundles)
 }
-// ! Down to here
 
 // & Create
 // ? POST
@@ -80,9 +72,6 @@ export const updateBundle = async (req, res) => {
     if (!bundle) {
       return res.status(404).json({ message: 'Bundle not found ' })
     }
-    // console.log('User making request: ', req.currentUser._id)
-    // console.log('User that owns bundle: ', bundle.owner)
-    // console.log('Does user match owner: ', bundle.owner.equals(req.currentUser._id))
     if (!bundle.owner.equals(req.currentUser._id)){
       return res.status(401).json({ message: 'Unauthorized' })
     }

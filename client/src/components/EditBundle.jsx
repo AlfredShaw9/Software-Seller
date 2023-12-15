@@ -11,14 +11,7 @@ export default function EditBundle(){
   const bundle = useLoaderData()
   const navigate = useNavigate()
   
-  // * Navigate to bundles index page on successful submission
-  // ! Could we make this go to the bundle single page? 🤔
-  // useEffect(() => {
-  //   if (res?.status === 200) {
-  //     navigate(`/buy/${res.data._id}`)
-  //   }
-  // }, [res, navigate])
-
+  // * State
   const [ formData, setFormData ] = useState({
     software: bundle.software,
     version: bundle.version,

@@ -2,7 +2,6 @@
 // * Packages
 import { useEffect, useState } from 'react'
 import React from 'react'
-import { useLoaderData } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { removeToken } from '../utils/helpers/common'
 import { useNavigate } from "react-router-dom"
@@ -11,10 +10,6 @@ import { useNavigate } from "react-router-dom"
 // * Images
 import startButton from '../assets/xp_assets/start-button.png'
 import logoSq from '../assets/software-seller-icon.png'
-// import sdIcon from '../assets/xp_assets/shutdown-icon-windows-10-26.jpg'
-// import loIcon from '../assets/xp_assets/log-off-icon.jpeg'
-
-// Images
 import usersSq from '../assets/xp_assets/1111.ico'
 import compSq from '../assets/xp_assets/123.ico'
 import buySq from '../assets/xp_assets/160.ico'
@@ -38,7 +33,6 @@ import {
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
-  DrawerCloseButton,
   Button,
   useDisclosure
 } from '@chakra-ui/react'
@@ -90,7 +84,6 @@ export default function Footer(){
   //  * JSX
   return(
     <>
-      {/* {(user !== null) && */}
           <footer>
           <div className ="footerLeft">
             <Button onClick={(!isOpen && user) ? onOpen : onClose} className="startButton"><img src={startButton} /></Button>
@@ -123,7 +116,6 @@ export default function Footer(){
                 }}
                 style={{ position: 'absolute' }}
                 >
-                  {/* <DrawerCloseButton /> */}
                   <DrawerHeader className='startHeader'>
                     <img src={frogUser} />
                     <p>Welcome {user && user}</p>

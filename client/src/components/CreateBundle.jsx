@@ -1,7 +1,11 @@
+// & Import
+// * Packages
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Form, useActionData, useNavigate } from 'react-router-dom'
 import ImageUploadField from './ImageUpload'
+
+// * Images
 import { createBundle } from '../utils/actions/bundle'
 import { activeUser } from '../utils/helpers/common'
 import createImg from '../assets/Create.png'
@@ -10,26 +14,14 @@ import createImg from '../assets/Create.png'
 export default function CreateBundle(){
   const res = useActionData()
   const navigate = useNavigate()
-  
-  // * Navigate to bundles index page on successful submission
-  // ! Could we make this go to the bundle single page? 🤔
-  // useEffect(() => {
-  //   if (res?.status === 201) {
-  //     navigate('/buy')
-  //   }
-  // }, [res, navigate])
 
-
-
-  // const auctionEndDT = parseInt((new Date().getTime() / (1000)))
-  // const auctionEndDate = new Date().toDateString()
+  // Default auction end date time
   const auctionEndYear = new Date().getFullYear()
   let auctionEndMonth = new Date().getMonth() + 1
   if (auctionEndMonth === 13) auctionEndMonth = 12
   const auctionEndDay = new Date().getDate()
   const auctionEndHour = new Date().getHours() + 1
   const auctionEndMinute = new Date().getMinutes()
-
   const auctionEnd = `${auctionEndYear}-${auctionEndMonth}-${auctionEndDay}T${auctionEndHour}:${auctionEndMinute}`
 
   // & State
@@ -113,7 +105,6 @@ export default function CreateBundle(){
           <div className="desc">
           <label form='description'>Description:</label>
           <textarea name="description" placeholder='Descripton'  onChange={handleChange}  value={formData.description}/>
-          {/* <input type="text" name="description" placeholder='Descripton'  onChange={handleChange}  value={formData.description}/> */}
           </div>
 
           <div>
@@ -131,7 +122,6 @@ export default function CreateBundle(){
             <ImageUploadField setFormData={setFormData} formData={formData} />
           </div>
 
-          {/* <input type="text" hidden='true' name="status" defaultValue="active"></input> */}
         </div>
 
         <div className='buttonsCont'>

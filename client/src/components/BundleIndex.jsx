@@ -1,10 +1,13 @@
 
+// & Imports
+// * Packages
 import { useLoaderData, Link as ReactRouterLink } from 'react-router-dom'
 import { Link as ChakraLink } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import "xp.css/dist/XP.css"
 import React from 'react'
 
+// * Images
 import softSellImg from '../assets/software-seller-icon.png'
 import back from '../assets/xp_assets/back-button.png'
 import next from '../assets/xp_assets/next-button.png'
@@ -13,13 +16,13 @@ import file from '../assets/xp_assets/file.png'
 import fileView from '../assets/xp_assets/file-view-options.png'
 import fileBack from '../assets/xp_assets/file-back.png'
 
-
+// & Default function
 export default function AllBundles() {
 
   const bundlesAll = useLoaderData()
 
   
-  // & State
+  // * State
   const [ filters, setFilters ] = useState({
     OS: 'All',
     search: ''
@@ -27,7 +30,7 @@ export default function AllBundles() {
   const [ filteredBundles, setFilteredBundles ] = useState('')
 
 
-  // & Functions
+  // * Functions
   function handleChange(e){
     const newObj = { 
       ...filters,
@@ -37,7 +40,7 @@ export default function AllBundles() {
   }
 
 
-  // & Effects
+  // * Effects
   useEffect(() => {
     const pattern = new RegExp(filters.search, 'i')
     const pattern2 = new RegExp(filters.OS, 'i')
@@ -48,7 +51,7 @@ export default function AllBundles() {
   }, [bundlesAll, filters.search, filters.OS])
 
   
-  // & Timer
+  // * Timer
   // * React timer
   // Credit: https://codepen.io/saas/pen/RwWNEGJ
   const [remaining, setRemaining] = React.useState(0);
@@ -68,6 +71,7 @@ export default function AllBundles() {
     0
   }
 
+  // * JSX
   return (
     <div className='window buyWindow'>
       <div className="title-bar">

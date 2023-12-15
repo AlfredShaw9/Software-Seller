@@ -69,6 +69,7 @@ async function seed(){
     const reviewsCreated = await Review.create(ownedReviews)
     console.log(`📝 Created ${ownedReviews.length} reviews in db`)
     
+    // ! This doesn't work - currently using array from bid_data file instead 
     // * Create bidData array using loop instead of from manual seed file
     let bidArray = []
     function bidArrayBuilder() {
@@ -82,11 +83,11 @@ async function seed(){
     }
     bidArrayBuilder()
     console.log('Bid array: ', bidArray)
+    // ! Down to here
 
-    // * Attempting to use bidArray from above rather than bidData seed file
     const ownedBids = bidData.map(bid => {
       const rdmUserIdx = Math.floor(Math.random() * createdUsers.length)
-      // First bundle won't have any votes
+      // First bundle won't have any bids
       const rdmBundleIdx = 1 + Math.floor(Math.random() * ownedBundles.length - 1)
       return { ...bid, owner: createdUsers[rdmUserIdx]._id, bundle: bundlesCreated[rdmBundleIdx]._id}
     })

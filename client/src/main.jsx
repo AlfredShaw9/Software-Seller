@@ -1,6 +1,9 @@
+// & Imports
+// * Packages
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
+// * Components
 import App from './App.jsx'
 import Home from './components/Home.jsx'
 import Register from './components/Register.jsx'
@@ -16,12 +19,14 @@ import AllSold from './components/Sold.jsx'
 import OwnBids from './components/OwnBids.jsx'
 import Profile from './components/Profile.jsx'
 
+// * Actions/Loaders
 import { loginUser, registerUser } from './utils/actions/auth.js'
 import { getActiveBundles, getAllReviews, getSingleBundle, getBoughtBundles, getSoldBundles } from './utils/loaders/bundles.js'
 import { createBid, createBundle, editBundle, deleteBundle } from './utils/actions/bundle.js'
 import { createReview } from './utils/actions/review.js'
 import { getOwnBids } from './utils/loaders/bids.js'
 
+// * Styling
 import './styles/index.scss'
 
 const router = createBrowserRouter([

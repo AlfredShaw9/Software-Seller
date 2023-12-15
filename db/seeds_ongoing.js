@@ -44,7 +44,6 @@ async function seedOngoing(){
 
     const ownedBids = bidData.map(bid => {
       const rdmUserIdx = Math.floor(Math.random() * createdUsers.length)
-      // First bundle won't have any votes
       const rdmBundleIdx = 1 + Math.floor(Math.random() * ownedBundles.length - 1)
       return { ...bid, owner: createdUsers[rdmUserIdx]._id, bundle: bundlesCreated[rdmBundleIdx]._id}
     })
