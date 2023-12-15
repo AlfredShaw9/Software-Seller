@@ -46,12 +46,17 @@
       // width: 32vw;
       width: 85%;
       margin: 5px 0px;
+
+      img {
+        width: 100px;
+        margin-right: 100px;
+      }
       
 
       input, select {
         // width: 26vw;
         box-sizing: border-box;
-        width: 75%;
+        width: 70%;
       }
 
       input, select, label, textarea {
@@ -63,8 +68,8 @@
       align-items: start;
 
       textarea {
-        max-width: 75%;
-        min-width: 75%;
+        max-width: 70%;
+        min-width: 70%;
         max-height: 150px;
       }
     }
