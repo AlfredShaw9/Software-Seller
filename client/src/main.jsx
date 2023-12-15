@@ -102,7 +102,7 @@ const router = createBrowserRouter([
         path: '/profile/bids',
         element: <OwnBids />,
         loader: async ({ request }) => getOwnBids(request)
-      }      
+      }   
     ]
   }
 ])

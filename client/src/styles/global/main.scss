@@ -26,16 +26,18 @@ main{
   background-size: cover;
 }
 
-.welcome{
-  // background: linear-gradient(rgba(255,255,255,0.3),rgba(255,255,255,0.8));
-  // padding: 4 * $standard-padding;
-  height: 100%;
-  @include flex(column, center);
-  align-items: center;
+button{
+  font-size: $standard-font-size;
+  padding: 5px 30px;
+}
 
-  h4{
-    max-width: 60%
+// ! Do we want to keep this in?
+input, select, label, textarea {
+  font-size: $standard-font-size;
+  *{
+    padding: 5px 30px;
   }
+  
 }
 
 .window {
@@ -43,4 +45,9 @@ main{
   // margin-left: 15vw;
   // margin-right: 30vw;
   // align-self: flex-end;
+}
+
+.bill-build{
+  width: 60%;
+  border-radius: 10px;
 }

@@ -5,6 +5,14 @@ import { useEffect, useState } from 'react'
 import "xp.css/dist/XP.css"
 import React from 'react'
 
+import softSellImg from '../assets/software-seller-icon.png'
+import back from '../assets/xp_assets/back-button.png'
+import next from '../assets/xp_assets/next-button.png'
+import search from '../assets/xp_assets/search-icon.png'
+import file from '../assets/xp_assets/file.png'
+import fileView from '../assets/xp_assets/file-view-options.png'
+import fileBack from '../assets/xp_assets/file-back.png'
+
 
 export default function AllBundles() {
 
@@ -70,7 +78,47 @@ export default function AllBundles() {
           <button aria-label="Close" />
         </div>
       </div>
-      <div id='filters'>
+      <div className='windowTopBar'>
+        <div className='topNavBar'>
+          <div className = 'toolBar'>
+            <p>File</p>
+            <p>Edit</p>
+            <p>View</p>
+            <p>Favourites</p>
+            <p>Tools</p>
+            <p>Help</p>
+          </div>
+          <div className='topNavBarImgPadding'>
+            <div className='topNavBarImg' style={ { backgroundImage: `url(${softSellImg})` } }></div>
+          </div>
+        </div>
+        <div className='bottomNavBar'>
+          <div>
+            <img className='nav' src={back}/>
+            <p>Back</p>
+          </div>
+          <div>
+            <img className='nav' src={next}/>
+          </div>
+          <div>
+            <img src={fileBack}/>
+          </div>
+          <section className='separator'></section>
+          <div>
+            <img src={search}/>
+            <p>Search</p>
+          </div>
+          <div>
+            <img src={file}/>
+            <p>Folders</p>
+          </div>
+          <section className='separator'></section>
+          <div>
+            <img src={fileView}/>
+          </div>
+        </div>
+      </div>
+      <div className='filters'>
         <select name='OS' value={filters.OS} onChange={handleChange}>
           <option value='All'>All</option>
           <option value='Windows'>Windows</option>
@@ -85,7 +133,7 @@ export default function AllBundles() {
         ?
         filteredBundles.map(bundle => {
           const { _id, software, version, operatingSystem, image, auctionEnd, winDetails, startPrice } = bundle
-          const { maxbid } = winDetails
+          const { maxBid } = winDetails
           // * Time remaining
           const auctionEndDT = parseInt((new Date(auctionEnd).getTime() / (1000)))
           const timeRemaining = (parseInt(auctionEndDT) - parseInt(parseInt((new Date().getTime() / (1000)))))
@@ -106,13 +154,13 @@ export default function AllBundles() {
                       {operatingSystem}
                     </div>
                   </div>
-                  <p>{software}, {version}</p>
-                  <p>{timeRemaining < 0 ? 'Expired' : `${DaysRemaining} days ${HoursRemaining < 10 ? 0 : ''}${HoursRemaining} hours ${MinutesRemaining < 10 ? 0 : ''}${MinutesRemaining} minutes ${SecondsRemaining < 10 ? 0 : ''}${SecondsRemaining} seconds`}</p>
-                  { !maxbid
+                  <p className="title">{software}, {version}</p>
+                  <p className="timer">{timeRemaining < 0 ? 'Expired' : `${DaysRemaining} days ${HoursRemaining < 10 ? 0 : ''}${HoursRemaining} hours ${MinutesRemaining < 10 ? 0 : ''}${MinutesRemaining} minutes ${SecondsRemaining < 10 ? 0 : ''}${SecondsRemaining} seconds`}</p>
+                  { !maxBid
                   ?
                   <button>Starting Bid: £{startPrice}</button>
                   :
-                  <button>Current Bid: £{maxbid}</button>
+                  <button>Current Bid: £{maxBid}</button>
                   }
                 </div>
               </div>

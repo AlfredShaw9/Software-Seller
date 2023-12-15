@@ -1,38 +1,134 @@
 
 .buyWindow{
-  height: calc(100vh - 30 * $standard-padding);
+  height: calc(100vh - 20* $standard-padding);
+  background-color: white;
+  @include flex(column, space-around);
+}
+
+.windowTopBar{
+  margin: 0px 3px;
+  background-color: #ece9d8;
+
+  .topNavBar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid $dark-off-white;
+
+    .toolBar {
+      display: flex;
+      
+      p {
+        margin: 5px 0px 5px 15px;
+      }
+    }
+
+    .topNavBarImgPadding{
+      padding: 3px 0px;
+      border-left: 2px solid $dark-off-white;
+      background-color: white;
+      .topNavBarImg {
+        width: 70px;
+        height: 24px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+
+    
+  }
+
+
+  .bottomNavBar{
+    height: 60%;
+    border-top: 2px solid $white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: rgb(176, 176, 176) 0px -4px 6px -2px inset;
+
+    div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      margin: 0px 8px;
+
+      img {
+        width: 35px;
+        height: 35px;
+      }
+      .nav{
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+    .separator{
+      width: 2px;
+      height: 40px;
+      background-color: $dark-off-white;
+    }
+  }
+}
+
+
+
+
+
+.filters {
+  margin-top: 20px;
+
+  select, input {
+    font-size: $standard-font-size;
+    margin: 0px 8px;
+  }
 }
 
 .displayCont {
+  align-self: center;
   width: 55vw;
   max-width: 1500px;
   margin: 20px;
-  height: calc(100vh - 40 * $standard-padding);
+  height: calc(100vh - 45 * $standard-padding);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   overflow: auto;
+  border: 2px solid $dark-off-white;
+  border-radius: 10px;
   a {
     width: fit-content;
     margin: 3%;
   }
 
   .outerBorder {
-    border: 1px solid $dark-off-white;
+    border: 2px solid grey;
     border-radius: 5px;
   }
 
   .indivBundleCont{
     @include flex(column,center);
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
     align-items: center;
-    border: 1px solid $white;
+    border: 2px solid lightgrey;
+    background-color: #ece9d8;
     padding: 5px;
     border-radius: 5px;
+
+    .title{
+      font-weight: bold;
+      text-decoration: underline;
+      margin: 10px 0px;
+    }
+
+    .timer{
+      margin: 0px 0px 10px 0px;
+    }
 
     button{
       margin: 0px 5px;

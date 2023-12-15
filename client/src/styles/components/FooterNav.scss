@@ -31,6 +31,10 @@ header {
 
   nav {
     @include flex(column, space-around);
+
+    p{
+      margin: 0;
+    }
   }
 
   .random-padding{
@@ -193,7 +197,7 @@ footer {
     border-radius: 2px;
     margin-top: 2px;
     padding: 0px 18px;
-    font-size: 13px;
+    font-size: $standard-font-size;
     background-color: rgb(60, 129, 243);
     box-shadow: rgba(0, 0, 0, 0.3) -1px 0px inset, rgba(255, 255, 255, 0.2) 1px 1px 1px inset;
     
@@ -214,10 +218,21 @@ footer {
   box-shadow: rgb(24, 187, 255) 1px 0px 1px inset;
   padding: 0px 10px;
   margin-left: 10px;
+  align-items: center;
 
   *{
     padding: 0 calc(0.5 * $standard-padding);
-    text-decoration: none
+    text-decoration: none;
+    font-size: smaller;
+  }
+  .login-icon{
+    height: 24px;
+  }
+  p{
+    margin: 0;
+  };
+  a{
+    margin-top: 3px
   }
 }
 
