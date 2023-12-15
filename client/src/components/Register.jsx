@@ -50,10 +50,10 @@ export default function Register(){
         </div>
           
         <div className='buttonsCont'>
-          <Link to ='/login'>
-            <button type='submit'>Login</button>
-          </Link>
           <button className='loggedOut'>Register</button>
+          <Link to ='/login'>
+            <button type='submit'>Go to Login</button>
+          </Link>
           {res && <p>{res.data.message}</p>}
         </div>
         

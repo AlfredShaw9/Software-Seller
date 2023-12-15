@@ -31,6 +31,10 @@ header {
 
   nav {
     @include flex(column, space-around);
+
+    p{
+      margin: 0;
+    }
   }
 
   .random-padding{
@@ -214,11 +218,21 @@ footer {
   box-shadow: rgb(24, 187, 255) 1px 0px 1px inset;
   padding: 0px 10px;
   margin-left: 10px;
+  align-items: center;
 
   *{
     padding: 0 calc(0.5 * $standard-padding);
     text-decoration: none;
-    font-size: smaller
+    font-size: smaller;
+  }
+  .login-icon{
+    height: 24px;
+  }
+  p{
+    margin: 0;
+  };
+  a{
+    margin-top: 3px
   }
 }
 

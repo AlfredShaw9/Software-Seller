@@ -2,6 +2,7 @@
 .buyWindow{
   height: calc(100vh - 20* $standard-padding);
   background-color: white;
+  @include flex(column, space-around);
 }
 
 .windowTopBar{
@@ -41,7 +42,7 @@
 
 
   .bottomNavBar{
-    height: 100%;
+    height: 60%;
     border-top: 2px solid $white;
     display: flex;
     flex-direction: row;
@@ -66,7 +67,7 @@
       }
     }
 
-    .seperator{
+    .separator{
       width: 2px;
       height: 40px;
       background-color: $dark-off-white;
@@ -88,6 +89,7 @@
 }
 
 .displayCont {
+  align-self: center;
   width: 55vw;
   max-width: 1500px;
   margin: 20px;

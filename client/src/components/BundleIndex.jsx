@@ -103,7 +103,7 @@ export default function AllBundles() {
           <div>
             <img src={fileBack}/>
           </div>
-          <section className='seperator'></section>
+          <section className='separator'></section>
           <div>
             <img src={search}/>
             <p>Search</p>
@@ -112,7 +112,7 @@ export default function AllBundles() {
             <img src={file}/>
             <p>Folders</p>
           </div>
-          <section className='seperator'></section>
+          <section className='separator'></section>
           <div>
             <img src={fileView}/>
           </div>

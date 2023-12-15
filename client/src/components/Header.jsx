@@ -29,12 +29,12 @@ export default function Header(){
     <>
       <header className='narrow-mode'>
         <nav>
-        <Link to ='/'><img className='logo-icon' src={logoSq} alt='ss logo' />Home</Link>
-        <Link to ='/buy'><img className='logo-icon random-padding' src={buySq} alt='buy logo' />Buy</Link>
-        {(user !== null) && <Link to ='/sell'><img className='logo-icon' src={sellSq} alt='buy logo' />Sell</Link>}
-        <Link to ='/reviews'><img className='logo-icon random-padding' src={networkSq} alt='comp logo' />Reviews</Link>
-        {(user !== null) && <Link to ='/profile'><img className='logo-icon random-padding' src={compSq} alt='comp logo' />Profile</Link>}
-        {(user === null) && <Link to ='/login' className='loggedOut'><img className='logo-icon' src={usersSq} alt='users logo' />Register/Login</Link>}
+        <Link to ='/'><img className='logo-icon' src={logoSq} alt='ss logo' /><p>Home</p></Link>
+        <Link to ='/buy'><img className='logo-icon random-padding' src={buySq} alt='buy logo' /><p>Buy</p></Link>
+        {(user !== null) && <Link to ='/sell'><img className='logo-icon' src={sellSq} alt='buy logo' /><p>Sell</p></Link>}
+        <Link to ='/reviews'><img className='logo-icon random-padding' src={networkSq} alt='comp logo' /><p>Reviews</p></Link>
+        {(user !== null) && <Link to ='/profile'><img className='logo-icon random-padding' src={compSq} alt='comp logo' /><p>Profile</p></Link>}
+        {(user === null) && <Link to ='/login' className='loggedOut'><img className='logo-icon' src={usersSq} alt='users logo' /><p>Register/Login</p></Link>}
         </nav>
       </header>
     </>

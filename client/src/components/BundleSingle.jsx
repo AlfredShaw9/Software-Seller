@@ -40,7 +40,7 @@ export default function BundleSingle(){
   // Destructure
   const { _id, software, version, operatingSystem, releaseYear, description, image, startPrice, auctionEnd, owner, winDetails } = bundle
   const { maxBid, winner } = winDetails
-  const newBid = maxBid + 1
+  const newBid = (maxBid + 1).toFixed(2)
   // const { email } = winner
 
   // * Time remaining
@@ -121,29 +121,35 @@ export default function BundleSingle(){
               {/* <p className='timer'>Time Remaining: {remaining} seconds</p> */}
               {/* <p>Winner: {winner}</p> */}
               {/* Make it so the owner cant place a bid on their own item possibly? */}
+              <p><b>Current Bid:</b> <span>£{!maxBid ? startPrice : maxBid}</span></p>
               { active
                 ?
                 <div>
                   <p className='timer'><b>Time Remaining: </b>{remaining < 0 ? 'Expired' : `${DaysRemaining} days ${HoursRemaining < 10 ? 0 : ''}${HoursRemaining} hours ${MinutesRemaining < 10 ? 0 : ''}${MinutesRemaining} minutes ${SecondsRemaining < 10 ? 0 : ''}${SecondsRemaining} seconds`}</p>
-                  {activeUser() && <div className='active-actions'>
+                  <div className='active-actions'>
                     {/* <Button className='bid'>Place Bid</Button> */}
-                    <p><b>Current Bid:</b> <span>£{!maxBid ? startPrice : maxBid}</span></p>
+                    {activeUser() && activeUser() !== owner._id &&
                     <div className='bid-form font'>
                       <Form method="post">
                         <label hidden htmlFor='value'>Place a bid: £</label>
-                        <input type='number' name='value' defaultValue={!maxBid ? startPrice : newBid} placeholder={!maxBid ? startPrice : newBid} />
+                        <input type='number' name='value'  step=".01" defaultValue={!maxBid ? startPrice : newBid} placeholder={!maxBid ? startPrice : newBid} />
                         <button className='btn' type='submit'>Submit bid</button>
                         {res && <p>{res.data.message}</p>}
                       </Form>
                     </div>
-                  </div>}
+                    }
+                  </div>
                 </div>
                 :
                 <div className='inactive-actions'>
                 <p className='timer font'>Auction has ended</p>
                 {activeUser() === winner && !active &&
-                <p>Congratulations {user}, you've won this bundle! Please pay £{maxBid} via the button ↘️</p>
+                <p>Congratulations {user}, you&apos;ve won this bundle! Please pay £{maxBid} via the button ↘️</p>
                 }
+                {activeUser() === owner._id && !active && maxBid > 0 &&
+                <p>This bundle has been won by {user} for £{maxBid}</p>
+                }
+                {maxBid === 0 && <p>This bundle was not sold</p>}
                 </div>
               }
             </div>

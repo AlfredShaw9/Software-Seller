@@ -2,6 +2,7 @@
 // import { useLoaderData, Link as ReactRouterLink } from 'react-router-dom'
 // import { Link as ChakraLink } from '@chakra-ui/react'
 import "xp.css/dist/XP.css"
+import billBuild from '../assets/xp_assets/bill_build.jpeg'
 
 export default function OwnBids() {
 
@@ -71,7 +72,8 @@ export default function OwnBids() {
         </div>
       </div>
       <section className='displayCont'>
-        <h1>UNDER CONSTRUCTION🚧🏗️</h1>
+        <h2>UNDER CONSTRUCTION<br></br>🚧🏗️</h2>
+        <img className='bill-build' src={billBuild} alt='bill build'/>
         {/* { sortedBundles.length > 0 && sortedBundles.map(bundle => {
           const { _id, software, bids, maxBid } = bundle
 

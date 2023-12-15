@@ -172,7 +172,8 @@ export default function Footer(){
             </div>
           </div>
           <div className="clockGroup">
-            <p className='citations display-6'><a target='_blank' href="https://forms.gle/Mt7EpfroDbSBCBxw8">🐛</a></p>
+            <p className='citations display-6'><a target='_blank' rel='noreferrer' href="https://forms.gle/Mt7EpfroDbSBCBxw8">🐛</a></p>
+            {(user === null) && <Link to="/login"><img src={loIcon} className='login-icon'/></Link>}
             <p className='narrow-mode'>{time}</p>
           </div>
         </footer>

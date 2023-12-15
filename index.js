@@ -8,7 +8,7 @@ const app = express()
 app.use(express.json())
 
 app.use((req, res, next) => {
-  console.log(`💡 Request recieved: ${req.method} ${req.url}`)
+  console.log(`💡 Request received: ${req.method} ${req.url}`)
   next()
 })
 

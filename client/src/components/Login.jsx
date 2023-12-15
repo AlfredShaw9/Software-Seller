@@ -47,7 +47,7 @@ export default function Login() {
           <div className='buttonsCont'>
             <button type='submit'>Login</button>
             <Link to ='/register'>
-              <button  className='loggedOut'>Register</button>
+              <button  className='loggedOut'>Go to Register</button>
             </Link> 
             {res && <p>{res.data.message}</p>}
           </div>
