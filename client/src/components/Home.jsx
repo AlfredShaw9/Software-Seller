@@ -1,7 +1,5 @@
 // & Imports
 // * Packages
-import { Link } from 'react-router-dom'
-import React from 'react'
 
 // * Images
 import keyboard from '../assets/xp_assets/keyboard.png'

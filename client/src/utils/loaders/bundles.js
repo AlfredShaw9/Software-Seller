@@ -21,11 +21,6 @@ export async function getAllReviews() {
   return res.json()
 }
 
-// export async function getSingleReview(id){
-//   const res = await fetch(`/api/reviews/${id}`)
-//   return res.json()
-// }
-
 // & Bought user bundles
 
 export async function getBoughtBundles() {
